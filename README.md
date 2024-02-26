@@ -42,7 +42,7 @@ Nick DeFelice
    - Once the repository is cloned, navigate to the folder where it's located on your machine.
    - Open Unity, then open the project by selecting the folder you just cloned.
 
-   Note: If you prefer using the terminal, you can perform these steps there, but proceed with caution if you're less familiar with it.
+*Note: If you prefer using the terminal, you can perform these steps there, but proceed with caution if you're less familiar with it.*
 
 ## Contributing to the Application: Step-by-Step Guide
 
@@ -53,8 +53,6 @@ Nick DeFelice
    - In GitHub Desktop, select the repository you want to contribute to.
    - Click on the "Repository" menu and choose "Fetch origin" to ensure you have the latest updates.
    - After fetching, click on "Repository" again and select "Pull" to merge any changes from the remote repository to your local one.
-
-   ![Fetch and Pull](fetch_and_pull_image.jpg)
 
 ### 3. Create a new branch for your new changes
    - In GitHub Desktop, click on the "Current Branch" dropdown menu and select "New Branch".
@@ -73,6 +71,8 @@ Nick DeFelice
    - Click on "Repository" and choose "Merge into current branch".
    - Select your branch from the list to merge your changes into the main branch.
    - Resolve any conflicts if necessary, then confirm the merge.
+
+   *Note: Before merging talk to someone in the group to avoid problems or miscommunications later on.*
 
 
 

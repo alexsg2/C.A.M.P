@@ -4,10 +4,10 @@ This is our CS-4784 Senior Design project.
 
 [Running the Application: Step-by-Step Guide](#running-the-application-step-by-step-guide)
 
-How to Contribute:
+[How to Contribute to the Application](#contributing-to-the-application-step-by-step-guide)
 
 
-Team Members:
+###Team Members:
 
 Alexander Georgiev
 
@@ -24,3 +24,5 @@ Keith Lowry
 Nick DeFelice
 
 ## Running the Application: Step-by-Step Guide
+
+## Contributing to the Application: Step-by-Step Guide

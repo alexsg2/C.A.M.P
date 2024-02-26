@@ -7,7 +7,7 @@ This is our CS-4784 Senior Design project.
 [How to Contribute to the Application](#contributing-to-the-application-step-by-step-guide)
 
 
-###Team Members:
+### Team Members:
 
 Alexander Georgiev
 

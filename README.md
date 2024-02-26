@@ -2,9 +2,10 @@
 
 This is our CS-4784 Senior Design project. 
 
-[Running the Application: Step-by-Step Guide](#running-the-application-step-by-step-guide)
+Read Me Directory:
 
-[How to Contribute to the Application](#contributing-to-the-application-step-by-step-guide)
+- [How to Run the Application](#running-the-application-step-by-step-guide)
+- [How to Contribute to the Application](#contributing-to-the-application-step-by-step-guide)
 
 
 ### Team Members:

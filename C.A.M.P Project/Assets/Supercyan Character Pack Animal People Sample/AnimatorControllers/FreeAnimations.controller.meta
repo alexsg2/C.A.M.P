@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d196d39411c9c1240940bbcee1f08238
+timeCreated: 1486983684
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204568
+  packageName: 'Character Pack: Free Animal people sample'
+  packageVersion: 1.0.0
+  assetPath: Assets/Supercyan Character Pack Animal People Sample/AnimatorControllers/FreeAnimations.controller
+  uploadId: 457448

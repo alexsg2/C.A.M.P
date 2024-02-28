@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 46879f491c4ffb442a02036de7cab3e0
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204568
+  packageName: 'Character Pack: Free Animal people sample'
+  packageVersion: 1.0.0
+  assetPath: Assets/Supercyan Character Pack Animal People Sample/Shaders/SupercyanShader.shader
+  uploadId: 457448

@@ -25,7 +25,7 @@ namespace OpenAI
         }
 
         private void AppendMessage(ChatMessage message)
-        {
+        {   
             scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
 
             var item = Instantiate(message.Role == "user" ? sent : received, scroll.content);
@@ -58,7 +58,7 @@ namespace OpenAI
             // Complete the instruction
             var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest()
             {
-                Model = "gpt-3.5-turbo-0613",
+                Model = "gpt-3.5-turbo",
                 Messages = messages
             });
 

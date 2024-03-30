@@ -6,3 +6,10 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 196526
+  packageName: Starter Assets - Third Person Character Controller | URP
+  packageVersion: 1.1.5
+  assetPath: Assets/FoundationsOfAudio/FirstPersonController/InputSystem/StarterAssets.inputsettings.asset
+  uploadId: 592926

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d7b3916f6e92d3745b68b9e3fb6987fd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204568
+  packageName: 'Character Pack: Free Animal people sample'
+  packageVersion: 1.0.0
+  assetPath: Assets/Supercyan Character Pack Animal People Sample/Scripts/AccessoryWearLogic.cs
+  uploadId: 457448

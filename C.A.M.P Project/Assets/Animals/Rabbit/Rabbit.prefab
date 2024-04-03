@@ -104,10 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b7ef9dbb9c70140ba95b7fab3e1fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runDist: 5
+  runDist: 25
   runSpeed: 3
-  maxRunTime: 5
-  idleTime: 3
+  maxRunTime: 4
+  idleTime: 6
   visualRandomization:
   - materials:
     - {fileID: 2100000, guid: 11f39b2ab10a2184d84e62f1906a4a05, type: 2}

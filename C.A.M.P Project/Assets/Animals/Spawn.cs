@@ -28,16 +28,22 @@ public class Spawn : MonoBehaviour
         {
             for (int i = 0; i < spawnSettings.spawnCount; i++)
             {
-                Vector3 spawnPosition = GetRandomSpawnPosition();
+                Vector3 spawnPosition = GetRandomSpawnPosition(spawnSettings);
                 Instantiate(spawnSettings.spawnPrefab, spawnPosition, Quaternion.identity);
             }
         }
     }
 
-    private Vector3 GetRandomSpawnPosition() {
+    private Vector3 GetRandomSpawnPosition(SpawnSettings spawnSettings) {
         float x = Random.Range(0f, terrainWidth);
         float z = Random.Range(0f, terrainLength);
-        float y = terrain.SampleHeight(new Vector3(x, 0, z));
+        float y;
+
+        if (spawnSettings.spawnPrefab.tag == "Bird") {
+            y = terrain.SampleHeight(new Vector3(x, 0, z)) + 50f; // If the animal is a Bird, we want to spawn it in the sky (y = 50)
+        } else {
+            y = terrain.SampleHeight(new Vector3(x, 0, z)); // If the animal is a Rabbit (or any other land animal), we want to spawn it on the terrain (y = 0)
+        }
 
         return new Vector3(x, y, z);
     }

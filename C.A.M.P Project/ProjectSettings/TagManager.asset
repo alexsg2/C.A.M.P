@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Rabbit
+  - lb_bird
+  - Bird
   layers:
   - Default
   - TransparentFX

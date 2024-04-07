@@ -7,17 +7,12 @@ public class Spawn : MonoBehaviour
     [SerializeField] private List<SpawnSettings> animals = new List<SpawnSettings>();
 
     private Terrain terrain;
-    private float terrainWidth;
-    private float terrainLength;
 
     private void Start()
     {
         terrain = Terrain.activeTerrain;
         
         if (terrain) {
-            terrainWidth = terrain.terrainData.size.x;
-            terrainLength = terrain.terrainData.size.z;
-        
             SpawnAnimals();
         }
     }
@@ -35,14 +30,17 @@ public class Spawn : MonoBehaviour
     }
 
     private Vector3 GetRandomSpawnPosition(SpawnSettings spawnSettings) {
-        float x = Random.Range(0f, terrainWidth);
-        float z = Random.Range(0f, terrainLength);
+
+        float x = Random.Range(-10f, 15f);
+        float z = Random.Range(-10f, 15f);
         float y;
 
         if (spawnSettings.spawnPrefab.tag == "Bird") {
-            y = terrain.SampleHeight(new Vector3(x, 0, z)) + 50f; // If the animal is a Bird, we want to spawn it in the sky (y = 50)
+            x = Random.Range(-60f, 60f);
+            z = Random.Range(-60f, 60f);
+            y = terrain.SampleHeight(new Vector3(x, -2.5f, z)) + 50f; // If the animal is a Bird, we want to spawn it in the sky (y = 50)
         } else {
-            y = terrain.SampleHeight(new Vector3(x, 0, z)); // If the animal is a Rabbit (or any other land animal), we want to spawn it on the terrain (y = 0)
+            y = terrain.SampleHeight(new Vector3(x, -2.5f, z)); // If the animal is a Rabbit (or any other land animal), we want to spawn it on the terrain (y = 0)
         }
 
         return new Vector3(x, y, z);

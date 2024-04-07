@@ -14083,21 +14083,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animals:
   - spawnPrefab: {fileID: 754887665074069252, guid: e598a717239b0fa4ab18b32f034d6d2b, type: 3}
-    spawnCount: 3
+    spawnCount: 1
   - spawnPrefab: {fileID: 8085806762576503576, guid: 42a587aa27ed5bd4bbce7fb89ac15a98, type: 3}
-    spawnCount: 2
+    spawnCount: 4
   - spawnPrefab: {fileID: 5396337960912721921, guid: 92b8c0987ea461c4bbcefd7480349c31, type: 3}
     spawnCount: 3
   - spawnPrefab: {fileID: 7173989026050688998, guid: 83ed80d995585ca43bc2f2d4b7aacb22, type: 3}
-    spawnCount: 1
+    spawnCount: 5
   - spawnPrefab: {fileID: 3576670396929855331, guid: 32fcd9eeda0bb0148a0c0f4fcdad2ba1, type: 3}
-    spawnCount: 2
-  - spawnPrefab: {fileID: 6899409003309785460, guid: 69ef23f174d41814c8b6df87ef8e4219, type: 3}
-    spawnCount: 1
-  - spawnPrefab: {fileID: 4257656995336234832, guid: 41e890e8e637a044e9e5e1da604175f8, type: 3}
     spawnCount: 3
+  - spawnPrefab: {fileID: 6899409003309785460, guid: 69ef23f174d41814c8b6df87ef8e4219, type: 3}
+    spawnCount: 2
+  - spawnPrefab: {fileID: 4257656995336234832, guid: 41e890e8e637a044e9e5e1da604175f8, type: 3}
+    spawnCount: 6
   - spawnPrefab: {fileID: 3929604993802966797, guid: 43c6f8a1e5565e04380e2c7be1b3be4a, type: 3}
-    spawnCount: 4
+    spawnCount: 7
+  - spawnPrefab: {fileID: 781508257845511524, guid: 6b35ab1eea8a55c43830e0dbe1488abf, type: 3}
+    spawnCount: 1
 --- !u!4 &1434773894
 Transform:
   m_ObjectHideFlags: 0

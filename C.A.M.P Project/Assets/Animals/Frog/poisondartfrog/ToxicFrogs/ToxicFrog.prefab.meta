@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0187bdd962557471faee34c9b592135c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 132963
+  packageName: Toxic Frogs
+  packageVersion: 1.0
+  assetPath: Assets/Models/poisondartfrog/ToxicFrogs/ToxicFrog.prefab
+  uploadId: 278140

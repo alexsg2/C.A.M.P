@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ed1a9b8583901482d9890a401a5be5b7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 132963
+  packageName: Toxic Frogs
+  packageVersion: 1.0
+  assetPath: Assets/Models/poisondartfrog/ToxicFrogs/FrogController.cs
+  uploadId: 278140

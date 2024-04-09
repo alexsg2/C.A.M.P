@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e3503248154a2224bbb55b5c78044259
+timeCreated: 1490877202
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 84733
+  packageName: Tools Pack Asset
+  packageVersion: 1.0
+  assetPath: Assets/ToolsAsset/FBX/Hammer/Materials/hammer.001.mat
+  uploadId: 170870

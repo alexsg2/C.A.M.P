@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5a476295791e0204086d614d5e3d172a
+timeCreated: 1488727301
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 84733
+  packageName: Tools Pack Asset
+  packageVersion: 1.0
+  assetPath: Assets/ToolsAsset/FBX/Screwdriver/Materials/ScrewDriver.mat
+  uploadId: 170870

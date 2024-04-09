@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0d0108998db54bc438cdb6d18c42a503
+timeCreated: 1490877242
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 84733
+  packageName: Tools Pack Asset
+  packageVersion: 1.0
+  assetPath: Assets/ToolsAsset/Prefabs/Screwdriver.prefab
+  uploadId: 170870

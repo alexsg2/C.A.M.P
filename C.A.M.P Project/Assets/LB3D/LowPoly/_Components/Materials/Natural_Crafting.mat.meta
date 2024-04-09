@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 494b860ba82864140801186750540f96
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 256427
+  packageName: Low Poly Mechanical Crafting
+  packageVersion: 1.0
+  assetPath: Assets/LB3D/LowPoly/_Components/Materials/Natural_Crafting.mat
+  uploadId: 588813

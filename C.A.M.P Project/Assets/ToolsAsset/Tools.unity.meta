@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a97542562ab0b2746949900bf474fb8a
+timeCreated: 1490963596
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 84733
+  packageName: Tools Pack Asset
+  packageVersion: 1.0
+  assetPath: Assets/ToolsAsset/Tools.unity
+  uploadId: 170870

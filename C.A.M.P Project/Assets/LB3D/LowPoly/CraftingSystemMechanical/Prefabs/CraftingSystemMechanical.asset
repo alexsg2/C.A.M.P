@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555ca41b16f581548a0a5b81f29e4af8, type: 3}
+  m_Name: CraftingSystemMechanical
+  m_EditorClassIdentifier: 
+  modName: CraftingSystemMechanical
+  steamDescription: {fileID: 4900000, guid: 6c188ed4c39a5e343867a19e66f70dc1, type: 3}
+  includeIdList: 1
+  datFiles:
+  - {fileID: 11400000, guid: df4650f90a5d3c44e89ee792a75f4214, type: 2}
+  - {fileID: 11400000, guid: 70f5f5ec0f6956546a4b9332e9177a5a, type: 2}
+  - {fileID: 11400000, guid: 307c04807f67b764d8913d709411c517, type: 2}
+  - {fileID: 11400000, guid: 00ac42bfe353d834eafc07f37b0601e6, type: 2}
+  - {fileID: 11400000, guid: 221690c06bf9f5b469ac614a7085cd8f, type: 2}
+  - {fileID: 11400000, guid: 8b84266691b818a4cb4c8843548f2eb6, type: 2}
+  - {fileID: 11400000, guid: d2fbdebcb44145d489ba1704d9d32cf6, type: 2}
+  - {fileID: 11400000, guid: 2a741e85a3415064b8b5792a3f265c45, type: 2}
+  - {fileID: 11400000, guid: 1f5b5b3434cec0342865e7e32e1453fa, type: 2}
+  - {fileID: 11400000, guid: d51ac36c56ca49046a88c7948048b52a, type: 2}
+  assetBundleVersion: 0

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 03576990c62f3f741bed7d724cf1b671
+timeCreated: 1474196777
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 84733
+  packageName: Tools Pack Asset
+  packageVersion: 1.0
+  assetPath: Assets/ToolsAsset/FBX/Axe/Materials/Axe.mat
+  uploadId: 170870

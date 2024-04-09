@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9cb557aae46b6fa49b1842469d0fc1a9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 256427
+  packageName: Low Poly Mechanical Crafting
+  packageVersion: 1.0
+  assetPath: Assets/LB3D/LowPoly/CraftingSystemMechanical/Prefabs/CraftingSystemMechanical.asset
+  uploadId: 588813

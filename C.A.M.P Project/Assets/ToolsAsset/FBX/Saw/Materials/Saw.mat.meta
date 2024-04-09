@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 48a65828dff382d4484d7882ae80bd95
+timeCreated: 1488733195
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 84733
+  packageName: Tools Pack Asset
+  packageVersion: 1.0
+  assetPath: Assets/ToolsAsset/FBX/Saw/Materials/Saw.mat
+  uploadId: 170870

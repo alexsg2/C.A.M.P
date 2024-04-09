@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: af0b1a6bfad6fad49939714d9eab5c7f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 256427
+  packageName: Low Poly Mechanical Crafting
+  packageVersion: 1.0
+  assetPath: Assets/LB3D/LowPoly/_Components/Materials/Construction.mat
+  uploadId: 588813

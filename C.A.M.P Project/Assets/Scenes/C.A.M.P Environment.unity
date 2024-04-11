@@ -7137,6 +7137,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 340989616}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 340989618}
   m_SourcePrefab: {fileID: 100100000, guid: a84915754dee4a841a75da191a01cd84, type: 3}
 --- !u!1 &340989615 stripped
 GameObject:
@@ -7322,6 +7325,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!136 &340989618
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340989615}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 0.15000007
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.075, z: 0}
 --- !u!1 &341824980
 GameObject:
   m_ObjectHideFlags: 0
@@ -17704,6 +17730,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 892204092}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 892204094}
   m_SourcePrefab: {fileID: 100100000, guid: a84915754dee4a841a75da191a01cd84, type: 3}
 --- !u!1 &892204091 stripped
 GameObject:
@@ -17889,6 +17918,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!136 &892204094
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892204091}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7500001
+  m_Height: 0.15000007
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.075, z: 0}
 --- !u!1001 &894449002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27349,6 +27401,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 919567615dc45604a9469073a0b423ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1472128149}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 919567615dc45604a9469073a0b423ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1472128151}
   m_SourcePrefab: {fileID: 100100000, guid: 919567615dc45604a9469073a0b423ba, type: 3}
 --- !u!1 &1472128148 stripped
 GameObject:
@@ -27534,6 +27589,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!136 &1472128151
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472128148}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.0424571
+  m_Height: 3.1490192
+  m_Direction: 1
+  m_Center: {x: 0.000000014630772, y: -0.60305595, z: -0.14698635}
 --- !u!1001 &1474916807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28690,6 +28768,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1540652835}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1540652837}
   m_SourcePrefab: {fileID: 100100000, guid: a84915754dee4a841a75da191a01cd84, type: 3}
 --- !u!1 &1540652834 stripped
 GameObject:
@@ -28875,6 +28956,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!136 &1540652837
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540652834}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 0.15000007
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.075, z: 0}
 --- !u!1001 &1545866781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36260,6 +36364,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1998342338}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1998342340}
   m_SourcePrefab: {fileID: 100100000, guid: a84915754dee4a841a75da191a01cd84, type: 3}
 --- !u!1 &1998342337 stripped
 GameObject:
@@ -36445,6 +36552,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!136 &1998342340
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998342337}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 0.15000007
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.075, z: 0}
 --- !u!1001 &2004066142
 PrefabInstance:
   m_ObjectHideFlags: 0

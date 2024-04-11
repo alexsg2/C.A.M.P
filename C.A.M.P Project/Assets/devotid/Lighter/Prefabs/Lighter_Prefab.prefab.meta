@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4ef4628f5f55fbd43b9fd014cc065b34
+timeCreated: 1512857422
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 106937
+  packageName: Cigarette Lighter PBR
+  packageVersion: 1.0
+  assetPath: Assets/devotid/Lighter/Prefabs/Lighter_Prefab.prefab
+  uploadId: 223168

@@ -3,36 +3,41 @@ using UnityEngine;
 public class TriggerZone : MonoBehaviour
 {
     public int twigsRequired = 3; // Number of twigs required
-    public int matchesRequired = 1; // Number of matches required
-    public GameObject campfirePrefab; // Campfire prefab to instantiate
+    public GameObject campfirePrefab; // Campfire prefab to toggle visibility
 
     private int twigsCount = 0;
-    private int matchesCount = 0;
+    private bool requirementsMet = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Firewood"))
+        if (other.CompareTag("Firewood") && !requirementsMet)
         {
             twigsCount++;
             Debug.Log("Twigs count: " + twigsCount);
-            CheckFirewood();
+            CheckRequirements();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Firewood"))
+        if (other.CompareTag("Firewood") && !requirementsMet)
         {
             twigsCount--;
             Debug.Log("Twigs count: " + twigsCount);
+            CheckRequirements();
         }
     }
 
-    private void CheckFirewood()
+    private void CheckRequirements()
     {
-        if (twigsCount >= twigsRequired && matchesCount >= matchesRequired)
+        if (twigsCount >= twigsRequired && !requirementsMet)
         {
-            Debug.Log("Enough firewood and matches. Creating campfire.");
+            Debug.Log("Enough firewood. Campfire activated.");
+            requirementsMet = true;
+
+            // Set the campfire prefab active
+            campfirePrefab.SetActive(true);
+
             // Destroy all firewood objects in the trigger zone
             Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
             foreach (Collider collider in colliders)
@@ -42,20 +47,14 @@ public class TriggerZone : MonoBehaviour
                     Destroy(collider.gameObject);
                 }
             }
-
-            Vector3 newPosition = new Vector3(5.068001f, 0f, 6.679f);
-            Quaternion noRotation = Quaternion.identity;
-            campfirePrefab = Resources.Load<GameObject>("Imports/Low Poly Fire/Prefabs/Yellow-FireWood.prefab");
-
-            Instantiate(campfirePrefab, newPosition, noRotation);
-
-            // Reset counts
-            twigsCount = 0;
-            matchesCount = 0;
         }
-        else
+        else if (twigsCount < twigsRequired && requirementsMet)
         {
-            Debug.Log("Not enough firewood or matches yet.");
+            Debug.Log("Not enough firewood. Campfire deactivated.");
+            requirementsMet = false;
+
+            // Set the campfire prefab inactive
+            campfirePrefab.SetActive(false);
         }
     }
 }

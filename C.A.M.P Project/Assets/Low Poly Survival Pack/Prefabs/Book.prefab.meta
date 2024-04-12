@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 8410846aa3d4144a5ae3248d1c0d09a7
+timeCreated: 1517605791
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 111978
+  packageName: Low Poly Survival Kit
+  packageVersion: 1.0
+  assetPath: Assets/Low Poly Survival Pack/Prefabs/Book.prefab
+  uploadId: 237078

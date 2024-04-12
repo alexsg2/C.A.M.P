@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2e23b6dcdb69e41e9b53f0850d904d36
+timeCreated: 1517605769
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 111978
+  packageName: Low Poly Survival Kit
+  packageVersion: 1.0
+  assetPath: Assets/Low Poly Survival Pack/Prefabs/Hatchet.prefab
+  uploadId: 237078

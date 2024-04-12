@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TriggerZone : MonoBehaviour
+public class FireTriggerZone : MonoBehaviour
 {
     public int twigsRequired = 3; // Number of twigs required
     public GameObject logstack; // Logs to toggle visibility

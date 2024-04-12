@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: e7400f9e927fd47a394fadd5d536fb00
+timeCreated: 1517605748
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 111978
+  packageName: Low Poly Survival Kit
+  packageVersion: 1.0
+  assetPath: Assets/Low Poly Survival Pack/Prefabs/Torch.prefab
+  uploadId: 237078

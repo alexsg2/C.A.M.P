@@ -7,6 +7,9 @@ TagManager:
   - QuestItem
   - Firewood
   - Match
+  - Nail
+  - Pole
+  - Tarp
   layers:
   - Default
   - TransparentFX

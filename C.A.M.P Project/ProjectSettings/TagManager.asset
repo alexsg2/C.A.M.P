@@ -10,6 +10,8 @@ TagManager:
   - Nail
   - Pole
   - Tarp
+  - Box
+  - UnlitMatch
   layers:
   - Default
   - TransparentFX

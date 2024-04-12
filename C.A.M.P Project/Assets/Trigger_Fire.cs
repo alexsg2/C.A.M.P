@@ -21,7 +21,10 @@ public class FireTriggerZone : MonoBehaviour
         }
         else if (other.CompareTag("Match") && logStackThere)
         {
-            MakeFire();
+            if (requirementsMet)
+            {
+                MakeFire();
+            }
         }
 
     }

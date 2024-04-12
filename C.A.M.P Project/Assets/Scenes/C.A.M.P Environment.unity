@@ -1638,7 +1638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.02
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4979,7 +4979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &212199931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5241,7 +5241,7 @@ Transform:
   m_GameObject: {fileID: 212199930}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0015686344, y: 0.99993235, z: 0.0102727385, w: -0.0052369083}
-  m_LocalPosition: {x: 11.255699, y: 1.1416813, z: -5.035}
+  m_LocalPosition: {x: 11.255699, y: -2.21, z: -5.035}
   m_LocalScale: {x: 2.5783389, y: 2.5783381, z: 2.5783389}
   m_ConstrainProportionsScale: 0
   m_Children:

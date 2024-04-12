@@ -73,6 +73,8 @@ public class TentTriggerZone : MonoBehaviour
                 if (collider.CompareTag("Nail") || collider.CompareTag("Pole") || collider.CompareTag("Tarp"))
                 {
                     Destroy(collider.gameObject);
+
+                    Debug.Log("Destroyed: " + collider.gameObject);
                 }
             }
         }

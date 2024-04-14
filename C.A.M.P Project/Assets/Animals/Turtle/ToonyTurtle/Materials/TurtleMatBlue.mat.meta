@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 57fcbc8cfddaa4043871f8db89282954
+timeCreated: 1496495980
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 95526
+  packageName: ToonyTurtle
+  packageVersion: 1.0
+  assetPath: Assets/ToonyTurtle/Materials/TurtleMatBlue.mat
+  uploadId: 189874

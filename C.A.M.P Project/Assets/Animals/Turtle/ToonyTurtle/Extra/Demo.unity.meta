@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5ed65a2da3e9d33418d68a1da17d19c9
+timeCreated: 1496497088
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 95526
+  packageName: ToonyTurtle
+  packageVersion: 1.0
+  assetPath: Assets/ToonyTurtle/Extra/Demo.unity
+  uploadId: 189874

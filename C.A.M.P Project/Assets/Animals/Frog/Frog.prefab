@@ -305,10 +305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690e5304002fefb43a465352a9b78f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpDist: 3
-  jumpSpeed: 1
-  maxJumpTime: 2
-  idleTime: 5
+  jumpDist: 7
+  jumpSpeed: 2
+  maxJumpTime: 4
+  idleTime: 2
 --- !u!95 &156647991070769029
 Animator:
   serializedVersion: 7
@@ -318,7 +318,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781508257845511524}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 75116d3ad847f4b308aea41d92d1efb8, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ca6dde38ac7a5654eb9833c30274e683, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0

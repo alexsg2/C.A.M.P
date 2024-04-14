@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 9a0d7e2ade9614740b88ea2051b0e565
+timeCreated: 1496496384
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 95526
+  packageName: ToonyTurtle
+  packageVersion: 1.0
+  assetPath: Assets/ToonyTurtle/TurtleAnim.controller
+  uploadId: 189874

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 19aede98b1b448c43a624ec4d39c3a4d
+timeCreated: 1496737904
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 95526
+  packageName: ToonyTurtle
+  packageVersion: 1.0
+  assetPath: Assets/ToonyTurtle/Extra/TurtleAnimControll.cs
+  uploadId: 189874

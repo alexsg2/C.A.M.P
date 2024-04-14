@@ -12,6 +12,9 @@ TagManager:
   - Tarp
   - Box
   - UnlitMatch
+  - Item
+  - Rabbit
+  - Frog
   layers:
   - Default
   - TransparentFX

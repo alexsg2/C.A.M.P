@@ -1,14 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FireTriggerZone : MonoBehaviour
 {
     public int twigsRequired = 3; // Number of twigs required
+
     public GameObject logstack; // Logs to toggle visibility
+
     public GameObject fire;
+
     public GameObject fireLight;
 
+    public Text twigsText;
+
     private int twigsCount = 0;
+
     private bool requirementsMet = false;
+
     private bool logStackThere = false;
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +34,6 @@ public class FireTriggerZone : MonoBehaviour
                 MakeFire();
             }
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -51,7 +58,9 @@ public class FireTriggerZone : MonoBehaviour
             logStackThere = true;
 
             // Destroy all firewood objects in the trigger zone
-            Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
+            Collider[] colliders =
+                Physics
+                    .OverlapBox(transform.position, transform.localScale / 2f);
             foreach (Collider collider in colliders)
             {
                 if (collider.CompareTag("Firewood"))
@@ -75,13 +84,23 @@ public class FireTriggerZone : MonoBehaviour
         fire.SetActive(true);
         fireLight.SetActive(true);
 
-        Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
+        Collider[] colliders =
+            Physics.OverlapBox(transform.position, transform.localScale / 2f);
         foreach (Collider collider in colliders)
         {
             if (collider.CompareTag("Match"))
             {
                 Destroy(collider.gameObject);
             }
+        }
+    }
+
+    private void UpdateTwigsText()
+    {
+        if (twigsText != null)
+        {
+            int remainingTwigs = twigsRequired - twigsCount;
+            twigsText.text = "Put " + remainingTwigs + " twigs in the fire";
         }
     }
 }

@@ -7,6 +7,8 @@ public class NPCControl : MonoBehaviour
     [SerializeField] private GameObject Camera;
     [SerializeField] private GameObject toActivate;
 
+    [SerializeField] private GameObject Testing;
+
     private async void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

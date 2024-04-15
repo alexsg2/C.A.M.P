@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/PlayerJoinScene.unity
+    guid: 660a377039c368a44897d302146daafe
+  - enabled: 1
     path: Assets/Scenes/C.A.M.P Environment.unity
     guid: 28e700f62fed4cf45a28c1afa8b85291
   m_configObjects:

@@ -31,8 +31,8 @@ public class Spawn : MonoBehaviour
 
     private Vector3 GetRandomSpawnPosition(SpawnSettings spawnSettings) {
 
-        float x = Random.Range(-10f, 15f);
-        float z = Random.Range(-10f, 15f);
+        float x = Random.Range(-2f, 2f);
+        float z = Random.Range(-2f, 2f);
         float y;
 
         if (spawnSettings.spawnPrefab.tag == "Bird") {

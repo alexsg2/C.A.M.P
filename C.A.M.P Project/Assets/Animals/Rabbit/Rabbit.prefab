@@ -451,7 +451,11 @@ MonoBehaviour:
   runSpeed: 3
   maxRunTime: 4
   idleTime: 6
-  visualRandomization: []
+  visualRandomization:
+  - materials:
+    - {fileID: 2100000, guid: 11f39b2ab10a2184d84e62f1906a4a05, type: 2}
+    - {fileID: 2100000, guid: 4fcd2eddbfdb66642b678917cc196bc3, type: 2}
+    - {fileID: 2100000, guid: 635ce3b047a5185409f8602fe98a4b9f, type: 2}
 --- !u!95 &2671906396014909800
 Animator:
   serializedVersion: 7

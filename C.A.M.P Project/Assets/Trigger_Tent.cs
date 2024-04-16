@@ -67,7 +67,7 @@ public class TentTriggerZone : MonoBehaviour
             tentPrefab.SetActive(true);
 
             // Destroy specified material objects in the trigger zone
-            Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
+            Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale);
             foreach (Collider collider in colliders)
             {
                 if (collider.CompareTag("Nail") || collider.CompareTag("Pole") || collider.CompareTag("Tarp"))

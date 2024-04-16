@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a24ec9cf4c2103646a47e0497a925d6b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 15649
+  packageName: Living Birds
+  packageVersion: v1.2
+  assetPath: Assets/living birds/animations/birdAnimatorController.controller
+  uploadId: 22984

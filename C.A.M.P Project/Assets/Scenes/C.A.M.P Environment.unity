@@ -6963,6 +6963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nail4: {fileID: 797485310}
+  tentTriggerZone: {fileID: 1006001103}
 --- !u!65 &288090006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16365,6 +16366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nail2: {fileID: 1449579109}
+  tentTriggerZone: {fileID: 1006001103}
 --- !u!65 &731863271
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16968,6 +16970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nail3: {fileID: 827088287}
+  tentTriggerZone: {fileID: 1006001103}
 --- !u!65 &768939310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20737,6 +20740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pole1: {fileID: 589273682}
+  tentTriggerZone: {fileID: 1006001103}
 --- !u!1 &940348287 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
@@ -24409,6 +24413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pole2: {fileID: 940348287}
+  tentTriggerZone: {fileID: 1006001103}
 --- !u!1001 &1109582088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28156,12 +28161,12 @@ Transform:
   m_GameObject: {fileID: 1239558237}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0015686344, y: 0.99993235, z: 0.0102727385, w: -0.0052369083}
-  m_LocalPosition: {x: 11.3057, y: 0.6617, z: -4.970169}
-  m_LocalScale: {x: 2.5783389, y: 2.5783381, z: 2.5783389}
+  m_LocalPosition: {x: -1.3719234, y: 0.2383638, z: -4.046546}
+  m_LocalScale: {x: 2.5783386, y: 2.5783384, z: 2.5783386}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 526131271}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1590963646}
   m_LocalEulerAnglesHint: {x: -1.176, y: 180.602, z: -0.186}
 --- !u!1001 &1245214377
 PrefabInstance:
@@ -33692,6 +33697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tarp2: {fileID: 1107750342}
+  tentTriggerZone: {fileID: 1006001103}
 --- !u!1001 &1518657451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35260,6 +35266,41 @@ Transform:
   - {fileID: 1556304851}
   m_Father: {fileID: 537496151}
   m_LocalEulerAnglesHint: {x: 0, y: -72.754, z: 0}
+--- !u!1 &1590963645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1590963646}
+  m_Layer: 0
+  m_Name: Fire Event
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1590963646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590963645}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.677624, y: 0.4233362, z: -0.9236232}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4706436817790402}
+  - {fileID: 4367817294762532}
+  - {fileID: 2023457929}
+  - {fileID: 1239558243}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1592646029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36981,6 +37022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tarp1: {fileID: 571722287}
+  tentTriggerZone: {fileID: 1006001103}
 --- !u!65 &1689669153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44179,12 +44221,12 @@ Transform:
   m_GameObject: {fileID: 2023457923}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0015686344, y: 0.99993235, z: 0.0102727385, w: -0.0052369083}
-  m_LocalPosition: {x: 11.2815, y: 0.6617, z: -4.970169}
-  m_LocalScale: {x: 2.5783389, y: 2.5783381, z: 2.5783389}
+  m_LocalPosition: {x: -1.3961239, y: 0.2383638, z: -4.046546}
+  m_LocalScale: {x: 2.5783386, y: 2.5783384, z: 2.5783386}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1977056118}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1590963646}
   m_LocalEulerAnglesHint: {x: -1.176, y: 180.602, z: -0.186}
 --- !u!1 &2023508075
 GameObject:
@@ -45527,6 +45569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nail1: {fileID: 2077254176}
+  tentTriggerZone: {fileID: 1006001103}
 --- !u!65 &2098144570
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47010,12 +47053,12 @@ Transform:
   m_GameObject: {fileID: 1707485976409834}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0015686344, y: 0.99993235, z: 0.0102727385, w: -0.0052369083}
-  m_LocalPosition: {x: 11.255699, y: 0.6617, z: -4.970169}
-  m_LocalScale: {x: 2.5783389, y: 2.5783381, z: 2.5783389}
+  m_LocalPosition: {x: -1.4219246, y: 0.2383638, z: -4.046546}
+  m_LocalScale: {x: 2.5783386, y: 2.5783384, z: 2.5783386}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 79513237}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1590963646}
   m_LocalEulerAnglesHint: {x: -1.176, y: 180.602, z: -0.186}
 --- !u!4 &4706436817790402
 Transform:
@@ -47026,11 +47069,11 @@ Transform:
   m_GameObject: {fileID: 1060837874135554}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.142, y: 0.693824, z: -4.9498}
+  m_LocalPosition: {x: -1.5356236, y: 0.2704878, z: -4.026177}
   m_LocalScale: {x: 2.5783381, y: 2.5783381, z: 2.5783381}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1590963646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23319161226917680
 MeshRenderer:
@@ -47461,10 +47504,7 @@ SceneRoots:
   - {fileID: 1459049710}
   - {fileID: 233326202}
   - {fileID: 702612695}
-  - {fileID: 4706436817790402}
-  - {fileID: 4367817294762532}
-  - {fileID: 2023457929}
-  - {fileID: 1239558243}
   - {fileID: 643424047}
   - {fileID: 1335527538}
   - {fileID: 301329105}
+  - {fileID: 1590963646}

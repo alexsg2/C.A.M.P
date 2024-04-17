@@ -21981,7 +21981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1747904497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22002,7 +22002,7 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 192.168.1.13
+    Address: 192.168.0.225
     Port: 7777
     ServerListenAddress: 0.0.0.0
   DebugSimulator:
@@ -25469,6 +25469,10 @@ PrefabInstance:
     - target: {fileID: 4929249892500766107, guid: 54de5db5689833d4a94790070bef18da, type: 3}
       propertyPath: m_Name
       value: XR Interaction Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929249892500766107, guid: 54de5db5689833d4a94790070bef18da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

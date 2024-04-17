@@ -5,8 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class NetworkMoveProvider : ActionBasedContinuousMoveProvider
 {   
-    [SerializeField] 
-    private bool enableInputActions;
+    // [SerializeField] 
+    public bool enableInputActions;
 
     protected override Vector2 ReadInput() {
         if (!enableInputActions) {

@@ -21389,7 +21389,6 @@ GameObject:
   - component: {fileID: 1747904499}
   - component: {fileID: 1747904498}
   - component: {fileID: 1747904497}
-  - component: {fileID: 1747904500}
   m_Layer: 0
   m_Name: Network Manager
   m_TagString: Untagged
@@ -21417,7 +21416,7 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 192.168.1.13
+    Address: 192.168.0.225
     Port: 7777
     ServerListenAddress: 0.0.0.0
   DebugSimulator:
@@ -21476,18 +21475,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1747904500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747904496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc20a677fb414974a8524d2ea43b90e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1758325482
 PrefabInstance:
   m_ObjectHideFlags: 0

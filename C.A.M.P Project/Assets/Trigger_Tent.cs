@@ -16,21 +16,21 @@ public class TentTriggerZone : MonoBehaviour
     private bool tentBuilt = false; // Track if the tent has been built
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!tentBuilt)
-        {
-            CheckRequirements();
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (!tentBuilt)
+    //     {
+    //         CheckRequirements();
+    //     }
+    // }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (!tentBuilt)
-        {
-            CheckRequirements();
-        }
-    }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (!tentBuilt)
+    //     {
+    //         CheckRequirements();
+    //     }
+    // }
 
     private void CheckRequirements()
     {
@@ -38,6 +38,10 @@ public class TentTriggerZone : MonoBehaviour
         bool allNailsExecuted = nail1Executed && nail2Executed && nail3Executed && nail4Executed;
         bool allTarpsExecuted = tarp1Executed && tarp2Executed;
 
+        Debug.Log("Poles: " + allPolesExecuted);
+        Debug.Log("Nails: " + allNailsExecuted);
+        Debug.Log("Tarps: " + allTarpsExecuted);
+        Debug.Log("Requirements: " + requirementsMet);
         if (allPolesExecuted && allNailsExecuted && allTarpsExecuted && !requirementsMet)
         {
             Debug.Log("Enough materials. Tent built.");
@@ -66,42 +70,25 @@ public class TentTriggerZone : MonoBehaviour
             // Set the tent prefab inactive
             tentPrefab.SetActive(false);
         }
-        if (allPolesExecuted)
-        {
-            Debug.Log("Pole Good.");
-        }
         if (allNailsExecuted)
         {
             Debug.Log("Nails Good.");
-        }
-        if (allTarpsExecuted)
-        {
-            Debug.Log("Tarps Good.");
-        }
-        if (allPolesExecuted)
-        {
-            Debug.Log("Pole Good.");
         }
     }
 
     // Method to be called when the PoleAppear1 script executes
     public void PoleScript1Executed()
     {
-        Debug.Log("Pole1 Good.");
         poleScript1Executed = true;
-        CheckRequirements();
     }
 
     public void PoleScript2Executed()
     {
-        Debug.Log("Pole2 Good.");
         poleScript2Executed = true;
-        CheckRequirements();
     }
 
     public void Nail1Executed()
     {
-        Debug.Log("Nail1 Good.");
         nail1Executed = true;
         CheckRequirements();
     }
@@ -129,24 +116,20 @@ public class TentTriggerZone : MonoBehaviour
 
     public void Tarp1Executed()
     {
-        Debug.Log("Tarp1 Good.");
         tarp1Executed = true;
-        CheckRequirements();
     }
 
     public void Tarp2Executed()
     {
-        Debug.Log("Tarp2 Good.");
         tarp2Executed = true;
-        CheckRequirements();
     }
 
-    public void checkPole()
+    public bool checkPole()
     {
-        return (poleScript1Executed && pole2Executed);
+        return (poleScript1Executed && poleScript2Executed);
     }
 
-    public void checkTarp()
+    public bool checkTarp()
     {
         return (tarp1Executed && tarp2Executed);
     }

@@ -15703,6 +15703,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3706071303922195733, guid: 7b3cd6908f4efbb4da0582b28fe0d9c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706071303922195733, guid: 7b3cd6908f4efbb4da0582b28fe0d9c2, type: 3}
       propertyPath: m_TagString
       value: QuestItem
       objectReference: {fileID: 0}
@@ -21416,7 +21420,7 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 192.168.0.225
+    Address: 172.29.110.172
     Port: 7777
     ServerListenAddress: 0.0.0.0
   DebugSimulator:

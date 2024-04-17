@@ -1,4 +1,4 @@
-Library: C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+Library: C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --platform=Windows
 --backend=burst-llvm-16
 --target=X64_SSE2
@@ -61,10 +61,10 @@ Library: C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\T
 --assembly-defines=UnityEngine;
 --linker-options=PdbAltPath="C.A.M.P_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Temp\Burst
+--temp-folder=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/2023.2.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Library\Burst
---output=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Library\Burst
+--output=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobExtensions+JobStruct`1[[UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Jobs.Float4TweenJob, Unity.XR.Interaction.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Jobs.Float4TweenJob&, Unity.XR.Interaction.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--34aec427743d7d01c0cb7a219c9fbe32
@@ -159,10 +159,10 @@ Library: C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\T
 --assembly-defines=UnityEngine;
 --linker-options=PdbAltPath="C.A.M.P_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Temp\Burst
+--temp-folder=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/2023.2.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Library\Burst
---output=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Library\Burst
+--output=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobExtensions+JobStruct`1[[UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Jobs.Float4TweenJob, Unity.XR.Interaction.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Jobs.Float4TweenJob&, Unity.XR.Interaction.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--34aec427743d7d01c0cb7a219c9fbe32
@@ -257,10 +257,10 @@ Library: C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\T
 --assembly-defines=UnityEngine;
 --linker-options=PdbAltPath="C.A.M.P_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Temp\Burst
+--temp-folder=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/2023.2.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Library\Burst
---output=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Library\Burst
+--output=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=UnityEngine.XR.Interaction.Toolkit.Utilities.BurstMathUtility, Unity.XR.Interaction.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ProjectOnPlane(Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)--1819bc9925667b008fd6c3e6019ccf71
@@ -425,10 +425,10 @@ Library: C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\T
 --assembly-defines=UnityEngine;
 --linker-options=PdbAltPath="C.A.M.P_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Temp\Burst
+--temp-folder=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/2023.2.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Library\Burst
---output=C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Library\Burst
+--output=C:\Users\thinkpad-x1\Documents\Unity Projects\C.A.M.P\C.A.M.P\C.A.M.P Project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=UnityEngine.XR.Interaction.Toolkit.Utilities.BurstMathUtility, Unity.XR.Interaction.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ProjectOnPlane(Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)--1819bc9925667b008fd6c3e6019ccf71

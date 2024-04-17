@@ -10,6 +10,7 @@ public class ServerControl : MonoBehaviour
 
     public void StartServer() {
         NetworkManager.Singleton.StartServer();
+        NetworkManager.Singleton.SceneManager.LoadScene("Scenes/C.A.M.P. Environment", UnityEngine.SceneManagement.LoadSceneMode.Single);
         if (startButton != null) {
             startButton.SetActive(false);
         }

@@ -12,7 +12,8 @@ public class TarpAppear1 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Tarp") && !triggered)
+        // if (other.CompareTag("Tarp") && !triggered)
+        if (other.CompareTag("Tarp") && !triggered && tentTriggerZone.checkPole())
         {
             Destroy(other.gameObject);
             tarp1.SetActive(true);

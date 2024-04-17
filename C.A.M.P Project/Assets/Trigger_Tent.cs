@@ -140,4 +140,14 @@ public class TentTriggerZone : MonoBehaviour
         tarp2Executed = true;
         CheckRequirements();
     }
+
+    public void checkPole()
+    {
+        return (poleScript1Executed && pole2Executed);
+    }
+
+    public void checkTarp()
+    {
+        return (tarp1Executed && tarp2Executed);
+    }
 }

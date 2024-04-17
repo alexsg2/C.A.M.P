@@ -12,7 +12,7 @@ public class NailAppear2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Nail") && !triggered)
+        if (other.CompareTag("Nail") && !triggered && tentTriggerZone.checkTarp())
         {
             Destroy(other.gameObject);
             nail2.SetActive(true);

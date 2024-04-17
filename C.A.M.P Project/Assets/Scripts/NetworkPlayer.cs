@@ -45,6 +45,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void OnSelectGrabbable(SelectEnterEventArgs eventArgs) {
         if (IsClient && IsOwner) {
+            Debug.Log("Trying to change ownership");
             NetworkObject networkObjectSelected = eventArgs.interactableObject.transform.GetComponent<NetworkObject>();
             if (networkObjectSelected != null) {
                 // request ownership of interactable from the server

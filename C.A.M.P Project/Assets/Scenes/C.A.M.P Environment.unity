@@ -21817,6 +21817,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4461302193326013881, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
   m_PrefabInstance: {fileID: 4590493977920311664}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1739620275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739620265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f566ee3be833cf342b2e2588d86dccbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1743870905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21900,7 +21912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1747904497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21921,7 +21933,7 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 172.29.110.172
+    Address: 192.168.0.225
     Port: 7777
     ServerListenAddress: 0.0.0.0
   DebugSimulator:
@@ -23955,7 +23967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1921464333
 Transform:
   m_ObjectHideFlags: 0
@@ -25391,7 +25403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4929249892500766107, guid: 54de5db5689833d4a94790070bef18da, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27648,13 +27660,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1804221942246204953, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309559390413983194, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2466644712228921588, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2577782108
       objectReference: {fileID: 0}
     - target: {fileID: 2466644712228921588, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
+      propertyPath: ActiveSceneSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466644712228921588, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1028288291
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330241737989340937, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4461302193326013881, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
       propertyPath: m_Name
@@ -27708,10 +27736,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1804221942246204953, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4461302193326013881, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1739620275}
   m_SourcePrefab: {fileID: 100100000, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
 --- !u!114 &5089081379974444691
 MonoBehaviour:

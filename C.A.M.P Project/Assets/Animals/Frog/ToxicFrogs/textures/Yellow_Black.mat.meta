@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 989ddabccad084bdb8cc0c19d680b330
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 132963
+  packageName: Toxic Frogs
+  packageVersion: 1.0
+  assetPath: Assets/Models/poisondartfrog/ToxicFrogs/textures/Yellow_Black.mat
+  uploadId: 278140

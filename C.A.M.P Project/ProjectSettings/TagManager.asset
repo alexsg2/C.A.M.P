@@ -17,6 +17,10 @@ TagManager:
   - Frog
   - CinemachineTarget
   - Fire
+  - lb_groundTarget
+  - lb_perchTarget
+  - Turtle
+  - Deer
   layers:
   - Default
   - TransparentFX

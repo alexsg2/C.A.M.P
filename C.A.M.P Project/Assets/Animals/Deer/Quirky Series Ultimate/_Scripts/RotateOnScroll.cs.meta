@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 84f6ebe78783b4947bd834265b1baba5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 178235
+  packageName: Free Animals - Quirky Series
+  packageVersion: 1.4
+  assetPath: Assets/Quirky Series Ultimate/_Scripts/RotateOnScroll.cs
+  uploadId: 580081

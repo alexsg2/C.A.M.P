@@ -31,19 +31,31 @@ public class Spawn : MonoBehaviour
 
     private Vector3 GetRandomSpawnPosition(SpawnSettings spawnSettings) {
 
-        float x = Random.Range(-2f, 2f);
-        float z = Random.Range(-2f, 2f);
-        float y;
+        // if (spawnSettings.spawnPrefab.tag == "Rabbit") {
+        //     float x = -2.890247f;
+        //     float z = -13.32985f;
+        //     float y = terrain.SampleHeight(new Vector3(x, -2.5f, z));
+            
+        //     return new Vector3(x, y, z);
+        // }
 
-        if (spawnSettings.spawnPrefab.tag == "Bird") {
-            x = Random.Range(-60f, 60f);
-            z = Random.Range(-60f, 60f);
-            y = terrain.SampleHeight(new Vector3(x, -2.5f, z)) + 50f; // If the animal is a Bird, we want to spawn it in the sky (y = 50)
-        } else {
-            y = terrain.SampleHeight(new Vector3(x, -2.5f, z)); // If the animal is a Rabbit (or any other land animal), we want to spawn it on the terrain (y = 0)
+        if (spawnSettings.spawnPrefab.tag == "Frog") {
+            float x = -15f;
+            float z = -9f;
+            float y = terrain.SampleHeight(new Vector3(x, -2.5f, z));
+            
+            return new Vector3(x, y, z);
         }
 
-        return new Vector3(x, y, z);
+        if (spawnSettings.spawnPrefab.tag == "Deer") {
+            float x = 16f;
+            float z = 17.5f;
+            float y = terrain.SampleHeight(new Vector3(x, -2.5f, z));
+            
+            return new Vector3(x, y, z);
+        }
+
+        return Vector3.zero;
     }
 }
 

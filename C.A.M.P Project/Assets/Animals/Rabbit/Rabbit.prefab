@@ -407,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 620151476910247856}
-  - component: {fileID: 3292478953479807677}
+  - component: {fileID: 2761068701456646377}
   - component: {fileID: 2671906396014909800}
   - component: {fileID: 6008967141748992988}
   m_Layer: 0
@@ -435,7 +435,7 @@ Transform:
   - {fileID: 860124660772766824}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3292478953479807677
+--- !u!114 &2761068701456646377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -444,18 +444,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3427615082136440524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b7ef9dbb9c70140ba95b7fab3e1fc6, type: 3}
+  m_Script: {fileID: 11500000, guid: c9ab0c738cd659f41b5f3871de59104f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runDist: 25
-  runSpeed: 3
-  maxRunTime: 4
-  idleTime: 6
-  visualRandomization:
-  - materials:
-    - {fileID: 2100000, guid: 11f39b2ab10a2184d84e62f1906a4a05, type: 2}
-    - {fileID: 2100000, guid: 4fcd2eddbfdb66642b678917cc196bc3, type: 2}
-    - {fileID: 2100000, guid: 635ce3b047a5185409f8602fe98a4b9f, type: 2}
+  moveDist: 3
+  moveSpeed: 1
+  maxMoveTime: 1
+  idleTime: 8
+  visualRandomization: []
 --- !u!95 &2671906396014909800
 Animator:
   serializedVersion: 7

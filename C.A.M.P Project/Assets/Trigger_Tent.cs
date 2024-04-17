@@ -2,14 +2,7 @@ using UnityEngine;
 
 public class TentTriggerZone : MonoBehaviour
 {
-    public int nailsRequired = 4; // Number of nails required
-    public int polesRequired = 2; // Number of poles required
-    public int tarpRequired = 1; // Number of tarps required
     public GameObject tentPrefab; // Tent prefab to toggle visibility
-
-    private int nailCount = 0;
-    private int poleCount = 0;
-    private int tarpCount = 0;
     private bool requirementsMet = false;
     private bool poleScript1Executed = false; // Flag to track if PoleAppear1 script has executed
     private bool poleScript2Executed = false; // Flag to track if PoleAppear2 script has executed
@@ -20,14 +13,23 @@ public class TentTriggerZone : MonoBehaviour
     private bool tarp1Executed = false; // Flag to track if Tarp1 script has executed
     private bool tarp2Executed = false; // Flag to track if Tarp2 script has executed
 
+    private bool tentBuilt = false; // Track if the tent has been built
+
+
     private void OnTriggerEnter(Collider other)
     {
-        CheckRequirements();
+        if (!tentBuilt)
+        {
+            CheckRequirements();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        CheckRequirements();
+        if (!tentBuilt)
+        {
+            CheckRequirements();
+        }
     }
 
     private void CheckRequirements()
@@ -40,6 +42,7 @@ public class TentTriggerZone : MonoBehaviour
         {
             Debug.Log("Enough materials. Tent built.");
             requirementsMet = true;
+            tentBuilt = true;
 
             // Set the tent prefab active
             tentPrefab.SetActive(true);
@@ -55,25 +58,29 @@ public class TentTriggerZone : MonoBehaviour
                 }
             }
         }
-        else if (allPolesExecuted)
-        {
-            Debug.Log("Pole Good.");
-        }
-        else if (allNailsExecuted)
-        {
-            Debug.Log("Nails Good.");
-        }
-        else if (allTarpsExecuted)
-        {
-            Debug.Log("Tarps Good.");
-        }
         else
         {
-            Debug.Log("Not enough materials. Tent not built.");
+            Debug.Log("Not all requirements done. Tent not built.");
             requirementsMet = false;
 
             // Set the tent prefab inactive
             tentPrefab.SetActive(false);
+        }
+        if (allPolesExecuted)
+        {
+            Debug.Log("Pole Good.");
+        }
+        if (allNailsExecuted)
+        {
+            Debug.Log("Nails Good.");
+        }
+        if (allTarpsExecuted)
+        {
+            Debug.Log("Tarps Good.");
+        }
+        if (allPolesExecuted)
+        {
+            Debug.Log("Pole Good.");
         }
     }
 

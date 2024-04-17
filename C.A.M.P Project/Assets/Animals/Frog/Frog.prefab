@@ -1078,7 +1078,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.9083328, y: 0.008698463, z: 3.6072655}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2999806663475746614}
@@ -1100,13 +1100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ab0c738cd659f41b5f3871de59104f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDist: 4
-  moveSpeed: 2
+  moveDist: 1
+  moveSpeed: 10
   maxMoveTime: 2
-  idleTime: 10
+  idleTime: 7
   visualRandomization:
   - materials:
     - {fileID: 2100000, guid: f1b0fea076fb0574d868f6e3d9523f52, type: 2}
+    - {fileID: 2100000, guid: 23f92ab09af350146b1d22ca67ed7887, type: 2}
+    - {fileID: 2100000, guid: 1c5a335489a263f458754f8cde45f221, type: 2}
 --- !u!95 &6261000379042185151
 Animator:
   serializedVersion: 7

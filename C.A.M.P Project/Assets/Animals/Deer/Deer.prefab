@@ -592,10 +592,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ab0c738cd659f41b5f3871de59104f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDist: 4
-  moveSpeed: 2
-  maxMoveTime: 2
-  idleTime: 7
+  moveDist: 5
+  moveSpeed: 1
+  maxMoveTime: 4
+  idleTime: 10
   visualRandomization: []
 --- !u!205 &4491135666809909076
 LODGroup:

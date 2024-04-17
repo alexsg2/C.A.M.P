@@ -725,11 +725,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animals:
-  - spawnPrefab: {fileID: 3427615082136440524, guid: e598a717239b0fa4ab18b32f034d6d2b, type: 3}
+  - spawnPrefab: {fileID: 7115927012787675106, guid: 3edc046b8993d3245b9705943278862c, type: 3}
     spawnCount: 1
   - spawnPrefab: {fileID: 2343152090972363915, guid: 6d746127c6916bd48b7d6af212ce2d59, type: 3}
-    spawnCount: 1
-  - spawnPrefab: {fileID: 7115927012787675106, guid: 3edc046b8993d3245b9705943278862c, type: 3}
     spawnCount: 1
 --- !u!1 &28329425
 GameObject:

@@ -1,60 +1,50 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
-using TMPro;
 
-public class AnimalWatching : MonoBehaviour
+public class AnimalDescription : MonoBehaviour
 {
-    // Set in the Unity Editor (in the end, should be set to 0 = not watching)
-    [Header("Watching")]
-    //public float watching = 0f; // 0f = not watching, 1f = watching
-    public TMP_Text canvasText;
-
+    public Text canvasText;
 
     private void Start()
     {
-        canvasText.text = GetAnimalName();
+        var interactable = GetComponent<XRBaseInteractable>();
+        interactable.hoverEntered.AddListener(OnHoverEnter);
+        interactable.hoverExited.AddListener(OnHoverExit);
+        interactable.selectEntered.AddListener(OnSelectEnter);
+        interactable.selectExited.AddListener(OnSelectExit);
     }
 
-    /*
-     * Update is called once per frame (for now).
-     * It will display the animal's name and color to the Debug console if
-     * the watching value is 1f. It will then reset the watching value to 0f.
-     */
-    private void Update()
+    private void OnHoverEnter(HoverEnterEventArgs args)
     {
-        // if (watching == 1f)
-        // {
-        //     // Display the animal's name and color to the UI
-        //     // For now, it prints to the debug log
-        //     Debug.Log("Animal: " + GetAnimalName());
-        // }
+        // Debug.Log("OnHover" + args.interactable.gameObject);
+    }
 
-        // // Reset the watching value to 0f (not wathcing)
-        // watching = 0f;
+    private void OnHoverExit(HoverExitEventArgs args)
+    {
+        // Debug.Log("ExitHover" + args.interactable.gameObject);
+    }
+
+    private void OnSelectEnter(SelectEnterEventArgs args)
+    {
+        // Debug.Log("OnSelect" + args.interactable.gameObject);
+        canvasText.text = GetAnimalName();
 
     }
 
-    /*
-     * Get the full animal name:
-     *
-     * Rabbits:
-     *   Desert Cottontail Rabbit
-     *   California White Rabbit
-     *   Gray Rabbit
-     *
-     * Frogs:
-     *   Purple/Black Toad
-     *   Mountain Yellow-Legged Frog
-     *   California Red-Legged Frog
-     *
-     * Deer:
-     *   White-Tailed Deer
-     *
-     * Turtle:
-    *    Box Turtle
-     */
+    private void OnSelectExit(SelectExitEventArgs args)
+    {
+        // Debug.Log("ExitSelect" + args.interactable.gameObject);
+        StartCoroutine(Delay());
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(3);
+        canvasText.text = "";
+    }
     private string GetAnimalName()
     {
         string animalName = gameObject.name;

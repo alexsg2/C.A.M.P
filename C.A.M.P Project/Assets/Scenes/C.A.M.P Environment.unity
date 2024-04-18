@@ -14389,6 +14389,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TaskManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1395412276467679418, guid: 8ec4d27372d3c5047860f63d5baec8bd, type: 3}
+      propertyPath: fireTriggerZone
+      value: 
+      objectReference: {fileID: 2084712656}
+    - target: {fileID: 1395412276467679418, guid: 8ec4d27372d3c5047860f63d5baec8bd, type: 3}
+      propertyPath: tentTriggerZone
+      value: 
+      objectReference: {fileID: 1006001103}
+    - target: {fileID: 1395412276467679418, guid: 8ec4d27372d3c5047860f63d5baec8bd, type: 3}
+      propertyPath: matchLighterTrigger
+      value: 
+      objectReference: {fileID: 1201811653}
     - target: {fileID: 2374125239897908976, guid: 8ec4d27372d3c5047860f63d5baec8bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

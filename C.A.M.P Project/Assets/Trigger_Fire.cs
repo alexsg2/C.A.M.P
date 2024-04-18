@@ -8,12 +8,13 @@ public class FireTriggerZone : MonoBehaviour
     public GameObject fireLight;
 
     private int twigsCount = 0;
-    private bool requirementsMet = false;
+    private bool twigCountReached = false;
+    private bool fireMade = false;
     private bool logStackThere = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Firewood") && !requirementsMet)
+        if (other.CompareTag("Firewood") && !twigCountReached)
         {
             twigsCount++;
             Debug.Log("Twigs count: " + twigsCount);
@@ -21,7 +22,7 @@ public class FireTriggerZone : MonoBehaviour
         }
         else if (other.CompareTag("Match") && logStackThere)
         {
-            if (requirementsMet)
+            if (twigCountReached)
             {
                 MakeFire();
             }
@@ -31,7 +32,7 @@ public class FireTriggerZone : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Firewood") && !requirementsMet)
+        if (other.CompareTag("Firewood") && !twigCountReached)
         {
             twigsCount--;
             Debug.Log("Twigs count: " + twigsCount);
@@ -41,10 +42,10 @@ public class FireTriggerZone : MonoBehaviour
 
     private void CheckRequirements()
     {
-        if (twigsCount >= twigsRequired && !requirementsMet)
+        if (twigsCount >= twigsRequired && !twigCountReached)
         {
             Debug.Log("Enough firewood. Campfire activated.");
-            requirementsMet = true;
+            twigCountReached = true;
 
             // Set the campfire prefab active
             logstack.SetActive(true);
@@ -60,10 +61,10 @@ public class FireTriggerZone : MonoBehaviour
                 }
             }
         }
-        else if (twigsCount < twigsRequired && requirementsMet)
+        else if (twigsCount < twigsRequired && twigCountReached)
         {
             Debug.Log("Not enough firewood. Campfire deactivated.");
-            requirementsMet = false;
+            twigCountReached = false;
 
             // Set the campfire prefab inactive
             logstack.SetActive(false);
@@ -74,6 +75,7 @@ public class FireTriggerZone : MonoBehaviour
     {
         fire.SetActive(true);
         fireLight.SetActive(true);
+        fireMade = true;
 
         Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
         foreach (Collider collider in colliders)
@@ -83,5 +85,15 @@ public class FireTriggerZone : MonoBehaviour
                 Destroy(collider.gameObject);
             }
         }
+    }
+
+    public bool checkSticks()
+    {
+        return twigCountReached;
+    }
+
+    public bool checkFire()
+    {
+        return fireMade;
     }
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MatchLighterTrigger : MonoBehaviour
 {
+    private bool MatchLit = false;
+
     private void OnTriggerEnter(Collider other)
     {
         // Check if the collider belongs to a match GameObject tagged as "UnlitMatch"
@@ -17,6 +19,7 @@ public class MatchLighterTrigger : MonoBehaviour
                 {
                     // Set the fire GameObject active
                     fire.SetActive(true);
+                    MatchLit = true;
                 }
 
                 // Change the tag of the unlit match GameObject to "Match"
@@ -36,5 +39,10 @@ public class MatchLighterTrigger : MonoBehaviour
             }
         }
         return null; // Not found
+    }
+
+    public bool checkMatch()
+    {
+        return MatchLit;
     }
 }

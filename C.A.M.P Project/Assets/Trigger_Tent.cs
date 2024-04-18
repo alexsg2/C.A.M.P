@@ -18,7 +18,7 @@ public class TentTriggerZone : MonoBehaviour
     private bool nail2Executed = false; // Flag to track if Nail2 script has executed
     private bool nail3Executed = false; // Flag to track if Nail3 script has executed
     private bool nail4Executed = false; // Flag to track if Nail4 script has executed
-    bool allNailsExecuted;
+    private bool allNailsExecuted;
     private bool tarp1Executed = false; // Flag to track if Tarp1 script has executed
     private bool tarp2Executed = false; // Flag to track if Tarp2 script has executed
     private bool tentBuilt = false; // Track if the tent has been built
@@ -26,7 +26,7 @@ public class TentTriggerZone : MonoBehaviour
     private void CheckRequirements()
     {
         bool allPolesExecuted = poleScript1Executed && poleScript2Executed;
-        bool allNailsExecuted = nail1Executed && nail2Executed && nail3Executed && nail4Executed;
+        allNailsExecuted = nail1Executed && nail2Executed && nail3Executed && nail4Executed;
         bool allTarpsExecuted = tarp1Executed && tarp2Executed;
 
         if (allPolesExecuted && allNailsExecuted && allTarpsExecuted)
@@ -130,5 +130,10 @@ public class TentTriggerZone : MonoBehaviour
     public bool checkTarp()
     {
         return (tarp1Executed && tarp2Executed);
+    }
+
+    public bool checkNail()
+    {
+        return (nail1Executed && nail2Executed && nail3Executed && nail4Executed);
     }
 }

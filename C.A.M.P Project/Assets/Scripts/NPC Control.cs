@@ -30,5 +30,6 @@ public class NPCControl : MonoBehaviour
     {
         // avatar.GetComponent<PlayerInput>().enabled = true;
         toActivate.SetActive(false);
+        
     }
 }

@@ -13,7 +13,7 @@ namespace OpenAI
         [SerializeField] private Image progress;
         
         private readonly string fileName = "output.wav";
-        private readonly int duration = 5;
+        private readonly int duration = 3;
         
         private AudioClip clip;
         private bool isRecording;

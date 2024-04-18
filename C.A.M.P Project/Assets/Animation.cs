@@ -16,4 +16,12 @@ public class Animation : MonoBehaviour
             animator.SetTrigger("Wave");
         }
     }
+
+    public void Close()
+    {
+        // avatar.GetComponent<PlayerInput>().enabled = true;
+        animator = GetComponent<Animator>();
+        animator.SetTrigger("Wave");
+        
+    }
 }

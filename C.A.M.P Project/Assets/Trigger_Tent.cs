@@ -1,9 +1,16 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TentTriggerZone : MonoBehaviour
 {
     public GameObject tentPrefab; // Tent prefab to toggle visibility
+    public GameObject tarp1;
+    public GameObject tarp2;
+    public GameObject pole1;
+    public GameObject pole2;
+    public GameObject nail1;
+    public GameObject nail2;
+    public GameObject nail3;
+    public GameObject nail4;
     private bool requirementsMet = false;
     private bool poleScript1Executed = false; // Flag to track if PoleAppear1 script has executed
     private bool poleScript2Executed = false; // Flag to track if PoleAppear2 script has executed
@@ -16,94 +23,37 @@ public class TentTriggerZone : MonoBehaviour
     private bool tarp2Executed = false; // Flag to track if Tarp2 script has executed
     private bool tentBuilt = false; // Track if the tent has been built
 
-    private List<Collider> collidersInZone = new List<Collider>();
-
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (!tentBuilt)
-    //     {
-    //         CheckRequirements();
-    //     }
-    // }
-
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     if (!tentBuilt)
-    //     {
-    //         CheckRequirements();
-    //     }
-    // }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // Add the collider to the list if it's not already in it
-        // if (!collidersInZone.Contains(other))
-        // {
-            collidersInZone.Add(other);
-            foreach (Collider collider in collidersInZone)
-            {
-                Debug.Log(collider.tag);
-            }
-            // CheckRequirements();
-        // }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        // Remove the collider from the list when it exits the trigger zone
-        // if (collidersInZone.Contains(other))
-        // {
-            collidersInZone.Remove(other);
-            // CheckRequirements();
-        // }
-    }
-
     private void CheckRequirements()
     {
         bool allPolesExecuted = poleScript1Executed && poleScript2Executed;
         bool allNailsExecuted = nail1Executed && nail2Executed && nail3Executed && nail4Executed;
         bool allTarpsExecuted = tarp1Executed && tarp2Executed;
 
-        // if (allPolesExecuted && allNailsExecuted && allTarpsExecuted && !requirementsMet)
         if (allPolesExecuted && allNailsExecuted && allTarpsExecuted)
         {
-            // Debug.Log("Enough materials. Tent built.");
-            requirementsMet = true;
             tentBuilt = true;
-
-            // Set the tent prefab active
             tentPrefab.SetActive(true);
 
-            // Destroy specified material objects in the trigger zone
+            // Code to get all colliders in the trigger zone
             // Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale);
-            // Debug.Log("Number of colliders found: " + colliders.Length);
+            // string colliderNames = "Collider names: ";
             // foreach (Collider collider in colliders)
             // {
-            //     Debug.Log($"Collider tag: {collider.tag}");
-            //     colliderTags += "tag: " + collider.tag + "  ";
-                // if (collider.CompareTag("Nail") || collider.CompareTag("Pole") || collider.CompareTag("Tarp"))
-                // {
-                //     Destroy(collider.gameObject);
-                //     Debug.Log("Destroyed: " + collider.gameObject);
-                // }
+            //     colliderNames += collider.name + ", "; // Concatenate the name and a comma to the colliderNames string
             // }
-            foreach (Collider collider in collidersInZone)
-            {
-                Debug.Log(collider.tag);
-                bool check1 = (collider.CompareTag("Nail") || collider.CompareTag("Pole") || collider.CompareTag("Tarp"));
-                Debug.Log("Check" + check1);
-                if (collider.CompareTag("Nail") || collider.CompareTag("Pole") || collider.CompareTag("Tarp"))
-                {
-                    Debug.Log("Inside: " + collider.tag);
-                    Destroy(collider.gameObject);
-                    Debug.Log("Destroyed: " + collider.gameObject);
-                }
-            }
+            // Debug.Log(colliderNames);
+
+            Destroy(tarp1.gameObject);
+            Destroy(tarp2.gameObject);
+            Destroy(pole1.gameObject);
+            Destroy(pole2.gameObject);
+            Destroy(nail1.gameObject);
+            Destroy(nail2.gameObject);
+            Destroy(nail3.gameObject);
+            Destroy(nail4.gameObject);
         }
         else
         {
-            // Debug.Log("Not all requirements done. Tent not built.");
             requirementsMet = false;
 
             // Set the tent prefab inactive

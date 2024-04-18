@@ -22220,6 +22220,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tentPrefab: {fileID: 1024253057}
+  tarp1: {fileID: 571722287}
+  tarp2: {fileID: 1107750342}
+  pole1: {fileID: 589273682}
+  pole2: {fileID: 940348287}
+  nail1: {fileID: 2077254176}
+  nail2: {fileID: 1449579109}
+  nail3: {fileID: 827088287}
+  nail4: {fileID: 797485310}
 --- !u!65 &1006001104
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22287,6 +22295,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tentPrefab: {fileID: 0}
+  tarp1: {fileID: 0}
+  tarp2: {fileID: 0}
+  pole1: {fileID: 0}
+  pole2: {fileID: 0}
+  nail1: {fileID: 0}
+  nail2: {fileID: 0}
+  nail3: {fileID: 0}
+  nail4: {fileID: 0}
 --- !u!1001 &1027986283
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,10 +29,8 @@ public class NailAppear3 : MonoBehaviour
             // Increment hit counter
             currNailHits += 1;
 
-            Debug.Log("Nail Hits: " + currNailHits);
             if (currNailHits == neededNailHits)
             {
-                Debug.Log("Finish Nail");
                 // Call the NailExecuted method of TentTriggerZone script
                 tentTriggerZone.Nail3Executed();
             }

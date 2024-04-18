@@ -29166,6 +29166,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.74147546
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.63619095
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.63619024
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.27802902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.33648616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -85.262
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -64.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360420542814166453, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 115.778
+      objectReference: {fileID: 0}
     - target: {fileID: 6360420542814166458, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
       propertyPath: m_Layer
       value: 3

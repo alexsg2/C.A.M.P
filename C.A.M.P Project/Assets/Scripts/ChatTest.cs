@@ -47,8 +47,7 @@
                         "Your name is Mr.foxy. Your personality is funny, energetic, goofy, and friendly. And your job is to guide user with camping\n"
                 };
                 
-                messages.Add(message);
-                
+                messages.Add(message); 
                 button.onClick.AddListener(SendReply);
             }
             
@@ -79,6 +78,7 @@
 
             private void SendReply()
             {
+                button.interactable = false;
                 SendReply(inputField.text);
             }
 
@@ -93,7 +93,7 @@
 
                 openai.CreateChatCompletionAsync(new CreateChatCompletionRequest()
                 {
-                    Model = "gpt-3.5-turbo-0301",
+                    Model = "gpt-4",
                     Messages = messages
                 }, OnResponse, OnComplete, new CancellationTokenSource());
 
@@ -101,18 +101,15 @@
                 
                 inputField.text = "";
             }
-
             private void OnResponse(List<CreateChatCompletionResponse> responses)
             {
                 var text = string.Join("", responses.Select(r => r.Choices[0].Delta.Content));
                 
-                if (text == "") return;
+                if (string.IsNullOrEmpty(text)) return;
 
-                Debug.Log(text);
                 if (text.Contains("END_CONVO"))
                 {
                     text = text.Replace("END_CONVO", "");
-                    
                     Invoke(nameof(EndConvo), 5);
                 }
                 
@@ -121,10 +118,12 @@
                     Role = "assistant",
                     Content = text
                 };
+                messages.Add(message);
+
 
                 if (isDone)
                 {
-                    OnReplyReceived.Invoke();
+                    // OnReplyReceived.Invoke();
                     messageRect = AppendMessage(message);
                     isDone = false;
                 }
@@ -133,28 +132,54 @@
                 LayoutRebuilder.ForceRebuildLayoutImmediate(messageRect);
                 scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
                 scroll.verticalNormalizedPosition = 0;
-                
+
+                // Mark response handling as complete
                 response = text;
+                Debug.Log(response);
+
+                // Check if all responses have been received
+                
             }
-            
+
+            // private void OnComplete()
+            // {
+            //     if (responseCount < expectedResponses)
+            //     {
+            //         Debug.Log("OnComplete called prematurely.");
+            //         return;
+            //     }
+
+            //     Debug.Log("Response handling complete.");
+            //     Debug.Log(response);
+            //     button.interactable = true;
+            //     LayoutRebuilder.ForceRebuildLayoutImmediate(messageRect);
+            //     height += messageRect.sizeDelta.y;
+            //     scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+            //     scroll.verticalNormalizedPosition = 0;
+                
+            //     isDone = true;
+            //     response = "";
+            // }
             private void OnComplete()
             {
+                // Delay the execution of the completion logic
+                Invoke("CompleteFinalActions", 5.0f); // Adjust the time as needed
+            }
+
+            private void CompleteFinalActions()
+            {
+
+                Debug.Log("Response handling complete. All parts received.");
+                button.interactable = true;
                 LayoutRebuilder.ForceRebuildLayoutImmediate(messageRect);
                 height += messageRect.sizeDelta.y;
                 scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
                 scroll.verticalNormalizedPosition = 0;
-                
-                var message = new ChatMessage()
-                {
-                    Role = "assistant",
-                    Content = response
-                };
-                messages.Add(message);
-                
-                
+
                 isDone = true;
                 response = "";
             }
+
 
             private void EndConvo()
             {

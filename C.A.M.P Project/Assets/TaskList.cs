@@ -56,44 +56,49 @@ public class TaskList : MonoBehaviour
         {
             if (fireTriggerZone.checkSticks() && !T1sub1Completed)
             {
-                T1sub1 = "\t<s>Put 3 twigs into the fire<s>\n";
+                T1sub1 = "\t<s>Put 3 twigs into the fire</s>\n";
                 T1sub1Completed = true;
             }
             if (matchLighterTrigger.checkMatch() && !T1sub2Completed)
             {
-                T1sub2 = "\t<s>Light the match using the matchbox<s>\n";
+                T1sub2 = "\t<s>Light the match using the matchbox</s>\n";
                 T1sub2Completed = true;
             }
             if (fireTriggerZone.checkFire() && !T1sub3Completed)
             {
-                T1sub3 = "\t<s>Throw the lit match into the firewood<s>\n";
+                T1sub3 = "\t<s>Throw the lit match into the firewood</s>\n";
                 T1sub3Completed = true;
             }
             if (T1sub1Completed && T1sub2Completed && T1sub3Completed)
             {
-                task1 = "<s>Task 1: Build a Fire<s>\n";
+                task1 = "<s>Task 1: Build a Fire</s>\n";
                 task1Done = true;
             }
             if (tentTriggerZone.checkPole() && !T2sub1Completed)
             {
-                T2sub1 = "\t<s>Place two poles into the ground<s>\n";
+                T2sub1 = "\t<s>Place two poles into the ground</s>\n";
                 T2sub1Completed = true;
             }
             if (tentTriggerZone.checkTarp() && !T2sub2Completed)
             {
-                T2sub2 = "\t<s>Put two tarps on the poles<s>\n";
+                T2sub2 = "\t<s>Put two tarps on the poles</s>\n";
                 T2sub2Completed = true;
             }
             if (tentTriggerZone.checkNail() && !T2sub3Completed)
             {
-                T2sub3 = "\t<s>Nail the tarp to the ground by placing and hammering nails in the corners<s>\n";
+                T2sub3 = "\t<s>Nail the tarp to the ground by placing and hammering nails in the corners</s>\n";
                 T2sub3Completed = true;
             }
             if (T2sub1Completed && T2sub2Completed && T2sub3Completed)
             {
-                task2 = "<s>Task 2: Assemble a Tent<s>\n";
+                task2 = "<s>Task 2: Assemble a Tent</s>\n";
                 task2Done = true;
             }
+            if (task1Done && task2Done)
+            {
+                allTasksDone = true;
+            }
+
 
             canvasText.text = task1 + T1sub1 + T1sub2 + T1sub3 + task2 + T2sub1 + T2sub2 + T2sub3 + task3;
         }

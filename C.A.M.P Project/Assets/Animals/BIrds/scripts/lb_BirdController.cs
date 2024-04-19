@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class lb_BirdController : MonoBehaviour {
 	public int idealNumberOfBirds;
@@ -269,6 +270,13 @@ public class lb_BirdController : MonoBehaviour {
 			}else{
 				bird.SetActive (true);
 				activeBirds++;
+
+				// Get the AnimalDescription component from the new bird
+        		AnimalDescription animalDescription = bird.GetComponent<AnimalDescription>();
+
+				// Set the canvasText variable to the Text component
+				animalDescription.canvasText = GameObject.Find("XR Origin (XR Rig)/Camera Offset/Right Controller/Animal Text/Image/Text").GetComponent<UnityEngine.UI.Text>();
+				
 				BirdFindTarget(bird);
 			}
 		}

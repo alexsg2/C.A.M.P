@@ -24,6 +24,7 @@ public class Moving : MonoBehaviour
     protected NavMeshAgent agent;
     protected Animator animator;
     protected NPCState currState = NPCState.Idle;
+    private bool allowMovement = true; // Flag to control movement
 
     private void Start() {
         InitalizeNPC();
@@ -41,6 +42,9 @@ public class Moving : MonoBehaviour
 
     protected virtual void UpdateState()
     {
+        if (!allowMovement)
+            return;
+
         switch (currState)
         {
             case NPCState.Idle:
@@ -120,6 +124,7 @@ public class Moving : MonoBehaviour
     // }
     public void StopAndFacePlayer(Vector3 playerPosition)
     {
+        allowMovement = false; // Disable movement transitions
         SetState(NPCState.Idle);  // Stop moving
         agent.ResetPath();  // Clear existing path
         FaceTarget(playerPosition);  // Turn to face the player
@@ -137,6 +142,7 @@ public class Moving : MonoBehaviour
 
     public void ResumeNormalBehavior()
     {
+        allowMovement = true; // Re-enable movement transitions
         SetState(NPCState.Idle);  // Go back to Idle state which will transition to Move after idleTime
     }
     protected virtual void OnStateChanged(NPCState newState)

@@ -9,6 +9,22 @@ public class TaskList : MonoBehaviour
     public TentTriggerZone tentTriggerZone;
     public FireTriggerZone fireTriggerZone;
     public MatchLighterTrigger matchLighterTrigger;
+    public GameObject FirePitIndicator;
+    public GameObject MatchIndicator;
+    public GameObject TentIndicator;
+    public GameObject PolesIndicator;
+    public GameObject Tarp1Indicator;
+    public GameObject Tarp2Indicator;
+    public GameObject NailIndicator;
+    public GameObject Pole1PlaceIndicator;
+    public GameObject Pole2PlaceIndicator;
+    public GameObject Tarp1PlaceIndicator;
+    public GameObject Tarp2PlaceIndicator;
+    public GameObject Nail1PlaceIndicator;
+    public GameObject Nail2PlaceIndicator;
+    public GameObject Nail3PlaceIndicator;
+    public GameObject Nail4PlaceIndicator;
+
     private string task1;
     private string T1sub1;
     private string T1sub2;
@@ -58,11 +74,15 @@ public class TaskList : MonoBehaviour
             {
                 T1sub1 = "\t<s>Put 3 twigs into the fire</s>\n";
                 T1sub1Completed = true;
+                FirePitIndicator.SetActive(false);
+                MatchIndicator.SetActive(true);
             }
             if (matchLighterTrigger.checkMatch() && !T1sub2Completed)
             {
                 T1sub2 = "\t<s>Light the match using the matchbox</s>\n";
                 T1sub2Completed = true;
+                FirePitIndicator.SetActive(true);
+                MatchIndicator.SetActive(false);
             }
             if (fireTriggerZone.checkFire() && !T1sub3Completed)
             {
@@ -73,26 +93,53 @@ public class TaskList : MonoBehaviour
             {
                 task1 = "<s>Task 1: Build a Fire</s>\n";
                 task1Done = true;
+                FirePitIndicator.SetActive(false);
+                TentIndicator.SetActive(true);
+                PolesIndicator.SetActive(true);
+                Pole1PlaceIndicator.SetActive(true);
+                Pole2PlaceIndicator.SetActive(true);
             }
             if (tentTriggerZone.checkPole() && !T2sub1Completed)
             {
                 T2sub1 = "\t<s>Place two poles into the ground</s>\n";
                 T2sub1Completed = true;
+                PolesIndicator.SetActive(false);
+                Pole1PlaceIndicator.SetActive(false);
+                Pole2PlaceIndicator.SetActive(false);
+                Tarp1Indicator.SetActive(true);
+                Tarp2Indicator.SetActive(true);
+                Tarp1PlaceIndicator.SetActive(true);
+                Tarp2PlaceIndicator.SetActive(true);
             }
             if (tentTriggerZone.checkTarp() && !T2sub2Completed)
             {
                 T2sub2 = "\t<s>Put two tarps on the poles</s>\n";
                 T2sub2Completed = true;
+                Tarp1Indicator.SetActive(false);
+                Tarp2Indicator.SetActive(false);
+                Tarp1PlaceIndicator.SetActive(false);
+                Tarp2PlaceIndicator.SetActive(false);
+                NailIndicator.SetActive(true);
+                Nail1PlaceIndicator.SetActive(true);
+                Nail2PlaceIndicator.SetActive(true);
+                Nail3PlaceIndicator.SetActive(true);
+                Nail4PlaceIndicator.SetActive(true);
             }
             if (tentTriggerZone.checkNail() && !T2sub3Completed)
             {
                 T2sub3 = "\t<s>Nail the tarp to the ground by placing and hammering nails in the corners</s>\n";
                 T2sub3Completed = true;
+                NailIndicator.SetActive(false);
             }
             if (T2sub1Completed && T2sub2Completed && T2sub3Completed)
             {
                 task2 = "<s>Task 2: Assemble a Tent</s>\n";
                 task2Done = true;
+                Nail1PlaceIndicator.SetActive(false);
+                Nail2PlaceIndicator.SetActive(false);
+                Nail3PlaceIndicator.SetActive(false);
+                Nail4PlaceIndicator.SetActive(false);
+                TentIndicator.SetActive(false);
             }
             if (task1Done && task2Done)
             {

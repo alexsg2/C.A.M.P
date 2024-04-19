@@ -51,29 +51,17 @@
                 button.onClick.AddListener(SendReply);
             }
             
-            private RectTransform AppendMessage(ChatMessage message)
-            {
+            private void AppendMessage(ChatMessage message)
+            {   
                 scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
 
                 var item = Instantiate(message.Role == "user" ? sent : received, scroll.content);
-                
-                if (message.Role != "user")
-                {
-                    messageRect = item;
-                }
-                
                 item.GetChild(0).GetChild(0).GetComponent<Text>().text = message.Content;
                 item.anchoredPosition = new Vector2(0, -height);
-
-                if (message.Role == "user")
-                {
-                    LayoutRebuilder.ForceRebuildLayoutImmediate(item);
-                    height += item.sizeDelta.y;
-                    scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
-                    scroll.verticalNormalizedPosition = 0;
-                }
-
-                return item;
+                LayoutRebuilder.ForceRebuildLayoutImmediate(item);
+                height += item.sizeDelta.y;
+                scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+                scroll.verticalNormalizedPosition = 0;
             }
 
             private void SendReply()
@@ -82,103 +70,86 @@
                 SendReply(inputField.text);
             }
 
-            public void SendReply(string input)
+            public async void SendReply(string input)
             {
-                var message = new ChatMessage()
+                var userMessage = new ChatMessage()
                 {
                     Role = "user",
                     Content = input
                 };
-                messages.Add(message);
+                // Need This?
+                messages.Add(userMessage);
+                AppendMessage(userMessage);
 
-                openai.CreateChatCompletionAsync(new CreateChatCompletionRequest()
+                button.interactable = false;
+                inputField.text = "";
+                inputField.interactable = false; // Disable the input field while processing the request
+
+                var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest()
                 {
                     Model = "gpt-4",
                     Messages = messages
-                }, OnResponse, OnComplete, new CancellationTokenSource());
+                });
 
-                AppendMessage(message);
-                
-                inputField.text = "";
-            }
-            private void OnResponse(List<CreateChatCompletionResponse> responses)
-            {
-                var text = string.Join("", responses.Select(r => r.Choices[0].Delta.Content));
-                
-                if (string.IsNullOrEmpty(text)) return;
-
-                if (text.Contains("END_CONVO"))
+                Debug.Log(completionResponse.Choices[0].Message);
+                Debug.Log(completionResponse.Choices[0].Message.Content);
+                if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
                 {
-                    text = text.Replace("END_CONVO", "");
-                    Invoke(nameof(EndConvo), 5);
+                    // var text = completionResponse.Choices[0].Message;
+                    // if (text.Content.Contains("END_CONVO"))
+                    // {
+                    //     text.Content = text.Content.Replace("END_CONVO", "");
+                    //     Invoke(nameof(EndConvo), 5); // Schedule to deactivate conversation elements
+                    // }
+                    var message = completionResponse.Choices[0].Message;
+                    message.Content = message.Content.Trim();
+
+                    var replyMessage = new ChatMessage()
+                    {
+                        Role = "assistant",
+                        Content = message.Content
+                    };
+                    messages.Add(replyMessage);
+                    AppendMessage(replyMessage);
+
+
                 }
-                
-                var message = new ChatMessage()
+                else
                 {
-                    Role = "assistant",
-                    Content = text
-                };
-                messages.Add(message);
-
-
-                if (isDone)
-                {
-                    // OnReplyReceived.Invoke();
-                    messageRect = AppendMessage(message);
-                    isDone = false;
+                    Debug.LogWarning("No response generated.");
                 }
-                
-                messageRect.GetChild(0).GetChild(0).GetComponent<Text>().text = text;
-                LayoutRebuilder.ForceRebuildLayoutImmediate(messageRect);
-                scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
-                scroll.verticalNormalizedPosition = 0;
 
-                // Mark response handling as complete
-                response = text;
-                Debug.Log(response);
+                button.interactable = true;
+                inputField.interactable = true; // Re-enable the input field
 
-                // Check if all responses have been received
                 
+                isDone = true;
+                response = "";
             }
+
+
+
+            
 
             // private void OnComplete()
             // {
-            //     if (responseCount < expectedResponses)
-            //     {
-            //         Debug.Log("OnComplete called prematurely.");
-            //         return;
-            //     }
+            //     // Delay the execution of the completion logic
+            //     Invoke("CompleteFinalActions", 5.0f); // Adjust the time as needed
+            // }
 
-            //     Debug.Log("Response handling complete.");
-            //     Debug.Log(response);
+            // private void CompleteFinalActions()
+            // {
+
+            //     Debug.Log("Response handling complete. All parts received.");
             //     button.interactable = true;
             //     LayoutRebuilder.ForceRebuildLayoutImmediate(messageRect);
             //     height += messageRect.sizeDelta.y;
             //     scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
             //     scroll.verticalNormalizedPosition = 0;
-                
+
             //     isDone = true;
             //     response = "";
             // }
-            private void OnComplete()
-            {
-                // Delay the execution of the completion logic
-                Invoke("CompleteFinalActions", 5.0f); // Adjust the time as needed
-            }
-
-            private void CompleteFinalActions()
-            {
-
-                Debug.Log("Response handling complete. All parts received.");
-                button.interactable = true;
-                LayoutRebuilder.ForceRebuildLayoutImmediate(messageRect);
-                height += messageRect.sizeDelta.y;
-                scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
-                scroll.verticalNormalizedPosition = 0;
-
-                isDone = true;
-                response = "";
-            }
 
 
             private void EndConvo()

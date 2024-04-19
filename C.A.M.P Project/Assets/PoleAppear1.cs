@@ -6,11 +6,12 @@ public class PoleAppear1 : MonoBehaviour
 {
     public GameObject pole1; // reference to standing pole1
     public TentTriggerZone tentTriggerZone; // reference to TentTriggerZone script
+    public TaskList taskList; // reference to TaskList script
     private bool triggered = false; // flag to track if trigger has been activated
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pole") && !triggered)
+        if (other.CompareTag("Pole") && !triggered && taskList.checkTask1())
         {
             Destroy(other.gameObject);
             pole1.SetActive(true);

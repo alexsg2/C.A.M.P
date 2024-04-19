@@ -58,7 +58,10 @@ public class TaskList : MonoBehaviour
         T2sub2 = "\tPut two tarps on the poles\n";
         T2sub3 = "\tNail the tarp to the ground by placing and hammering nails in the corners\n";
         task3 = "Task 3: Identify Animals\n\tSubtask 1\n\tSubtask 2\n\tSubtask 3\n";
-        
+        // canvasText.text =
+        //     "Task 1: Build a Fire\n\tPut 3 twigs into the fire\n\tLight the match using the matchbox\n\tThrow the lit match into the firewood\n" +
+        //     "Task 2: Assemble a Tent\n\tPlace two poles into the ground\n\tPut two tarps on the poles\n\tNail the tarp to the ground by placing and hammering nails in the corners\n\n\n" +
+        //     "Task 3: Identify Animals\n\tSubtask 1\n\tSubtask 2\n\tSubtask 3\n";
         canvasText.text = task1 + T1sub1 + T1sub2 + T1sub3 + task2 + T2sub1 + T2sub2 + T2sub3 + task3;
     }
 
@@ -85,28 +88,24 @@ public class TaskList : MonoBehaviour
             {
                 T1sub3 = "\t<s>Throw the lit match into the firewood</s>\n";
                 T1sub3Completed = true;
+            }
+            if (T1sub1Completed && T1sub2Completed && T1sub3Completed)
+            {
+                task1 = "<s>Task 1: Build a Fire</s>\n";
+                task1Done = true;
                 FirePitIndicator.SetActive(false);
                 TentIndicator.SetActive(true);
                 PolesIndicator.SetActive(true);
                 Pole1PlaceIndicator.SetActive(true);
                 Pole2PlaceIndicator.SetActive(true);
             }
-            if (T1sub1Completed && T1sub2Completed && T1sub3Completed && !task1Done)
-            {
-                task1 = "<s>Task 1: Build a Fire</s>\n";
-                task1Done = true;
-            }
             if (tentTriggerZone.checkPole() && !T2sub1Completed)
             {
-                Debug.Log("Got in");
                 T2sub1 = "\t<s>Place two poles into the ground</s>\n";
                 T2sub1Completed = true;
                 PolesIndicator.SetActive(false);
-                Debug.Log("Poles Active: " + PolesIndicator.activeSelf);
                 Pole1PlaceIndicator.SetActive(false);
-                Debug.Log("Pole1 Active: " + Pole1PlaceIndicator.activeSelf);
                 Pole2PlaceIndicator.SetActive(false);
-                Debug.Log("Pole2 Active: " + Pole2PlaceIndicator.activeSelf);
                 Tarp1Indicator.SetActive(true);
                 Tarp2Indicator.SetActive(true);
                 Tarp1PlaceIndicator.SetActive(true);
@@ -132,7 +131,7 @@ public class TaskList : MonoBehaviour
                 T2sub3Completed = true;
                 NailIndicator.SetActive(false);
             }
-            if (T2sub1Completed && T2sub2Completed && T2sub3Completed && !task2Done)
+            if (T2sub1Completed && T2sub2Completed && T2sub3Completed)
             {
                 task2 = "<s>Task 2: Assemble a Tent</s>\n";
                 task2Done = true;
@@ -152,13 +151,40 @@ public class TaskList : MonoBehaviour
         }
     }
 
-    public bool checkTask1()
-    {
-        return task1Done;
-    }
+    // void UpdateTaskList()
+    // {
+    //     // Get the current text content of the task list
+    //     string taskListText = canvasText.text;
+    //     Debug.Log("TaskListText" + taskListText);
 
-    public bool checkTask2()
-    {
-        return task2Done;
-    }
+    //     // Update the formatting based on completion status
+    //     taskListText = UpdateTaskCompletionStatus(taskListText, "Put 3 twigs into the fire", fireTriggerZone.checkSticks());
+    //     taskListText = UpdateTaskCompletionStatus(taskListText, "Light the match using the matchbox", matchLighterTrigger.checkMatch());
+    //     taskListText = UpdateTaskCompletionStatus(taskListText, "Throw the lit match into the firewood", fireTriggerZone.checkFire());
+    //     taskListText = UpdateTaskCompletionStatus(taskListText, "Place two poles into the ground", tentTriggerZone.checkPole());
+    //     taskListText = UpdateTaskCompletionStatus(taskListText, "Put two tarps on the poles", tentTriggerZone.checkTarp());
+    //     taskListText = UpdateTaskCompletionStatus(taskListText, "Nail the tarp to the ground by placing and hammering nails in the corners", tentTriggerZone.checkNail());
+
+    //     // Update the text content of the task list
+    //     canvasText.text = taskListText;
+    //     Debug.Log("canvasListText" + canvasText.text);
+    // }
+
+    // string UpdateTaskCompletionStatus(string text, string taskName, bool completed)
+    // {
+    //     // Determine the formatting based on completion status
+    //     string formatting = completed ? "<s>" : ""; // Strikethrough formatting if completed
+
+    //     // Find the index of the task name in the text content
+    //     int index = text.IndexOf(taskName);
+
+    //     if (index != -1)
+    //     {
+    //         // Insert the formatting at the appropriate position
+    //         return text.Insert(index, formatting);
+    //     }
+    //     Debug.Log("text: " + text);
+
+    //     return text;
+    // }
 }

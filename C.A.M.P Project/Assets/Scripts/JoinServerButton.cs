@@ -9,6 +9,7 @@ public class JoinServerButton : MonoBehaviour
     public void JoinServer()
     {
         NetworkManager.Singleton.StartClient();
+        TouchScreenKeyboard.Open("", TouchScreenKeyboardType.NumberPad);
         // SceneManager.LoadScene("C.A.M.P Environment", LoadSceneMode.Single);
     }
 }

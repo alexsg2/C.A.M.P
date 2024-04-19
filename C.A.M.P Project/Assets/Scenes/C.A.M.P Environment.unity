@@ -2155,7 +2155,7 @@ GameObject:
   - component: {fileID: 157261038}
   - component: {fileID: 157261037}
   m_Layer: 5
-  m_Name: PC UI Canvas
+  m_Name: PCCanvasUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22095,7 +22095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1747904497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24135,12 +24135,12 @@ GameObject:
   - component: {fileID: 1921464333}
   - component: {fileID: 1921464334}
   m_Layer: 0
-  m_Name: PC Server Build
+  m_Name: PC Server Control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1921464333
 Transform:
   m_ObjectHideFlags: 0
@@ -25591,7 +25591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4929249892500766107, guid: 54de5db5689833d4a94790070bef18da, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

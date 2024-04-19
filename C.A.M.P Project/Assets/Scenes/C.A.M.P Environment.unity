@@ -8394,7 +8394,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1195343177}
-  - {fileID: 1741446740}
   - {fileID: 1825523672}
   m_Father: {fileID: 5862077422229849320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10011,8 +10010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c57f514877965347ab22f254377787f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 1177533160}
   toActivate: {fileID: 1214687094}
+  npcMovementScript: {fileID: 6490136727987510868}
 --- !u!4 &1572879470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e4e12940edaee3146baceaeffd93cf85, type: 3}
@@ -10868,55 +10867,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3a775dc2c1a334b45a5667a56fe92c23, type: 3}
   m_PrefabInstance: {fileID: 122559612}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1741446739
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1741446740}
-  - component: {fileID: 1741446741}
-  m_Layer: 0
-  m_Name: ChatGPT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1741446740
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741446739}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.2384735, z: -0, w: 0.971149}
-  m_LocalPosition: {x: 371.68527, y: 183.24149, z: -194.87329}
-  m_LocalScale: {x: 0.50000006, y: 0.5, z: 0.50000006}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1214687095}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1741446741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741446739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83764466e83f8aa40b421e5af75b1b49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputField: {fileID: 204504270}
-  button: {fileID: 1174918636}
-  scroll: {fileID: 2107432509}
-  sent: {fileID: 8660877164928630359, guid: 53cd26a6eefa5a74086203cd118a04d3, type: 3}
-  received: {fileID: 961534450149497043, guid: adc0146c2853ed1418133faaf4379eb1, type: 3}
 --- !u!1001 &1743870905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11485,6 +11435,7 @@ MonoBehaviour:
   scroll: {fileID: 2107432509}
   sent: {fileID: 8660877164928630359, guid: 53cd26a6eefa5a74086203cd118a04d3, type: 3}
   received: {fileID: 961534450149497043, guid: adc0146c2853ed1418133faaf4379eb1, type: 3}
+  toActivate: {fileID: 0}
   OnReplyReceived:
     m_PersistentCalls:
       m_Calls: []
@@ -13967,6 +13918,8 @@ GameObject:
   - component: {fileID: 5862077422229849320}
   - component: {fileID: 1595969889829979495}
   - component: {fileID: 6490136727987510867}
+  - component: {fileID: 6490136727987510869}
+  - component: {fileID: 6490136727987510868}
   m_Layer: 0
   m_Name: animal_people_wolf_1
   m_TagString: NPC
@@ -13986,6 +13939,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2aab8d50d0c94049bb00a77c806a355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6490136727987510868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6490136727987510866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc18950abeb10c645ad85e0673b4af41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDist: 10
+  moveSpeed: 5
+  maxMoveTime: 4
+  idleTime: 5
+--- !u!195 &6490136727987510869
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6490136727987510866}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6538027772003662428
 GameObject:
   m_ObjectHideFlags: 0

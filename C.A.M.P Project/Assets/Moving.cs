@@ -12,6 +12,7 @@ public enum NPCState
 [RequireComponent(typeof(NavMeshAgent))]
 public class Moving : MonoBehaviour
 {
+
     [Header("Move")]
     public float moveDist = 10f;
     public float moveSpeed = 5f; 
@@ -111,9 +112,43 @@ public class Moving : MonoBehaviour
         OnStateChanged(newState);
     }
 
+    // protected virtual void OnStateChanged(NPCState newState)
+    // {
+    //     animator?.CrossFadeInFixedTime(newState.ToString(), 0.25f);
+
+    //     UpdateState();
+    // }
+    public void StopAndFacePlayer(Vector3 playerPosition)
+    {
+        SetState(NPCState.Idle);  // Stop moving
+        agent.ResetPath();  // Clear existing path
+        FaceTarget(playerPosition);  // Turn to face the player
+    }
+
+    private void FaceTarget(Vector3 targetPosition)
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        if (direction.magnitude > 0.1f)  // Check if the player is not too close
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        }
+    }
+
+    public void ResumeNormalBehavior()
+    {
+        SetState(NPCState.Idle);  // Go back to Idle state which will transition to Move after idleTime
+    }
     protected virtual void OnStateChanged(NPCState newState)
     {
-        animator?.CrossFadeInFixedTime(newState.ToString(), 0.25f);
+        if (newState == NPCState.Idle)
+        {
+            animator.SetFloat("moveSpeed", 0f); // Set Animator moveSpeed to 0 when idle
+        }
+        else if (newState == NPCState.Move)
+        {
+            animator.SetFloat("moveSpeed", 0.33f); // Set Animator moveSpeed to NPC's moveSpeed when moving
+        }
 
         UpdateState();
     }

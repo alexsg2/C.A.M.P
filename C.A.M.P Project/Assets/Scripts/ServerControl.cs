@@ -8,6 +8,7 @@ using System.Net.NetworkInformation;
 using System.Linq;
 using TMPro;
 using Unity.Netcode.Transports.UTP;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Control UI elements and

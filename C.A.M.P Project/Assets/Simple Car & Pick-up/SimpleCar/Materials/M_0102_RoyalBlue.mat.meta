@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: daec249160621aa45bd9ca6a6461dbb5
+timeCreated: 1456932830
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57312
+  packageName: Simple Car & Pick-up
+  packageVersion: 1.0
+  assetPath: Assets/Simple Car & Pick-up/SimpleCar/Materials/M_0102_RoyalBlue.mat
+  uploadId: 105822

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2d500db49ff0e8544b3788ad5bc0bab7
+timeCreated: 1456932242
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57312
+  packageName: Simple Car & Pick-up
+  packageVersion: 1.0
+  assetPath: Assets/Simple Car & Pick-up/SimplePickup/Materials/FrontColor.mat
+  uploadId: 105822

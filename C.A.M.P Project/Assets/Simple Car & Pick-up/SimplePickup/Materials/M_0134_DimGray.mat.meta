@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3fc59e02038857943ae6393a2a3a48e5
+timeCreated: 1456932242
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57312
+  packageName: Simple Car & Pick-up
+  packageVersion: 1.0
+  assetPath: Assets/Simple Car & Pick-up/SimplePickup/Materials/M_0134_DimGray.mat
+  uploadId: 105822

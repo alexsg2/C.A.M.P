@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 09f670df62145f643bbe6b9944346d49
+timeCreated: 1456932243
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57312
+  packageName: Simple Car & Pick-up
+  packageVersion: 1.0
+  assetPath: Assets/Simple Car & Pick-up/SimplePickup/Materials/M_0010_Snow.mat
+  uploadId: 105822

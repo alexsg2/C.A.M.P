@@ -20,16 +20,21 @@ public class ServerControl : MonoBehaviour
     public GameObject stopButton;
     public GameObject ipDisplay;
 
+    private string address;
+    private ushort port;
+
     public void Start() {
-        // Register
+        // Register callbacks
         NetworkManager.Singleton.OnServerStarted += OnServerStart;
         NetworkManager.Singleton.OnServerStopped += OnServerStop;
+        NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnect;
 
+        // Get address / port we will host on
         UnityTransport tp = NetworkManager.Singleton.GetComponent<UnityTransport>();
         
         string lan_address = GetLocalWifiIPV4();
-        string address = tp.ConnectionData.Address;
-        ushort port = tp.ConnectionData.Port; // use port on network manager
+        address = tp.ConnectionData.Address;
+        port = tp.ConnectionData.Port; // use port on network manager
 
         if (lan_address != "") {
             address = lan_address;
@@ -40,20 +45,31 @@ public class ServerControl : MonoBehaviour
         Debug.Log($"Will host on {address}:{port}");
 
         ipDisplay.gameObject.GetComponent<TextMeshProUGUI>().text = $"Hosted on {address}:{port}";
+
+        // Update UI
         stopButton.SetActive(false);
         startButton.SetActive(true);
     }
 
+    /// <summary>
+    /// Start the server.
+    /// </summary>
     public void StartServer() {
         NetworkManager.Singleton.StartServer();
     }
 
+    /// <summary>
+    /// Shut down the server.
+    /// </summary>
     public void StopServer() {
         NetworkManager.Singleton.Shutdown();
     }
 
-    // Disable startbutton enable stopbutton
+    /// <summary>
+    /// Called when server is started. Update UI and debug log.
+    /// </summary>
     private void OnServerStart() {
+        Debug.Log($"Server started on {address}:{port}");
         if (startButton != null) {
             startButton.SetActive(false);
         }
@@ -63,8 +79,12 @@ public class ServerControl : MonoBehaviour
         }
     }
 
-    // Disable stopbutton enable startbutton
+    /// <summary>
+    /// Called when server is stopped. Update UI and debug log.
+    /// </summary>
+    /// <param name="b"></param>
     private void OnServerStop(bool b) {
+        Debug.Log("Server stopped");
         // TODO: uh what is bool param for?
         if (startButton != null) {
             startButton.SetActive(true);
@@ -73,6 +93,14 @@ public class ServerControl : MonoBehaviour
         if (stopButton != null) {
             stopButton.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// Debug print for when a new client connects to the server.
+    /// </summary>
+    /// <param name="clientId"></param>
+    public void OnClientConnect(ulong clientId) {
+        Debug.Log($"New client with id {clientId} connected");
     }
 
     /// <summary>

@@ -14,6 +14,12 @@ public class Tutorial : MonoBehaviour
     public GameObject ThrowFromIndicator;
     public GameObject TourGuide;
     public GameObject Car;
+    public GameObject WalkTrigger;
+    public GameObject GrabTrigger;
+    public GameObject ThrowFromTrigger;
+    public GameObject ThrowToTrigger;
+    public Trigger_Walk walkStatus;
+    public Trigger_Box grabStatus;
     private bool walkDone = false;
     private bool pickupDone = false;
     private bool throwDone = false;
@@ -49,6 +55,7 @@ public class Tutorial : MonoBehaviour
         // Delay after typing each text
         yield return new WaitForSeconds(3);
         WalkIndicator.SetActive(true);
+        WalkTrigger.SetActive(true);
         canvasText.text = "";
         script = "See the yellow zone in front of you? Try walking up to it. You can either actually walk or use the joystick on your left controller.";
         foreach (char letter in script)
@@ -65,6 +72,7 @@ public class Tutorial : MonoBehaviour
     private IEnumerator TypeOutTextWalk()
     {
         WalkIndicator.SetActive(false);
+        WalkTrigger.SetActive(false);
         BoxIndicator.SetActive(true);
         Cube.SetActive(true);
         Canvas.SetActive(true);
@@ -169,18 +177,23 @@ public class Tutorial : MonoBehaviour
     {
         if (!allTasksDone)
         {
-            if (!walkDone)
+            Debug.Log("In task list");
+
+            if (!walkDone && walkStatus.checkWalk())
             {
+                Debug.Log("Walk done");
                 walkDone = true;
-                // StartCoroutine(TypeOutTextWalk());
+                StartCoroutine(TypeOutTextWalk());
             }
-            if (!pickupDone && walkDone)
+            if (!pickupDone && walkDone && grabStatus.checkGrab())
             {
+                Debug.Log("Pickup done");
                 pickupDone = true;
                 // StartCoroutine(TypeOutTextPickUp());
             }
             if (!throwDone && walkDone && pickupDone)
             {
+                Debug.Log("Throw done");
                 throwDone = true;
                 // StartCoroutine(TypeOutTextThrow());
                 allTasksDone = true;

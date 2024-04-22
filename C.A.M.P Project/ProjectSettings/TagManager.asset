@@ -21,6 +21,7 @@ TagManager:
   - lb_perchTarget
   - Turtle
   - Deer
+  - Hammer
   layers:
   - Default
   - TransparentFX

@@ -14,8 +14,6 @@ public class AddressInputField : MonoBehaviour
         Debug.Log("Selected address field");
     }
 
-    // NOTE: need invisible putton whose onclick() calls InputField's Select() method! select() is weird in quest
-
     public void OnDeselect() {
         Debug.Log("Deselected address field");
     }

@@ -240,7 +240,6 @@ public class Tutorial : MonoBehaviour
             if (!pickupDone && walkDone && grabStatus.checkGrab())
             {
                 Debug.Log("Pickup done");
-                animator.SetTrigger("Pickup");
                 StartCoroutine(TypeOutTextPickUp());
                 pickupDone = true;
             }
@@ -248,6 +247,7 @@ public class Tutorial : MonoBehaviour
             {
                 Debug.Log("Throw done");
                 throwDone = true;
+                animator.SetTrigger("Pickup");
                 StartCoroutine(TypeOutTextThrow());
                 allTasksDone = true;
             }

@@ -44,12 +44,14 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     public void OnSelectGrabbable(SelectEnterEventArgs eventArgs) {
+        Debug.Log("OnSelectGrabbable");
         if (IsClient && IsOwner) {
-            Debug.Log("Trying to change ownership");
+            Debug.Log("OnSelectGrabbable inside first if");
             NetworkObject networkObjectSelected = eventArgs.interactableObject.transform.GetComponent<NetworkObject>();
             if (networkObjectSelected != null) {
+                Debug.Log("OnSelectGrabbable inside second if");
                 // request ownership of interactable from the server
-                // TODO: make server spawn grabbables or be the only one that has networked grabbables in scene
+                // TODO: handle race conditions for trying to change ownership of an object
                 RequestGrabbableOwnershipServerRpc(OwnerClientId, networkObjectSelected);
                 // RPC = remote procedure call, call procedure on network object not in this executable/client
             }
@@ -57,9 +59,12 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void RequestGrabbableOwnershipServerRpc(ulong newOwnerClientId, NetworkObjectReference networkObjectReference) {
+    public void RequestGrabbableOwnershipServerRpc(ulong newOwnerClientId,
+        NetworkObjectReference networkObjectReference) 
+    {
         if (networkObjectReference.TryGet(out NetworkObject networkObject)) {
             networkObject.ChangeOwnership(newOwnerClientId);
+            Debug.Log($"Updated ownership to clientId {newOwnerClientId}");
         }
         else {
             Debug.Log($"Unable to change ownership for clientId {newOwnerClientId}");

@@ -11,21 +11,21 @@ public class ClientNetworkTransform : NetworkTransform
         return false;
     }
 
-    // public override void OnNetworkSpawn() {
-    //     base.OnNetworkSpawn();
-    //     CanCommitToTransform = IsOwner;
-    // }
+    public override void OnNetworkSpawn() {
+        base.OnNetworkSpawn();
+        CanCommitToTransform = IsOwner;
+    }
 
-    // protected override void Update() {
-    //     base.Update();
+    protected override void Update() {
+        base.Update();
 
-    //     // TODO: check this!! may update ownership of transform to different clients
-    //     if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsConnectedClient) {
-    //         CanCommitToTransform = IsOwner;
+        // TODO: check this!! may update ownership of transform to different clients
+        if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsConnectedClient) {
+            CanCommitToTransform = IsOwner;
 
-    //         if (CanCommitToTransform) {
-    //             TryCommitTransformToServer(transform, NetworkManager.LocalTime.Time);
-    //         }
-    //     }
-    // }
+            if (CanCommitToTransform) {
+                TryCommitTransformToServer(transform, NetworkManager.LocalTime.Time);
+            }
+        }
+    }
 }

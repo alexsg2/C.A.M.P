@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trigger_Throw : MonoBehaviour
+public class Trigger_ThrowTo : MonoBehaviour
 {
-    public GameObject nail1; // reference to standing pole1
-
-    public TentTriggerZone tentTriggerZone; // reference to TentTriggerZone script
-
-    private bool triggered = false; // flag to track if trigger has been activated
-    
-    // Start is called before the first frame update
-    void Start()
+    private bool throwto = false;
+    private bool triggered = false;
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("Made it");
+        if (other.CompareTag("Box") && !triggered)
+        {
+            throwto = true;
+            triggered = true;
+            Debug.Log("Player got box in!");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool checkThrowTo()
     {
-        
+        return throwto;
     }
 }

@@ -20,22 +20,47 @@ public class Tutorial : MonoBehaviour
     public GameObject ThrowToTrigger;
     public Trigger_Walk walkStatus;
     public Trigger_Box grabStatus;
+    public Trigger_Throw_To throwToStatus;
+    public Trigger_Throw_From throwFromStatus;
     private bool walkDone = false;
     private bool pickupDone = false;
     private bool throwDone = false;
     private bool allTasksDone = false;
     private string script = "";
+    private Vector3 targetPosition = new Vector3(0f, 0f, 0f);
 
-    private float typingSpeed = 0.1f;
+
+    private float typingSpeed = 0.001f;
+    // private float typingSpeed = 0.00000001f;
 
     // Start is called before the first frame update
     void Start()
     {
+        targetPosition = new Vector3(-4.22f, 0f, 2.6f);
+        StartCoroutine(MoveTourGuide(targetPosition));
         StartCoroutine(TypeOutTextIntro());
+    }
+
+    private IEnumerator MoveTourGuide(Vector3 targetPosition)
+    {
+        float duration = 3f; // Adjust the duration as needed
+        float elapsedTime = 0f;
+        Vector3 startingPosition = TourGuide.transform.position;
+
+        while (elapsedTime < duration)
+        {
+            TourGuide.transform.position = Vector3.Lerp(startingPosition, targetPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure the object reaches exactly the target position
+        TourGuide.transform.position = targetPosition;
     }
 
     private IEnumerator TypeOutTextIntro()
     {
+        yield return new WaitForSeconds(3);
         Canvas.SetActive(true);
         script = "Hello, and welcome to CAMP, the Collaborative Ambient Multiplayer Park. My name is Mr. Foxy, and I am going to be your camp counselor!";
         foreach (char letter in script)
@@ -66,6 +91,8 @@ public class Tutorial : MonoBehaviour
         // Delay after typing each text
         yield return new WaitForSeconds(3);
         canvasText.text = "";
+        targetPosition = new Vector3(1.26f, 0f, 2.6f);
+        StartCoroutine(MoveTourGuide(targetPosition));
         Canvas.SetActive(false);
     }
 
@@ -75,6 +102,7 @@ public class Tutorial : MonoBehaviour
         WalkTrigger.SetActive(false);
         BoxIndicator.SetActive(true);
         Cube.SetActive(true);
+        GrabTrigger.SetActive(true);
         Canvas.SetActive(true);
         script = "Nice work! Now let’s figure out how to interact with items, in this case the yellow cube. First aim your controller towards it so that the controller line makes contact with it.";
         foreach (char letter in script)
@@ -100,8 +128,11 @@ public class Tutorial : MonoBehaviour
     private IEnumerator TypeOutTextPickUp()
     {
         BoxIndicator.SetActive(false);
+        GrabTrigger.SetActive(false);
         ThrowToIndicator.SetActive(true);
         ThrowFromIndicator.SetActive(true);
+        ThrowToTrigger.SetActive(true);
+        ThrowFromTrigger.SetActive(true);
         Canvas.SetActive(true);
         BoxIndicator.SetActive(false);
         script = "Awesome job! Continue holding the side button on the left controller to keep holding onto the item.";
@@ -130,6 +161,8 @@ public class Tutorial : MonoBehaviour
         Cube.SetActive(false);
         ThrowToIndicator.SetActive(false);
         ThrowFromIndicator.SetActive(false);
+        ThrowToTrigger.SetActive(false);
+        ThrowFromTrigger.SetActive(false);
         Canvas.SetActive(true);
         script = "Amazing throw! We’ve learned all of the basic controls. If you have any further questions, just ask me!";
         foreach (char letter in script)
@@ -177,8 +210,6 @@ public class Tutorial : MonoBehaviour
     {
         if (!allTasksDone)
         {
-            Debug.Log("In task list");
-
             if (!walkDone && walkStatus.checkWalk())
             {
                 Debug.Log("Walk done");
@@ -188,14 +219,14 @@ public class Tutorial : MonoBehaviour
             if (!pickupDone && walkDone && grabStatus.checkGrab())
             {
                 Debug.Log("Pickup done");
+                StartCoroutine(TypeOutTextPickUp());
                 pickupDone = true;
-                // StartCoroutine(TypeOutTextPickUp());
             }
-            if (!throwDone && walkDone && pickupDone)
+            if (!throwDone && walkDone && pickupDone && throwToStatus.checkBoxInside() && throwFromStatus.checkPlayerInside())
             {
                 Debug.Log("Throw done");
                 throwDone = true;
-                // StartCoroutine(TypeOutTextThrow());
+                StartCoroutine(TypeOutTextThrow());
                 allTasksDone = true;
             }
         }

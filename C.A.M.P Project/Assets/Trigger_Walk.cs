@@ -12,7 +12,6 @@ public class Trigger_Walk : MonoBehaviour
         {
             walkdone = true;
             triggered = true;
-            Debug.Log("Player triggered the walk!");
         }
     }
 

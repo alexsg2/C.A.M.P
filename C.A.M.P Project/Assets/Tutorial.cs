@@ -29,6 +29,7 @@ public class Tutorial : MonoBehaviour
     private bool allTasksDone = false;
     private string script = "";
     private Vector3 targetPosition = new Vector3(0f, 0f, 0f);
+    public Animator animator;
 
 
     private float typingSpeed = 0.0001f;
@@ -61,7 +62,9 @@ public class Tutorial : MonoBehaviour
 
     private IEnumerator TypeOutTextIntro()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
+        animator.SetTrigger("Wave");
+        animator.SetFloat("MoveSpeed", 0f);
 
         Canvas.SetActive(true);
 
@@ -97,8 +100,11 @@ public class Tutorial : MonoBehaviour
         WalkTrigger.SetActive(true);
 
         targetPosition = new Vector3(1.26f, 0f, 2.6f);
+        animator.SetFloat("MoveSpeed", -0.3f);
         StartCoroutine(MoveTourGuide(targetPosition));
         Canvas.SetActive(false);
+        yield return new WaitForSeconds(3);
+        animator.SetFloat("MoveSpeed", 0f);
     }
 
     private IEnumerator TypeOutTextWalk()
@@ -211,6 +217,7 @@ public class Tutorial : MonoBehaviour
             canvasText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+        animator.SetTrigger("Wave");
         yield return new WaitForSeconds(3);
         canvasText.text = "";
         Canvas.SetActive(false);
@@ -233,6 +240,7 @@ public class Tutorial : MonoBehaviour
             if (!pickupDone && walkDone && grabStatus.checkGrab())
             {
                 Debug.Log("Pickup done");
+                animator.SetTrigger("Pickup");
                 StartCoroutine(TypeOutTextPickUp());
                 pickupDone = true;
             }

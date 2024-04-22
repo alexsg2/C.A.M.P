@@ -40,10 +40,30 @@ public class Moving : MonoBehaviour
         UpdateState();
     }
 
+    // protected virtual void UpdateState()
+    // {
+    //     if (!allowMovement)
+    //         return;
+
+    //     switch (currState)
+    //     {
+    //         case NPCState.Idle:
+    //             HandleIdleState();
+    //             break;
+    //         case NPCState.Move:
+    //             HandleMoveState();
+    //             break;
+    //     }
+    // }
+
     protected virtual void UpdateState()
     {
         if (!allowMovement)
+        {
+            // Optionally, update animator to reflect no movement
+            animator.SetFloat("MoveSpeed", 0f);
             return;
+        }
 
         switch (currState)
         {
@@ -55,6 +75,7 @@ public class Moving : MonoBehaviour
                 break;
         }
     }
+
 
     protected Vector3 GetRandomNavMeshPosition(Vector3 origin, float dist)
     {
@@ -122,14 +143,24 @@ public class Moving : MonoBehaviour
 
     //     UpdateState();
     // }
+    // public void StopAndFacePlayer(Vector3 playerPosition)
+    // {
+    //     Debug.Log("STOP Moving");
+    //     allowMovement = false; // Disable movement transitions
+    //     SetState(NPCState.Idle);  // Stop moving
+    //     agent.ResetPath();  // Clear existing path
+    //     FaceTarget(playerPosition);  // Turn to face the player
+    // }
     public void StopAndFacePlayer(Vector3 playerPosition)
     {
         Debug.Log("STOP Moving");
-        allowMovement = false; // Disable movement transitions
-        SetState(NPCState.Idle);  // Stop moving
-        agent.ResetPath();  // Clear existing path
-        FaceTarget(playerPosition);  // Turn to face the player
+        allowMovement = false;
+        StopAllCoroutines();  // Stop all coroutines to ensure no movement restarts
+        SetState(NPCState.Idle);
+        agent.ResetPath();
+        FaceTarget(playerPosition);
     }
+
 
     private void FaceTarget(Vector3 targetPosition)
     {
@@ -140,6 +171,17 @@ public class Moving : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
     }
+
+    // private void FaceTarget(Vector3 targetPosition)
+    // {
+    //     Vector3 direction = (targetPosition - transform.position).normalized;
+    //     if (direction.magnitude > 0.1f)
+    //     {
+    //         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+    //         transform.rotation = lookRotation;  // Instantly face the target without slerping
+    //     }
+    // }
+
 
     public void ResumeNormalBehavior()
     {

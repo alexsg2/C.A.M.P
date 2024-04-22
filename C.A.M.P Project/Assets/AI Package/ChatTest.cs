@@ -72,6 +72,7 @@
 
             public async void SendReply(string input)
             {
+                Debug.Log("This is the input: " + input);
                 var userMessage = new ChatMessage()
                 {
                     Role = "user",

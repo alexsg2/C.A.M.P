@@ -11,8 +11,8 @@ public class DebugDisplay : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log("time:" + Time.time);
-        Debug.Log(gameObject.name);
+        // Debug.Log("time:" + Time.time);
+        // Debug.Log(gameObject.name);
     }
 
     void OnEnable()

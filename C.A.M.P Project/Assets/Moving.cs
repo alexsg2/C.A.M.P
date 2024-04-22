@@ -22,7 +22,7 @@ public class Moving : MonoBehaviour
     public float idleTime = 5f;
 
     protected NavMeshAgent agent;
-    protected Animator animator;
+    public Animator animator;
     protected NPCState currState = NPCState.Idle;
     private bool allowMovement = true; // Flag to control movement
 
@@ -32,7 +32,7 @@ public class Moving : MonoBehaviour
 
     protected virtual void InitalizeNPC()
     {
-        animator = GetComponent<Animator>();
+        // animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = moveSpeed;
 
@@ -124,6 +124,7 @@ public class Moving : MonoBehaviour
     // }
     public void StopAndFacePlayer(Vector3 playerPosition)
     {
+        Debug.Log("STOP Moving");
         allowMovement = false; // Disable movement transitions
         SetState(NPCState.Idle);  // Stop moving
         agent.ResetPath();  // Clear existing path
@@ -149,11 +150,11 @@ public class Moving : MonoBehaviour
     {
         if (newState == NPCState.Idle)
         {
-            animator.SetFloat("moveSpeed", 0f); // Set Animator moveSpeed to 0 when idle
+            animator.SetFloat("MoveSpeed", 0f); // Set Animator moveSpeed to 0 when idle
         }
         else if (newState == NPCState.Move)
         {
-            animator.SetFloat("moveSpeed", 0.33f); // Set Animator moveSpeed to NPC's moveSpeed when moving
+            animator.SetFloat("MoveSpeed", 0.33f); // Set Animator moveSpeed to NPC's moveSpeed when moving
         }
 
         UpdateState();

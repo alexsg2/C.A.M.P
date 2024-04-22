@@ -34,7 +34,6 @@ public class ClientJoinCanvas : MonoBehaviour
         
         ip = tp.ConnectionData.Address;
         port = tp.ConnectionData.Port; // use port on network manager
-        // portDisplay.text = $"Port: {port}";
         portField.text = ((int) port).ToString();
         addressField.text = ip;
 
@@ -46,7 +45,6 @@ public class ClientJoinCanvas : MonoBehaviour
     public void JoinServer()
     {
         NetworkManager.Singleton.StartClient();
-        // Debug.Log("Joining server");
         joinButton.interactable = false;
         cancelButton.interactable = true;
     }
@@ -54,7 +52,6 @@ public class ClientJoinCanvas : MonoBehaviour
     // Cancel joining a server
     public void Cancel() {
         NetworkManager.Singleton.Shutdown();
-        // Debug.Log("Canceled Join");
         joinButton.interactable = true;
         cancelButton.interactable = false;
     }
@@ -66,16 +63,13 @@ public class ClientJoinCanvas : MonoBehaviour
     /// </summary>
     public void ValidateAddress() {
         string potential = addressField.text;
-        // Debug.Log(potential);
         if (ipPattern.IsMatch(potential)) {
             ip = potential;
             tp.SetConnectionData(ip, port);
-            // Debug.Log("Address accepted");
         }
         else {
             // Reset field
             addressField.text = ip;
-            // Debug.Log("Address rejected");
         }
     }
 
@@ -89,11 +83,9 @@ public class ClientJoinCanvas : MonoBehaviour
         if (portPattern.IsMatch(potential)) {
             port = (ushort) Int16.Parse(potential);
             tp.SetConnectionData(ip, port);
-            // Debug.Log($"Port # accepted and updated to {port}");
         }
         else {
             portField.text = ((int) port).ToString();;
-            // Debug.Log("Port # rejected");
         }
     }
 
@@ -101,6 +93,12 @@ public class ClientJoinCanvas : MonoBehaviour
     public void OpenKeyboard() {
         TouchScreenKeyboard.hideInput = false;
         TouchScreenKeyboard.Open("", TouchScreenKeyboardType.NumberPad);
-        // Debug.Log("Selected address field");
+    }
+
+    /// <summary>
+    /// Quit game.
+    /// </summary>
+    public void Quit() {
+        Application.Quit();
     }
 }

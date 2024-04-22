@@ -95,14 +95,15 @@
                 Debug.Log(completionResponse.Choices[0].Message.Content);
                 if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
                 {
-                    // var text = completionResponse.Choices[0].Message;
-                    // if (text.Content.Contains("END_CONVO"))
-                    // {
-                    //     text.Content = text.Content.Replace("END_CONVO", "");
-                    //     Invoke(nameof(EndConvo), 5); // Schedule to deactivate conversation elements
-                    // }
                     var message = completionResponse.Choices[0].Message;
                     message.Content = message.Content.Trim();
+
+                    if (message.Content.Contains("END_CONVO"))
+                    {
+                        message.Content = message.Content.Replace("END_CONVO", "");
+                        Invoke(nameof(EndConvo), 5); // Schedule to deactivate conversation elements
+                    }
+
 
                     var replyMessage = new ChatMessage()
                     {
@@ -126,30 +127,6 @@
                 isDone = true;
                 response = "";
             }
-
-
-
-            
-
-            // private void OnComplete()
-            // {
-            //     // Delay the execution of the completion logic
-            //     Invoke("CompleteFinalActions", 5.0f); // Adjust the time as needed
-            // }
-
-            // private void CompleteFinalActions()
-            // {
-
-            //     Debug.Log("Response handling complete. All parts received.");
-            //     button.interactable = true;
-            //     LayoutRebuilder.ForceRebuildLayoutImmediate(messageRect);
-            //     height += messageRect.sizeDelta.y;
-            //     scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
-            //     scroll.verticalNormalizedPosition = 0;
-
-            //     isDone = true;
-            //     response = "";
-            // }
 
 
             private void EndConvo()

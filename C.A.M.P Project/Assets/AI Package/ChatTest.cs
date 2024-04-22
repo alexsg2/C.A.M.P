@@ -67,16 +67,23 @@
             private void SendReply()
             {
                 button.interactable = false;
-                SendReply(inputField.text);
+                // SendReply(inputField.text);
+                SendReply("Hi what is your name?");
             }
 
             public async void SendReply(string input)
             {
                 Debug.Log("This is the input: " + input);
+                // var userMessage = new ChatMessage()
+                // {
+                //     Role = "user",
+                //     Content = input
+                // };
+
                 var userMessage = new ChatMessage()
                 {
                     Role = "user",
-                    Content = input
+                    Content = "Hi whats your name?"
                 };
                 // Need This?
                 messages.Add(userMessage);

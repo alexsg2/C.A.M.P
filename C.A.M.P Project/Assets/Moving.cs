@@ -186,7 +186,7 @@ public class Moving : MonoBehaviour
     public void ResumeNormalBehavior()
     {
         allowMovement = true; // Re-enable movement transitions
-        SetState(NPCState.Idle);  // Go back to Idle state which will transition to Move after idleTime
+        UpdateState();
     }
     protected virtual void OnStateChanged(NPCState newState)
     {

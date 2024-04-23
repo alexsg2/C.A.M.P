@@ -49,6 +49,7 @@
                 
                 messages.Add(message); 
                 button.onClick.AddListener(SendReply);
+                SendReply("Hi whats your name?");
             }
             
             private void AppendMessage(ChatMessage message)

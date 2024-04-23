@@ -11,7 +11,6 @@ public class NPCControl : MonoBehaviour
 
     private Transform playerTransform;  // To store the player's transform
 
-
     private async void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

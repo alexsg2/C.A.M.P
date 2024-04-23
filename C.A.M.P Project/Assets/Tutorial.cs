@@ -23,10 +23,12 @@ public class Tutorial : MonoBehaviour
     public Trigger_Box grabStatus;
     public Trigger_Throw_To throwToStatus;
     public Trigger_Throw_From throwFromStatus;
+    public Skip_Tutorial skipped_Tutorial;
     private bool walkDone = false;
     private bool pickupDone = false;
     private bool throwDone = false;
     private bool allTasksDone = false;
+    private bool skipped = true;
     private string script = "";
     private Vector3 targetPosition = new Vector3(0f, 0f, 0f);
     public Animator animator;
@@ -39,6 +41,7 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         targetPosition = new Vector3(-4.22f, 0f, 2.6f);
+        animator.SetFloat("MoveSpeed", 1f);
         StartCoroutine(MoveTourGuide(targetPosition));
         StartCoroutine(TypeOutTextIntro());
     }
@@ -231,25 +234,38 @@ public class Tutorial : MonoBehaviour
     {
         if (!allTasksDone)
         {
-            if (!walkDone && walkStatus.checkWalk())
+            if (skipped_Tutorial.IsSkipped())
+            {
+                allTasksDone = true;
+                skipped = true;
+            }
+            else if (!walkDone && walkStatus.checkWalk())
             {
                 Debug.Log("Walk done");
                 walkDone = true;
                 StartCoroutine(TypeOutTextWalk());
             }
-            if (!pickupDone && walkDone && grabStatus.checkGrab())
+            else if (!pickupDone && walkDone && grabStatus.checkGrab())
             {
                 Debug.Log("Pickup done");
                 StartCoroutine(TypeOutTextPickUp());
                 pickupDone = true;
             }
-            if (!throwDone && walkDone && pickupDone && throwToStatus.checkBoxInside() && throwFromStatus.checkPlayerInside())
+            else if (!throwDone && walkDone && pickupDone && throwToStatus.checkBoxInside() && throwFromStatus.checkPlayerInside())
             {
                 Debug.Log("Throw done");
                 throwDone = true;
                 animator.SetTrigger("Pickup");
                 StartCoroutine(TypeOutTextThrow());
                 allTasksDone = true;
+            }
+        }
+        else
+        {
+            if (skipped)
+            {
+                TourGuide.SetActive(false);
+                Car.SetActive(true);
             }
         }
     }

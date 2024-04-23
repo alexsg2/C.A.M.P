@@ -17,6 +17,8 @@
             [SerializeField] private RectTransform sent;
             [SerializeField] private RectTransform received;
             [SerializeField] private GameObject toActivate;
+            [SerializeField] private Moving npcMovementScript;  // Reference to the NPC's Moving script
+
             
             public UnityEvent OnReplyReceived;
             
@@ -49,6 +51,7 @@
                 
                 messages.Add(message); 
                 button.onClick.AddListener(SendReply);
+                SendReply("Hi what is your name?");
             }
             
             private void AppendMessage(ChatMessage message)
@@ -74,17 +77,12 @@
             public async void SendReply(string input)
             {
                 Debug.Log("This is the input: " + input);
-                // var userMessage = new ChatMessage()
-                // {
-                //     Role = "user",
-                //     Content = input
-                // };
-
                 var userMessage = new ChatMessage()
                 {
                     Role = "user",
-                    Content = "Hi whats your name?"
+                    Content = input
                 };
+
                 // Need This?
                 messages.Add(userMessage);
                 AppendMessage(userMessage);
@@ -140,6 +138,7 @@
             private void EndConvo()
             {
                 toActivate.SetActive(false);
+                npcMovementScript.ResumeNormalBehavior();
             }
         }
     }

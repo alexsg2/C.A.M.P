@@ -26,13 +26,15 @@ public class Moving : MonoBehaviour
     protected NPCState currState = NPCState.Idle;
     private bool allowMovement = true; // Flag to control movement
 
+    private bool shouldFacePlayer = false;
+    private Vector3 targetPosition;
+
     private void Start() {
         InitalizeNPC();
     }
 
     protected virtual void InitalizeNPC()
     {
-        // animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = moveSpeed;
 
@@ -40,21 +42,13 @@ public class Moving : MonoBehaviour
         UpdateState();
     }
 
-    // protected virtual void UpdateState()
-    // {
-    //     if (!allowMovement)
-    //         return;
-
-    //     switch (currState)
-    //     {
-    //         case NPCState.Idle:
-    //             HandleIdleState();
-    //             break;
-    //         case NPCState.Move:
-    //             HandleMoveState();
-    //             break;
-    //     }
-    // }
+    private void Update()
+    {
+        if (shouldFacePlayer)
+        {
+            FaceTarget(targetPosition);
+        }
+    }
 
     protected virtual void UpdateState()
     {
@@ -137,20 +131,6 @@ public class Moving : MonoBehaviour
         OnStateChanged(newState);
     }
 
-    // protected virtual void OnStateChanged(NPCState newState)
-    // {
-    //     animator?.CrossFadeInFixedTime(newState.ToString(), 0.25f);
-
-    //     UpdateState();
-    // }
-    // public void StopAndFacePlayer(Vector3 playerPosition)
-    // {
-    //     Debug.Log("STOP Moving");
-    //     allowMovement = false; // Disable movement transitions
-    //     SetState(NPCState.Idle);  // Stop moving
-    //     agent.ResetPath();  // Clear existing path
-    //     FaceTarget(playerPosition);  // Turn to face the player
-    // }
     public void StopAndFacePlayer(Vector3 playerPosition)
     {
         Debug.Log("STOP Moving");
@@ -158,34 +138,31 @@ public class Moving : MonoBehaviour
         StopAllCoroutines();  // Stop all coroutines to ensure no movement restarts
         SetState(NPCState.Idle);
         agent.ResetPath();
-        FaceTarget(playerPosition);
+        targetPosition = playerPosition;
+        shouldFacePlayer = true;
     }
 
 
     private void FaceTarget(Vector3 targetPosition)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
-        if (direction.magnitude > 0.1f)  // Check if the player is not too close
+        if (direction.magnitude > 0.1f)
         {
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            if (Quaternion.Angle(transform.rotation, lookRotation) < 1f)
+            {
+                transform.rotation = lookRotation; // Snap to final rotation
+                shouldFacePlayer = false; // Stop rotating
+            }
         }
     }
-
-    // private void FaceTarget(Vector3 targetPosition)
-    // {
-    //     Vector3 direction = (targetPosition - transform.position).normalized;
-    //     if (direction.magnitude > 0.1f)
-    //     {
-    //         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-    //         transform.rotation = lookRotation;  // Instantly face the target without slerping
-    //     }
-    // }
 
 
     public void ResumeNormalBehavior()
     {
         allowMovement = true; // Re-enable movement transitions
+        shouldFacePlayer = false;
         UpdateState();
     }
     protected virtual void OnStateChanged(NPCState newState)

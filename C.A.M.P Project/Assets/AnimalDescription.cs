@@ -8,8 +8,10 @@ public class AnimalDescription : MonoBehaviour
 {
     public Text canvasText;
     public TaskList taskList;
+    public GameObject AnimalText;
     private bool selectedLandAnimal = false;
     private bool selectedBird = false;
+
 
     private void Start()
     {
@@ -34,6 +36,7 @@ public class AnimalDescription : MonoBehaviour
     {
         // Debug.Log("OnSelect" + args.interactable.gameObject);
         canvasText.text = GetAnimalName();
+        AnimalText.SetActive(true);
 
     }
 
@@ -47,6 +50,7 @@ public class AnimalDescription : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         canvasText.text = "";
+        AnimalText.SetActive(false);
     }
     private string GetAnimalName()
     {

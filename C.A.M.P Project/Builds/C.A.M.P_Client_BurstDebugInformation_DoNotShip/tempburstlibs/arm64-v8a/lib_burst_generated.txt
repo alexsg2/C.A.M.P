@@ -9,6 +9,7 @@ Library: C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\T
 --target-framework=NetFramework
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Cinemachine;
+--assembly-defines=IngameDebugConsole.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
 --assembly-defines=System.Configuration;
@@ -156,6 +157,7 @@ Library: C:\Users\Keith Lowry\Documents\Unity Projects\C.A.M.P\C.A.M.P Project\T
 --target-framework=NetFramework
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Cinemachine;
+--assembly-defines=IngameDebugConsole.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
 --assembly-defines=System.Configuration;

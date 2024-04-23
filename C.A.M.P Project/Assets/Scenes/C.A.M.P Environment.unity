@@ -22827,7 +22827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1784409336
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -27197,7 +27197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &2107066845
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -28240,7 +28240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &5089081379974444691
 MonoBehaviour:
   m_ObjectHideFlags: 0

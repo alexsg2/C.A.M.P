@@ -31,11 +31,19 @@ public class NPCControl : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Recover();
+        }
+    }
+
     public void Recover()
     {
         // avatar.GetComponent<PlayerInput>().enabled = true;
         toActivate.SetActive(false);
-        
+
         // Optionally, let the NPC resume normal behavior
         npcMovementScript.ResumeNormalBehavior();
     }

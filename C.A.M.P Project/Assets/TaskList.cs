@@ -9,6 +9,9 @@ public class TaskList : MonoBehaviour
     public TentTriggerZone tentTriggerZone;
     public FireTriggerZone fireTriggerZone;
     public MatchLighterTrigger matchLighterTrigger;
+    public Trigger_Board_1 board1;
+    public Trigger_Board_2 board2;
+    public Trigger_Board_3 board3;
     public GameObject FirePitIndicator;
     public GameObject MatchIndicator;
     public GameObject TentIndicator;
@@ -24,6 +27,9 @@ public class TaskList : MonoBehaviour
     public GameObject Nail2PlaceIndicator;
     public GameObject Nail3PlaceIndicator;
     public GameObject Nail4PlaceIndicator;
+    public GameObject BoardIndicator;
+    public GameObject BoardTrigger2;
+    public GameObject BoardTrigger3;
 
     private string task1;
     private string T1sub1;
@@ -48,6 +54,9 @@ public class TaskList : MonoBehaviour
     private bool T3sub1Completed = false;
     private bool T3sub2Completed = false;
     private bool allTasksDone = false;
+    private bool checkBoard1 = true;
+    private bool checkBoard2 = true;
+    private bool checkBoard3 = true;
 
 
     // Start is called before the first frame update
@@ -73,6 +82,12 @@ public class TaskList : MonoBehaviour
     {
         if (!allTasksDone)
         {
+            if (board1.checkBoard() && checkBoard1)
+            {
+                BoardIndicator.SetActive(false);
+                FirePitIndicator.SetActive(true);
+                checkBoard1 = false;
+            }
             if (fireTriggerZone.checkSticks() && !T1sub1Completed)
             {
                 T1sub1 = "[x] <s>Put 12 twigs into the fire</s>\n\n";
@@ -96,10 +111,8 @@ public class TaskList : MonoBehaviour
                 T1sub3 = "[x] <s>Light 3 Matches using</s> \n     <s>a matchbox\n\n</s>";
                 T1sub3Completed = true;
                 FirePitIndicator.SetActive(false);
-                TentIndicator.SetActive(true);
-                PolesIndicator.SetActive(true);
-                Pole1PlaceIndicator.SetActive(true);
-                Pole2PlaceIndicator.SetActive(true);
+                BoardTrigger2.SetActive(true);
+                BoardIndicator.SetActive(true);
 
                 canvasText.text = task1 + T1sub1 + T1sub2 + T1sub3;
             }
@@ -108,6 +121,15 @@ public class TaskList : MonoBehaviour
                 task1 = "<s>Task 1: Build a Fire</s>\n";
                 task1Done = true;
                 canvasText.text = task2 + T2sub1 + T2sub2 + T2sub3;
+            }
+            if (board2.checkBoard() && task1Done && checkBoard2)
+            {
+                BoardIndicator.SetActive(false);
+                TentIndicator.SetActive(true);
+                PolesIndicator.SetActive(true);
+                Pole1PlaceIndicator.SetActive(true);
+                Pole2PlaceIndicator.SetActive(true);
+                checkBoard2 = false;
             }
             if (tentTriggerZone.checkPole() && !T2sub1Completed)
             {
@@ -160,8 +182,15 @@ public class TaskList : MonoBehaviour
                 Nail3PlaceIndicator.SetActive(false);
                 Nail4PlaceIndicator.SetActive(false);
                 TentIndicator.SetActive(false);
+                BoardTrigger3.SetActive(true);
+                BoardIndicator.SetActive(true);
 
                 canvasText.text = task3 + T3sub1 + T3sub2;
+            }
+            if (board3.checkBoard() && task2Done && checkBoard3)
+            {
+                BoardIndicator.SetActive(false);
+                checkBoard2 = false;
             }
             if (T3sub1Completed && !task3Done && task2Done)
             {

@@ -34,7 +34,7 @@ public class Tutorial : MonoBehaviour
     public Animator animator;
 
 
-    private float typingSpeed = 0.0001f;
+    private float typingSpeed = 0.01f;
     // private float typingSpeed = 0.00000001f;
 
     // Start is called before the first frame update
@@ -115,28 +115,30 @@ public class Tutorial : MonoBehaviour
         WalkIndicator.SetActive(false);
         WalkTrigger.SetActive(false);
 
+        Canvas.SetActive(true);
+
+        script = "Nice work! Now let’s figure out how to interact with items. In a second a cube will appear.";
+        foreach (char letter in script)
+        {
+            canvasText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        yield return new WaitForSeconds(3);
+        canvasText.text = "";
+
+        script = "Aim your controller towards the cube. Once the line turns white, pick up the item by using the side button on the left or right controller.";
+        foreach (char letter in script)
+        {
+            canvasText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        yield return new WaitForSeconds(5);
+        canvasText.text = "";
+
         BoxIndicator.SetActive(true);
         Cube.SetActive(true);
         GrabTrigger.SetActive(true);
-        Canvas.SetActive(true);
 
-        script = "Nice work! Now let’s figure out how to interact with items, in this case the yellow cube.";
-        foreach (char letter in script)
-        {
-            canvasText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-        yield return new WaitForSeconds(3);
-        canvasText.text = "";
-
-        script = "Aim your controller towards it so that the controller line makes contact with it. Once the line turns white, pick up the item by using the side button on the left or right controller.";
-        foreach (char letter in script)
-        {
-            canvasText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-        yield return new WaitForSeconds(3);
-        canvasText.text = "";
         Canvas.SetActive(false);
     }
 
@@ -155,20 +157,19 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(3);
         canvasText.text = "";
 
-        script = "The next thing we are going to do is throw the item. Just like a normal throw, lean your arm back and swing in a forward motion, releasing the side button. Stay in the zone and throw the yellow cube right to me!";
+        script = "Let's throw the cube next. Lean back, swing forward, release the side button. Keep in the zone and throw the yellow cube straight to me!";
         foreach (char letter in script)
         {
             canvasText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+        yield return new WaitForSeconds(5);
+        canvasText.text = "";
 
         ThrowToIndicator.SetActive(true);
         ThrowFromIndicator.SetActive(true);
         ThrowToTrigger.SetActive(true);
         ThrowFromTrigger.SetActive(true);
-
-        yield return new WaitForSeconds(3);
-        canvasText.text = "";
 
         Canvas.SetActive(false);
     }
@@ -182,7 +183,7 @@ public class Tutorial : MonoBehaviour
         ThrowFromTrigger.SetActive(false);
 
         Canvas.SetActive(true);
-        script = "Amazing throw! We’ve learned all of the basic controls. If you have any further questions, just ask me!";
+        script = "Amazing throw! You've learned all of the basic controls. If you have any further questions, just ask me!";
         foreach (char letter in script)
         {
             canvasText.text += letter;
@@ -191,7 +192,7 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(3);
         canvasText.text = "";
 
-        script = "I’ll be wandering around the campsite. You can ask me anything regarding what to do next or how to do your current tasks. To ask me a question, simply walk to me and speak your question out loud.";
+        script = "While at the campsite, walk up to me with any questions about what to do next or how to tackle your tasks. Just click the mic icon and ask away.";
         foreach (char letter in script)
         {
             canvasText.text += letter;
@@ -209,22 +210,23 @@ public class Tutorial : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed);
         }
         // Delay after typing each text
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         canvasText.text = "";
 
         Board.SetActive(false);
 
-        script = "You’re ready to begin camping walk to the car and click the join button! I'll see you there! Happy camping!";
+        script = "You're all set for camping! Walk to the car and hit the join button. I'll meet you there!\nHappy camping!";
         foreach (char letter in script)
         {
             canvasText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
         animator.SetTrigger("Wave");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         canvasText.text = "";
         Canvas.SetActive(false);
 
+        allTasksDone = true;
         TourGuide.SetActive(false);
         Car.SetActive(true);
     }
@@ -236,8 +238,19 @@ public class Tutorial : MonoBehaviour
         {
             if (skipped_Tutorial.IsSkipped())
             {
-                allTasksDone = true;
-                skipped = true;
+                Cube.SetActive(false);
+                WalkIndicator.SetActive(false);
+                BoxIndicator.SetActive(false);
+                ThrowToIndicator.SetActive(false);
+                ThrowFromIndicator.SetActive(false);
+                WalkTrigger.SetActive(false);
+                GrabTrigger.SetActive(false);
+                ThrowFromTrigger.SetActive(false);
+                ThrowToTrigger.SetActive(false);
+                Board.SetActive(false);
+                TourGuide.SetActive(false);
+
+                Car.SetActive(true);
             }
             else if (!walkDone && walkStatus.checkWalk())
             {
@@ -257,15 +270,6 @@ public class Tutorial : MonoBehaviour
                 throwDone = true;
                 animator.SetTrigger("Pickup");
                 StartCoroutine(TypeOutTextThrow());
-                allTasksDone = true;
-            }
-        }
-        else
-        {
-            if (skipped)
-            {
-                TourGuide.SetActive(false);
-                Car.SetActive(true);
             }
         }
     }

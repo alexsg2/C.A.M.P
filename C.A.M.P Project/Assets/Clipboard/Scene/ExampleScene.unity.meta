@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e3348a57fd05b8f4cbac11a0706bac6d
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 137662
+  packageName: Clipboard
+  packageVersion: 1.0
+  assetPath: Assets/Clipboard/Scene/ExampleScene.unity
+  uploadId: 289830

@@ -53,17 +53,17 @@ public class TaskList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        task1 = "Task 1: Build a Fire\n";
-        T1sub1 = "\tPut 3 twigs into the fire\n";
-        T1sub2 = "\tLight the match using the matchbox\n";
-        T1sub3 = "\tThrow the lit match into the firewood\n";
-        task2 = "Task 2: Assemble a Tent\n";
-        T2sub1 = "\tPlace two poles into the ground\n";
-        T2sub2 = "\tPut two tarps on the poles\n";
-        T2sub3 = "\tNail the tarp to the ground by placing and hammering nails in the corners\n";
-        task3 = "Task 3: Identify Animals\n";
-        T3sub1 = "\tIdentify one land animal\n";
-        T3sub2 = "\tIdentify one bird\n";
+        task1 = "Task 1: Build a Fire\n\n";
+        T1sub1 = "[] Put 12 twigs into the fire\n\n";
+        T1sub2 = "[] Light 3 Matches using \n   a matchbox\n\n";
+        T1sub3 = "[] Throw the lit Matches \n   into the firewood";
+        task2 = "Task 2: Assemble a Tent\n\n";
+        T2sub1 = "[] Place 2 poles into the\n   ground\n\n";
+        T2sub2 = "[] Put 2 tarps on the poles\n\n";
+        T2sub3 = "[] Nail the tarp to the ground by placing and hammering nails in the corners\n";
+        task3 = "Task 3: Identify Animals\n\n";
+        T3sub1 = "[] Identify 1 Land Animal\n\n";
+        T3sub2 = "[] Identify 1 Bird Type";
 
         canvasText.text = task1 + T1sub1 + T1sub2 + T1sub3;
     }
@@ -75,7 +75,7 @@ public class TaskList : MonoBehaviour
         {
             if (fireTriggerZone.checkSticks() && !T1sub1Completed)
             {
-                T1sub1 = "\t<s>Put 3 twigs into the fire</s>\n";
+                T1sub1 = "[x] <s>Put 12 twigs into the fire</s>\n\n";
                 T1sub1Completed = true;
                 FirePitIndicator.SetActive(false);
                 MatchIndicator.SetActive(true);
@@ -84,7 +84,7 @@ public class TaskList : MonoBehaviour
             }
             if (matchLighterTrigger.checkMatch() && !T1sub2Completed)
             {
-                T1sub2 = "\t<s>Light the match using the matchbox</s>\n";
+                T1sub2 = "[x] <s>Light 3 Matches using</s> \n\t<s>a matchbox</s>\n\n";
                 T1sub2Completed = true;
                 FirePitIndicator.SetActive(true);
                 MatchIndicator.SetActive(false);
@@ -93,7 +93,7 @@ public class TaskList : MonoBehaviour
             }
             if (fireTriggerZone.checkFire() && !T1sub3Completed)
             {
-                T1sub3 = "\t<s>Throw the lit match into the firewood</s>\n";
+                T1sub3 = "[x] <s>Light 3 Matches using</s> \n     <s>a matchbox\n\n</s>";
                 T1sub3Completed = true;
                 FirePitIndicator.SetActive(false);
                 TentIndicator.SetActive(true);
@@ -112,7 +112,7 @@ public class TaskList : MonoBehaviour
             if (tentTriggerZone.checkPole() && !T2sub1Completed)
             {
                 Debug.Log("Got in");
-                T2sub1 = "\t<s>Place two poles into the ground</s>\n";
+                T2sub1 = "[x] <s>Place 2 poles into the</s>\n     <s>ground</s>\n\n";
                 T2sub1Completed = true;
                 PolesIndicator.SetActive(false);
                 Debug.Log("Poles Active: " + PolesIndicator.activeSelf);
@@ -129,7 +129,7 @@ public class TaskList : MonoBehaviour
             }
             if (tentTriggerZone.checkTarp() && !T2sub2Completed)
             {
-                T2sub2 = "\t<s>Put two tarps on the poles</s>\n";
+                T2sub2 = "[x] <s>Put 2 tarps on the poles</s>\n\n";
                 T2sub2Completed = true;
                 Tarp1Indicator.SetActive(false);
                 Tarp2Indicator.SetActive(false);
@@ -145,7 +145,7 @@ public class TaskList : MonoBehaviour
             }
             if (tentTriggerZone.checkNail() && !T2sub3Completed)
             {
-                T2sub3 = "\t<s>Nail the tarp to the ground by placing and hammering nails in the corners</s>\n";
+                T2sub3 = "[x] <s>Nail the tarp to the ground by placing and hammering nails in the corners</s>\n";
                 T2sub3Completed = true;
                 NailIndicator.SetActive(false);
 
@@ -165,12 +165,12 @@ public class TaskList : MonoBehaviour
             }
             if (T3sub1Completed && !task3Done && task2Done)
             {
-                T3sub1 = "\t<s>Identify one land animal</s>\n";
+                T3sub1 = "[x] <s>Identify 1 Land Animal\n\n</s>";
                 canvasText.text = task3 + T3sub1 + T3sub2;
             }
             if (T3sub2Completed && !task3Done && task2Done)
             {
-                T3sub2 = "\t<s>Identify one bird</s>\n";
+                T3sub2 = "[x] <s>Identify 1 Bird Type</s>";
                 canvasText.text = task3 + T3sub1 + T3sub2;
             }
             if (T3sub1Completed && T3sub2Completed && !task3Done && task2Done)
@@ -181,7 +181,7 @@ public class TaskList : MonoBehaviour
             if (task1Done && task2Done && task3Done)
             {
                 allTasksDone = true;
-                canvasText.text = "All tasks done. Go explore and have fun!";
+                canvasText.text = "\n\n\n\tAll tasks done.\n\n\n  Go explore and have fun!";
             }
         }
     }

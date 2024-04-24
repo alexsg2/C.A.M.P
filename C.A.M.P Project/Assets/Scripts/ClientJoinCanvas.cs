@@ -68,12 +68,14 @@ public class ClientJoinCanvas : MonoBehaviour
     /// connection settings if valid.
     /// </summary>
     public void ValidateAddress() {
-        string potential = addressField.text;
+        string potential = addressField.text.Trim();
         if (ipPattern.IsMatch(potential)) {
+            Debug.Log($"Address updated to \"{potential}\"");
             ip = potential;
             tp.SetConnectionData(ip, port);
         }
         else {
+            Debug.Log($"Address rejected: \"{potential}\"");
             // Reset field
             addressField.text = ip;
         }
@@ -85,13 +87,23 @@ public class ClientJoinCanvas : MonoBehaviour
     /// connection settings if valid.
     /// </summary>
     public void ValidatePort() {
-        string potential = portField.text;
-        if (portPattern.IsMatch(potential)) {
+        string potential = portField.text.Trim();
+
+        if (!portPattern.IsMatch(potential)) {
+            Debug.Log($"Port rejected: \"{potential}\"");
+            portField.text = ((int) port).ToString();
+            return;
+        }
+
+        try {
             port = (ushort) Int16.Parse(potential);
             tp.SetConnectionData(ip, port);
+            Debug.Log($"Port updated to \"{potential}\"");
         }
-        else {
-            portField.text = ((int) port).ToString();;
+        catch (OverflowException) {
+            Debug.Log($"Port rejected: \"{potential}\", too long");
+            portField.text = ((int) port).ToString();
+            return;
         }
     }
 

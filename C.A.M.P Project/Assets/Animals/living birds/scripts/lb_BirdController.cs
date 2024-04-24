@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -20,6 +21,10 @@ public class lb_BirdController : MonoBehaviour {
 	public bool sparrow = true;
 	public bool goldFinch = true;
 	public bool crow = true;
+
+	public Text canvasText;
+    public TaskList taskList;
+    public GameObject AnimalText;
 
 	bool pause = false;
 	GameObject[] myBirds;
@@ -245,43 +250,69 @@ public class lb_BirdController : MonoBehaviour {
 		activeBirds --;
 	}
 
-	void SpawnBird(){
-		if (!pause){
-			GameObject bird = null;
-			int randomBirdIndex = Mathf.FloorToInt (Random.Range (0,myBirds.Length));
-			int loopCheck = 0;
-			//find a random bird that is not active
-			while(bird == null){
-				if(myBirds[randomBirdIndex].activeSelf == false){
-					bird = myBirds[randomBirdIndex];
-				}
-				randomBirdIndex = randomBirdIndex+1 >= myBirds.Length ? 0:randomBirdIndex+1;
-				loopCheck ++;
-				if (loopCheck >= myBirds.Length){
-					//all birds are active
-					return;
-				}
-			}
-			//Find a point off camera to positon the bird and activate it
-			bird.transform.position = FindPositionOffCamera();
-			if(bird.transform.position == Vector3.zero){
-				//couldnt find a suitable spawn point
-				return;
-			}else{
-				bird.SetActive (true);
-				activeBirds++;
+	void SpawnBird()
+{
+    if (!pause)
+    {
+        GameObject bird = null;
+        int randomBirdIndex = Mathf.FloorToInt(Random.Range(0, myBirds.Length));
+        int loopCheck = 0;
+        //find a random bird that is not active
+        while (bird == null)
+        {
+            if (myBirds[randomBirdIndex].activeSelf == false)
+            {
+                bird = myBirds[randomBirdIndex];
+            }
+            randomBirdIndex = randomBirdIndex + 1 >= myBirds.Length ? 0 : randomBirdIndex + 1;
+            loopCheck++;
+            if (loopCheck >= myBirds.Length)
+            {
+                //all birds are active
+                return;
+            }
+        }
+        //Find a point off camera to positon the bird and activate it
+        bird.transform.position = FindPositionOffCamera();
+        if (bird.transform.position == Vector3.zero)
+        {
+            //couldnt find a suitable spawn point
+            return;
+        }
+        else
+        {
+            bird.SetActive(true);
+            activeBirds++;
 
-				// Get the AnimalDescription component from the new bird
-        		AnimalDescription animalDescription = bird.GetComponent<AnimalDescription>();
+            // Get the AnimalDescription component from the new bird
+            AnimalDescription animalDescription = bird.GetComponent<AnimalDescription>();
 
-				// Set the canvasText variable to the Text component
-				string path = "XR Origin (XR Rig)/Camera Offset/Right Controller/Animal Text/Image/Text";
-				animalDescription.canvasText = GameObject.Find(path).GetComponent<UnityEngine.UI.Text>();
-				
-				BirdFindTarget(bird);
-			}
-		}
-	}
+            // Check if the bird has the AnimalDescription component
+            if (animalDescription != null)
+            {
+                Debug.Log("AnimalDescription script found!");
+
+                // Set the canvasText variable to the Text component
+                animalDescription.canvasText = canvasText;
+                Debug.Log("CanvasText set to: " + canvasText.text);
+
+                // Set the taskList variable to the TaskList component
+                animalDescription.taskList = taskList;
+                Debug.Log("TaskList set.");
+
+                // Set the AnimalText variable to the GameObject
+                animalDescription.AnimalText = AnimalText;
+                Debug.Log("AnimalText set.");
+            }
+            else
+            {
+                Debug.LogWarning("The spawned bird does not have the AnimalDescription script attached!");
+            }
+
+            BirdFindTarget(bird);
+        }
+    }
+}
 
 	bool AreThereActiveTargets(){
 		if (birdGroundTargets.Count > 0 || birdPerchTargets.Count > 0){

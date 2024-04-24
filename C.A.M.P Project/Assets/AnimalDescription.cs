@@ -34,10 +34,8 @@ public class AnimalDescription : MonoBehaviour
 
     private void OnSelectEnter(SelectEnterEventArgs args)
     {
-        // Debug.Log("OnSelect" + args.interactable.gameObject);
         canvasText.text = GetAnimalName();
         AnimalText.SetActive(true);
-
     }
 
     private void OnSelectExit(SelectExitEventArgs args)
@@ -102,45 +100,38 @@ public class AnimalDescription : MonoBehaviour
         }
         else if (animalName.Contains("blueJay"))
         {
-            Debug.Log("Blue Jay");
             taskList.updateT3Sub2();
-            return "Blue Jay";
+            return "Blue Jay\nBlue jays are primarily blue and relatively small birds, with white undersides and chests. They have a black U-shaped collar around the neck.";
         }
         else if (animalName.Contains("cardinal"))
         {
-            Debug.Log("Cardinal");
             taskList.updateT3Sub2();
-            return "Cardinal";
+            return "Cardinal\nCardinals are medium-sized thick-billed songbirds, many with crested heads and some bright red coloring.";
         }
         else if (animalName.Contains("chickadee"))
         {
-            Debug.Log("Chickadee");
             taskList.updateT3Sub2();
-            return "Chickadee";
+            return "Chickadee\nChickadees are small, plump birds with round bodies and short tails. They have black heads and backs, with white cheeks and undersides.";
         }
         else if (animalName.Contains("crow"))
         {
-            Debug.Log("Crow");
             taskList.updateT3Sub2();
-            return "Crow";
+            return "Crow\nThere are a wide variety of crow species. Most crows have black-colored feathers with an iridescent shine to them.";
         }
         else if (animalName.Contains("goldFinch"))
         {
-            Debug.Log("Gold Finch");
             taskList.updateT3Sub2();
-            return "Gold Finch";
+            return "Gold Finch\nGoldfinches are songbirds with short, notched tails and lots of yellow coloring. They are migratory birds.";
         }
         else if (animalName.Contains("robin"))
         {
-            Debug.Log("Robin");
             taskList.updateT3Sub2();
-            return "Robin";
+            return "Robin\nRobins are small to medium-sized birds belonging to the thrush family, Turdidae. They are known for their distinctive orange-red breast, which contrasts with their grayish-brown upperparts. Robins have a relatively large head with a prominent black eye and a slender bill. They are widespread across North America and Europe, with some species found in other parts of the world as well. Robins are highly adaptable birds, inhabiting various environments such as woodlands, gardens, parks, and even urban areas. They feed primarily on insects, earthworms, fruits, and berries. Robins are known for their cheerful songs, which they use to establish territories and attract mates, especially during the breeding season.During nesting season, which typically begins in spring, female robins construct cup-shaped nests using grass, twigs, and mud, often located in trees, shrubs, or even on ledges. They lay a clutch of eggs, usually blue or greenish-blue in color, and both parents take turns incubating the eggs and feeding the young.";
         }
         else if (animalName.Contains("sparrow"))
         {
-            Debug.Log("Sparrow");
             taskList.updateT3Sub2();
-            return "Sparrow";
+            return "Sparrow\nSparrows are small birds, usually brown and gray. They have short tails and small, strong beaks. ";
         }
 
         return animalName;

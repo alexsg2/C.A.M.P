@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class FireTriggerZone : MonoBehaviour
 {
-    public int twigsRequired = 3; // Number of twigs required
     public GameObject logstack; // Logs to toggle visibility
     public GameObject fire;
     public GameObject fireLight;
-
     private int twigsCount = 0;
     private bool twigCountReached = false;
+    private bool matchCountReached = false;
+    private int matchCount = 0;
     private bool fireMade = false;
     private bool logStackThere = false;
+    private int twigsRequired = 12; // Number of twigs required
+    private int matchesRequired = 3; // Number of matches required
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,10 +22,14 @@ public class FireTriggerZone : MonoBehaviour
             Debug.Log("Twigs count: " + twigsCount);
             CheckRequirements();
         }
-        else if (other.CompareTag("Match") && logStackThere)
+        else if (other.CompareTag("Match") && logStackThere && !matchCountReached)
         {
-            if (twigCountReached)
+            matchCount++;
+            Debug.Log("Match count: " + matchCount);
+            if (twigCountReached && (matchCount == matchesRequired))
             {
+                Debug.Log("Match count reached: " + matchCount);
+                matchCountReached = true;
                 MakeFire();
             }
         }

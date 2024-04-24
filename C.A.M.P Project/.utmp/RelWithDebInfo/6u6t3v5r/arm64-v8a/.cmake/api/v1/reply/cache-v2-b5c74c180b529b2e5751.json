@@ -214,6 +214,22 @@
 			"value" : "C:/Program Files/Unity/Hub/Editor/2023.2.9f1/Editor/Data/PlaybackEngines/AndroidPlayer/SDK/cmake/3.22.1/bin/ctest.exe"
 		},
 		{
+			"name" : "CMAKE_CXX_COMPILER",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "(This variable does not exist and should not be used)"
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : ""
+		},
+		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
 			"properties" : 
 			[
@@ -324,6 +340,22 @@
 			],
 			"type" : "STRING",
 			"value" : "-O2 -g -DNDEBUG"
+		},
+		{
+			"name" : "CMAKE_C_COMPILER",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "(This variable does not exist and should not be used)"
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -703,7 +735,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/PROGRA~1/Unity/Hub/Editor/20232~1.9F1/Editor/Data/PLAYBA~1/ANDROI~1/SDK/cmake/322~1.1/bin/ninja.exe"
+			"value" : "C:/Program Files/Unity/Hub/Editor/2023.2.9f1/Editor/Data/PlaybackEngines/AndroidPlayer/SDK/cmake/3.22.1/bin/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",

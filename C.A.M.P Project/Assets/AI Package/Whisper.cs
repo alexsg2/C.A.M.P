@@ -26,15 +26,13 @@ namespace OpenAI
             {
                 dropdown.options.Add(new Dropdown.OptionData(device));
             }
-            Debug.Log(dropdown.options[0].text);
-            Debug.Log(dropdown.options[1].text);
-
             recordButton.onClick.AddListener(StartRecording);
             dropdown.onValueChanged.AddListener(ChangeMicrophone);
             
             var index = PlayerPrefs.GetInt("user-mic-device-index");
+            Debug.Log(index);
             dropdown.SetValueWithoutNotify(index);
-            ChangeMicrophone(1);
+            StartRecording();
         }
 
         private void ChangeMicrophone(int index)

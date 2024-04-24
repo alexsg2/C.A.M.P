@@ -290,19 +290,19 @@ public class lb_BirdController : MonoBehaviour {
             // Check if the bird has the AnimalDescription component
             if (animalDescription != null)
             {
-                Debug.Log("AnimalDescription script found!");
+                // Debug.Log("AnimalDescription script found!");
 
                 // Set the canvasText variable to the Text component
                 animalDescription.canvasText = canvasText;
-                Debug.Log("CanvasText set to: " + canvasText.text);
+                // Debug.Log("CanvasText set to: " + canvasText.text);
 
                 // Set the taskList variable to the TaskList component
                 animalDescription.taskList = taskList;
-                Debug.Log("TaskList set.");
+                // Debug.Log("TaskList set.");
 
                 // Set the AnimalText variable to the GameObject
                 animalDescription.AnimalText = AnimalText;
-                Debug.Log("AnimalText set.");
+                // Debug.Log("AnimalText set.");
             }
             else
             {

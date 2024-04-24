@@ -104,7 +104,7 @@ namespace OpenAI
                     Messages = messages
                 });
 
-                Debug.Log(completionResponse.Choices[0].Message);
+                // Debug.Log(completionResponse.Choices[0].Message);
                 Debug.Log(completionResponse.Choices[0].Message.Content);
                 if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
                 {

@@ -31,10 +31,11 @@ namespace OpenAI
             
             var index = PlayerPrefs.GetInt("user-mic-device-index");
             Debug.Log(index);
-            Debug.Log(index);
-            Debug.Log(index);
+            Debug.Log(dropdown.options[0].text);
+            Debug.Log(dropdown.options[1].text);
+            
             dropdown.SetValueWithoutNotify(index);
-            StartRecording();
+            // StartRecording();
         }
 
         private void ChangeMicrophone(int index)

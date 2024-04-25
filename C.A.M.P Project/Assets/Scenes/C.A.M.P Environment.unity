@@ -3326,7 +3326,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &133548983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6889,7 +6889,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!1001 &250152842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8404,6 +8404,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6490136728237138907, guid: b3d22c566a40cfe45bfc575a822257f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 287522194}
+    - targetCorrespondingSourceObject: {fileID: 6490136728237138907, guid: b3d22c566a40cfe45bfc575a822257f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 287522196}
+    - targetCorrespondingSourceObject: {fileID: 6490136728237138907, guid: b3d22c566a40cfe45bfc575a822257f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 287522197}
+    - targetCorrespondingSourceObject: {fileID: 6490136728237138907, guid: b3d22c566a40cfe45bfc575a822257f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 287522198}
   m_SourcePrefab: {fileID: 100100000, guid: b3d22c566a40cfe45bfc575a822257f4, type: 3}
 --- !u!1 &287522186 stripped
 GameObject:
@@ -8535,6 +8544,72 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 1595969889546942702, guid: b3d22c566a40cfe45bfc575a822257f4, type: 3}
   m_PrefabInstance: {fileID: 287522185}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &287522196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287522186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3448851245
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 1
+  AutoObjectParentSync: 1
+--- !u!114 &287522197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287522186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &287522198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287522186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 287522195}
 --- !u!1001 &287753665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9539,7 +9614,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &332400808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10062,7 +10137,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &340989622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11423,7 +11498,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &386844647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14417,7 +14492,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &498523516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16395,7 +16470,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &587054491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18406,6 +18481,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 73ef0b63ffe19f94ab35e4475b345d70, type: 3}
   m_PrefabInstance: {fileID: 679153462}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &662128053
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 200, g: 200, b: 80, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1001 &664308299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21592,7 +21707,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &794781681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22208,7 +22323,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!4 &822721622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8930885862814177750, guid: 13dd10d6717971d4ea9125d158299b1e, type: 3}
@@ -23156,6 +23271,10 @@ PrefabInstance:
       propertyPath: maxMoveTime
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 7578033035582892364, guid: f22de17d262c3ae468ee9aed95ac4950, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 382e8d323be69c14798e9bb1d4ffda50, type: 2}
     - target: {fileID: 7578033035589781142, guid: f22de17d262c3ae468ee9aed95ac4950, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.0170794
@@ -24740,7 +24859,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &892204098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25705,7 +25824,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.4180018, z: -0, w: 0.9084462}
   m_LocalPosition: {x: 9.33, y: 3.1261158, z: 12.66}
-  m_LocalScale: {x: 0.41316736, y: 0.41709915, z: -0.35738164}
+  m_LocalScale: {x: 0.41316736, y: 0.41709915, z: 0.3573816}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1335527538}
@@ -26899,7 +27018,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &989562241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27075,6 +27194,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377034106}
     m_Modifications:
+    - target: {fileID: 432570968261275511, guid: 3edc046b8993d3245b9705943278862c, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 53116f02eef714540be72cf8a7f05df9, type: 3}
     - target: {fileID: 731195977578030409, guid: 3edc046b8993d3245b9705943278862c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -27186,9 +27309,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7115927012787675106, guid: 3edc046b8993d3245b9705943278862c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1677725650}
-    - targetCorrespondingSourceObject: {fileID: 7115927012787675106, guid: 3edc046b8993d3245b9705943278862c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1677725648}
     - targetCorrespondingSourceObject: {fileID: 7115927012787675106, guid: 3edc046b8993d3245b9705943278862c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1677725647}
@@ -27622,7 +27742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4195327145353672349, guid: 4150d4d3b2ed97f49b998712036fe499, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4251621695286627626, guid: 4150d4d3b2ed97f49b998712036fe499, type: 3}
       propertyPath: m_Pivot.x
@@ -28542,7 +28662,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1054548121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29062,46 +29182,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 451528, guid: 78c29697749a6d44e964f9a0cf83d77a, type: 3}
   m_PrefabInstance: {fileID: 1071980160}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1075572152
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 200, g: 200, b: 80, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1001 &1076206913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30123,7 +30203,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.4180018, z: -0, w: 0.9084462}
   m_LocalPosition: {x: 11.18, y: 3.1261158, z: 14.26}
-  m_LocalScale: {x: 0.41316736, y: 0.41709915, z: -0.35738164}
+  m_LocalScale: {x: 0.41316736, y: 0.41709915, z: 0.3573816}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1335527538}
@@ -31147,7 +31227,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1150223867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31627,11 +31707,11 @@ MonoBehaviour:
   m_HeartbeatTimeoutMS: 500
   m_ConnectTimeoutMS: 1000
   m_MaxConnectAttempts: 60
-  m_DisconnectTimeoutMS: 30000
+  m_DisconnectTimeoutMS: 180000
   ConnectionData:
     Address: 127.0.0.1
     Port: 7777
-    ServerListenAddress: 127.0.0.1
+    ServerListenAddress: 0.0.0.0
   DebugSimulator:
     PacketDelayMS: 0
     PacketJitterMS: 0
@@ -32472,7 +32552,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1197760402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33242,7 +33322,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1205429133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33874,7 +33954,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1217471464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34301,7 +34381,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1219900883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35418,7 +35498,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!1001 &1245214377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35986,7 +36066,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1256520664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37715,7 +37795,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1308791129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38405,7 +38485,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1334188821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38832,7 +38912,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1335345879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41101,7 +41181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5805482637759318947, guid: 132cd9edf1a79e74db1e4afac1c16b87, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5805482637759318947, guid: 132cd9edf1a79e74db1e4afac1c16b87, type: 3}
       propertyPath: m_TagString
@@ -41469,7 +41549,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1472128155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43118,7 +43198,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1540652841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43603,7 +43683,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1547765341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44980,6 +45060,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6261000379042185151, guid: 6d746127c6916bd48b7d6af212ce2d59, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 75116d3ad847f4b308aea41d92d1efb8, type: 3}
     - target: {fileID: 6350379195476909237, guid: 6d746127c6916bd48b7d6af212ce2d59, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -46588,7 +46672,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1642799802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47178,18 +47262,6 @@ MonoBehaviour:
   canvasText: {fileID: 658880344}
   taskList: {fileID: 234011496}
   AnimalText: {fileID: 1012628888}
---- !u!114 &1677725648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528089548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eff22e0747d8c94fbb94a2aec4a9b63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1677725650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47962,6 +48034,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2671906396014909800, guid: e598a717239b0fa4ab18b32f034d6d2b, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 0962bdca27eaca34aaa15f7fdf608faf, type: 3}
     - target: {fileID: 2722677513435096906, guid: e598a717239b0fa4ab18b32f034d6d2b, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -49972,7 +50048,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1784409343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50842,7 +50918,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1816591249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52424,7 +52500,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1881079039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55235,7 +55311,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &1998342344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56396,7 +56472,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!1 &2023508075
 GameObject:
   m_ObjectHideFlags: 0
@@ -57098,7 +57174,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!1001 &2052046900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57966,6 +58042,10 @@ PrefabInstance:
     - target: {fileID: 4461302193326013881, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
       propertyPath: m_Name
       value: NetworkedGrabCube Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461302193326013881, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6520729737667480190, guid: 5c8ead4f0fe2d714683bd8fa61ceddfb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59407,7 +59487,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &2107066852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60725,7 +60805,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!65 &65288880302746516
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60798,7 +60878,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!33 &352575670001108387
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61111,7 +61191,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &7884839941016851915
 MonoBehaviour:
   m_ObjectHideFlags: 0

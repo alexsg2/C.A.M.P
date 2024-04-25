@@ -37,6 +37,8 @@ public class AnimalDescription : MonoBehaviour
 
     private void OnSelectEnter(SelectEnterEventArgs args)
     {
+        // args.interactorObject.transform.
+        // TODO: get AnimalText canas from args and set text
         canvasText.text = GetAnimalName();
         AnimalText.SetActive(true);
     }

@@ -46,21 +46,14 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    // public void OnClientDisconnect(ulong clientId) {
-    //     if (IsClient && IsOwner && clientId == OwnerClientId) {
-    //         Debug.Log("Handling server disconnect");
-    //         // shutdown client
-    //         NetworkManager.Singleton.Shutdown();
-    //         // load join scene
-    //         SceneManager.LoadScene("Scenes/PlayerJoinScene", LoadSceneMode.Single);
-    //     }
-    // }
-
     public void OnSelectGrabbable(SelectEnterEventArgs eventArgs) {
         // Debug.Log("OnSelectGrabbable");
         if (IsClient && IsOwner) {
             // Debug.Log("OnSelectGrabbable inside first if");
             NetworkObject networkObjectSelected = eventArgs.interactableObject.transform.GetComponent<NetworkObject>();
+            if (networkObjectSelected.gameObject.layer != LayerMask.NameToLayer("Grabbable")) {
+                return;
+            }
             if (networkObjectSelected != null && networkObjectSelected.OwnerClientId != OwnerClientId) {
                 // Debug.Log("OnSelectGrabbable inside second if");
                 // request ownership of interactable from the server

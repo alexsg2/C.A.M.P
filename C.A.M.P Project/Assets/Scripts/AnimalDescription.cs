@@ -6,49 +6,30 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class AnimalDescription : MonoBehaviour
 {
-    public Text canvasText;
-
-    public TaskList taskList;
-
-    public GameObject AnimalText;
-
-    private bool selectedLandAnimal = false;
-
-    private bool selectedBird = false;
+    public Text canvasText; // Text object to display animal descriptions
+    public TaskList taskList; // Reference to the TaskList script for task updates
+    public GameObject AnimalText; // Reference to the GameObject containing animal text
+    private bool selectedLandAnimal = false; // Flag to track if a land animal is selected
+    private bool selectedBird = false; // Flag to track if a bird is selected
 
     private void Start()
     {
-        var interactable = GetComponent<XRBaseInteractable>();
-        interactable.hoverEntered.AddListener (OnHoverEnter);
-        interactable.hoverExited.AddListener (OnHoverExit);
-        interactable.selectEntered.AddListener (OnSelectEnter);
-        interactable.selectExited.AddListener (OnSelectExit);
+        var interactable = GetComponent<XRBaseInteractable>(); // Attaching event listeners to detect interactions with the animal object
+        interactable.selectEntered.AddListener(OnSelectEnter); //Checks when selected
+        interactable.selectExited.AddListener(OnSelectExit); //Checks when unselected
     }
-
-    private void OnHoverEnter(HoverEnterEventArgs args)
-    {
-        // Debug.Log("OnHover" + args.interactable.gameObject);
-    }
-
-    private void OnHoverExit(HoverExitEventArgs args)
-    {
-        // Debug.Log("ExitHover" + args.interactable.gameObject);
-    }
-
     private void OnSelectEnter(SelectEnterEventArgs args)
     {
-        // args.interactorObject.transform.
-        // TODO: get AnimalText canas from args and set text
         canvasText.text = GetAnimalName();
         AnimalText.SetActive(true);
     }
 
     private void OnSelectExit(SelectExitEventArgs args)
     {
-        // Debug.Log("ExitSelect" + args.interactable.gameObject);
         StartCoroutine(Delay());
     }
 
+    //Removes text after a certain period of time
     private IEnumerator Delay()
     {
         yield return new WaitForSeconds(3);
@@ -56,6 +37,7 @@ public class AnimalDescription : MonoBehaviour
         AnimalText.SetActive(false);
     }
 
+    //Checks animal type and gets a description 
     private string GetAnimalName()
     {
         string animalName = gameObject.name;

@@ -6,7 +6,8 @@ public class Animation : MonoBehaviour
 {
 
     private Animator animator;
-    // Start is called before the first frame update 
+
+    // Animates animal when talking and leaving
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -19,9 +20,7 @@ public class Animation : MonoBehaviour
 
     public void Close()
     {
-        // avatar.GetComponent<PlayerInput>().enabled = true;
         animator = GetComponent<Animator>();
         animator.SetTrigger("Wave");
-        
     }
 }

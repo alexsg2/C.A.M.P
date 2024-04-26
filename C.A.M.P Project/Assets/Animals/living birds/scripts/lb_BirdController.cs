@@ -22,9 +22,9 @@ public class lb_BirdController : MonoBehaviour {
 	public bool goldFinch = true;
 	public bool crow = true;
 
-	public Text canvasText;
-    public TaskList taskList;
-    public GameObject AnimalText;
+	// public Text canvasText;
+    // public TaskList taskList;
+    // public GameObject AnimalText;
 
 	bool pause = false;
 	GameObject[] myBirds;
@@ -293,15 +293,15 @@ public class lb_BirdController : MonoBehaviour {
                 // Debug.Log("AnimalDescription script found!");
 
                 // Set the canvasText variable to the Text component
-                animalDescription.canvasText = canvasText;
+                // animalDescription.canvasText = canvasText;
                 // Debug.Log("CanvasText set to: " + canvasText.text);
 
                 // Set the taskList variable to the TaskList component
-                animalDescription.taskList = taskList;
+                // animalDescription.taskList = taskList;
                 // Debug.Log("TaskList set.");
 
                 // Set the AnimalText variable to the GameObject
-                animalDescription.AnimalText = AnimalText;
+                // animalDescription.AnimalText = AnimalText;
                 // Debug.Log("AnimalText set.");
             }
             else

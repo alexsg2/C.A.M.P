@@ -1586,6 +1586,7 @@ GameObject:
   - component: {fileID: 13500000}
   - component: {fileID: -7854862383888529930}
   - component: {fileID: 6097816020411369817}
+  - component: {fileID: 7062916327589966705}
   m_Layer: 6
   m_Name: lb_robin
   m_TagString: lb_bird
@@ -1924,7 +1925,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100092}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df204b704dd7080428c0e49c51da67fc, type: 3}
   m_Name: 
@@ -1932,3 +1933,15 @@ MonoBehaviour:
   canvasText: {fileID: 0}
   taskList: {fileID: 0}
   AnimalText: {fileID: 0}
+--- !u!114 &7062916327589966705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2f0084b4ee4714ead4098bc811ac7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

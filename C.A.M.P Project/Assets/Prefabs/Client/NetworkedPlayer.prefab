@@ -279,9 +279,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Robin\nRobins are small to medium-sized birds with an unmistakable orange
-    breast and face. They have gray plumage on either side of the orange breast.
-    Robins have sturdy legs with muscles designed for running or hopping.
+  m_Text: 
 --- !u!1 &3524847907681431507
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3264667673
+  GlobalObjectIdHash: 1925525283
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -897,6 +895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5826386062ce624aadde4caaf1bf858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animalTextDisplay: {fileID: 4984861715438666697}
+  animalText: {fileID: 7393563648808570034}
 --- !u!1 &6090104219227583323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,6 +3036,11 @@ PrefabInstance:
 --- !u!224 &4906049443840014462 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4251621695286627626, guid: 4150d4d3b2ed97f49b998712036fe499, type: 3}
+  m_PrefabInstance: {fileID: 9157228295701493076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4984861715438666697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4195327145353672349, guid: 4150d4d3b2ed97f49b998712036fe499, type: 3}
   m_PrefabInstance: {fileID: 9157228295701493076}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &5792212350094556144 stripped

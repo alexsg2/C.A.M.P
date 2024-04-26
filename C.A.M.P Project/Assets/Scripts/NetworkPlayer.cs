@@ -5,18 +5,18 @@ using Unity.Netcode;
 using Unity.Netcode.Components;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem.XR;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class NetworkPlayer : NetworkBehaviour
 {
+
+    public GameObject animalTextDisplay;
+    public Text animalText;
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         DisableClientInput();
-
-        // NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnect;
     }
 
     /// <summary>
@@ -58,35 +58,69 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    private void HandleGrabAnimal(GameObject animal) {
+        AnimalWiki wiki = animal.GetComponent<AnimalWiki>();
+        if (wiki == null) {
+            Debug.Log("Tried to get wiki on animal but it was null");
+        }
+        animalText.text = wiki.GetAnimalDesc();
+        animalTextDisplay.SetActive(true);
+        Debug.Log($"Grabbed Animal: {wiki.GetAnimalDesc()}");
+        // TODO
+        // get animal text
+        // set animal text
+        // show display
+    }
+
+    private void HandleReleaseAnimal(GameObject animal) {
+        // TODO: if deselecting animal, hide animal text pop up after delay
+        StartCoroutine(DelayedDisableAnimalText());
+    }
+
+    //Removes text after a certain period of time
+    private IEnumerator DelayedDisableAnimalText()
+    {
+        yield return new WaitForSeconds(5);
+        animalText.text = "";
+        animalTextDisplay.SetActive(false);
+    }
+
     public void OnSelectGrabbable(SelectEnterEventArgs eventArgs) {
         // Debug.Log("OnSelectGrabbable");
         if (IsClient && IsOwner) {
             // TODO: check if layer is animal, get animal description thingy, get text, set text on player animal text, pop it up
             // Debug.Log("OnSelectGrabbable inside first if");
-            NetworkObject networkObjectSelected = eventArgs.interactableObject.transform.GetComponent<NetworkObject>();
+
+            GameObject selected = eventArgs.interactableObject.transform.gameObject;
+
+            if (selected.layer == LayerMask.NameToLayer("Animals")) {
+                HandleGrabAnimal(selected);
+                return;
+            }
+
+            NetworkObject networkObjectSelected = selected.GetComponent<NetworkObject>();
 
             if (networkObjectSelected == null) {
                 return;
             }
-            if (networkObjectSelected.gameObject.layer == LayerMask.NameToLayer("Grabbable")) {
-                return;
-            }
-            else if (networkObjectSelected.gameObject.layer == LayerMask.NameToLayer("Animals")) {
 
-            }
-            if (networkObjectSelected != null && networkObjectSelected.OwnerClientId != OwnerClientId) {
-                // Debug.Log("OnSelectGrabbable inside second if");
-                // request ownership of interactable from the server
-                // TODO: handle race conditions for trying to change ownership of an object
+            // handle grabbables, request ownership
+            if (networkObjectSelected.gameObject.layer == LayerMask.NameToLayer("Grabbable") && networkObjectSelected.OwnerClientId != OwnerClientId) {
+                // TODO: handle race conditions
                 Debug.Log("Requesting ownership of grabbable");
                 RequestGrabbableOwnershipServerRpc(OwnerClientId, networkObjectSelected);
-                // RPC = remote procedure call, call procedure on network object not in this executable/client
             }
         }
     }
 
-    public void OnDeselectGrabbable(SelectExitEventArgs args) {
-        // TODO: if deselecting animal, hide animal text pop up after delay
+    public void OnDeselectGrabbable(SelectExitEventArgs eventArgs) {
+        if (IsClient && IsOwner) {
+            GameObject selected = eventArgs.interactableObject.transform.gameObject;
+            if (selected.layer == LayerMask.NameToLayer("Animals")) {
+                HandleReleaseAnimal(selected);
+                return;
+            }
+        }
     }
 
     [ServerRpc]

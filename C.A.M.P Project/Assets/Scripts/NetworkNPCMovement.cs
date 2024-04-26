@@ -9,6 +9,7 @@ using Unity.Netcode;
 /// </summary>
 public class NetworkNPCMovement : NetworkBehaviour
 {
+    public Canvas dialogue_canvas; 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -16,6 +17,9 @@ public class NetworkNPCMovement : NetworkBehaviour
         if (IsClient) {
             Moving move_script = GetComponent<Moving>();
             move_script.enabled = false;
+
+            // TODO: get local player object and camera, set canvas camera
         }
+
     }
 }

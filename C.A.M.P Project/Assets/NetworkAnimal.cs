@@ -9,7 +9,7 @@ public class NetworkAnimal : NetworkBehaviour
     {
         base.OnNetworkSpawn();
 
-        if (!IsHost && !IsServer) {
+        if (IsClient) {
             Animal animal = GetComponent<Animal>();
             animal.enabled = false;
         }

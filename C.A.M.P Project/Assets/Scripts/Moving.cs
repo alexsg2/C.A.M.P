@@ -138,6 +138,7 @@ public class Moving : MonoBehaviour
         StopAllCoroutines();  // Stop all coroutines to ensure no movement restarts
         SetState(NPCState.Idle);
         agent.ResetPath();
+        // TODO: null ref for player position
         targetPosition = playerPosition;
         shouldFacePlayer = true;
     }

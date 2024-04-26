@@ -9,7 +9,7 @@ public class NPCControl : MonoBehaviour
     [SerializeField] private GameObject toActivate;
     [SerializeField] private Moving npcMovementScript;  // Reference to the NPC's Moving script
 
-    private Transform playerTransform;  // To store the player's transform
+    public Transform playerTransform;  // To store the player's transform
 
 
     private async void OnTriggerEnter(Collider other)

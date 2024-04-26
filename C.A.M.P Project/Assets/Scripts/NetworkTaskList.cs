@@ -175,26 +175,26 @@ public class NetworkTaskList : NetworkBehaviour
                 // move to tent task
                 tentTask.InitTask();
                 Debug.Log("NetworkTaskList: Task 2 has begun");
-                tentTask.TaskStatus.OnValueChanged += OnTask2StatusChange;
+                tentTask.taskStatus.OnValueChanged += OnTask2StatusChange;
 
                 break;
         }
 
     }
 
-    public void OnTask2StatusChange(NetworkTentTask.TentTaskStatus prev, 
-        NetworkTentTask.TentTaskStatus updated) {
+    public void OnTask2StatusChange(TentTaskStatus prev, 
+        TentTaskStatus updated) {
 
         Debug.Log("NetworkTaskList: Task 2 completion status updated");
 
         switch (updated) {
-            case NetworkTentTask.TentTaskStatus.PolesDone:
+            case TentTaskStatus.PolesDone:
                 // TODO
                 break;
-            case NetworkTentTask.TentTaskStatus.TarpsDone:
+            case TentTaskStatus.TarpsDone:
                 // TODO
                 break;
-            case NetworkTentTask.TentTaskStatus.Done:
+            case TentTaskStatus.Done:
                 // TODO
                 break;
         }

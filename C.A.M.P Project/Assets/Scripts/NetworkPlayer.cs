@@ -6,6 +6,7 @@ using Unity.Netcode.Components;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -42,6 +43,17 @@ public class NetworkPlayer : NetworkBehaviour
                 controller.enableInputActions = false;
                 controller.enableInputTracking = false;
                 controller.GetComponent<XRInteractorLineVisual>().enabled = false;
+            }
+        }
+        else {
+            MeshRenderer[] models = GetComponentsInChildren<MeshRenderer>();
+
+            // Disable player model for self so can see through cam
+
+            foreach (MeshRenderer mesh in models) {
+                if (mesh.gameObject.CompareTag("PLayer Model")) {
+                    mesh.gameObject.SetActive(false);
+                }
             }
         }
     }

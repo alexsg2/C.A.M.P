@@ -2581,7 +2581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 472f1dbc9a9face40a6995bdb3f2ed51, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7926,46 +7926,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273257609}
   m_Mesh: {fileID: -4550125092169740112, guid: ad3119cbd6dce024e8460ef32dec49df, type: 3}
---- !u!21 &274933445
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 200, g: 200, b: 80, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1001 &277414706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15929,7 +15889,7 @@ GameObject:
   - component: {fileID: 542569101}
   - component: {fileID: 542569102}
   m_Layer: 0
-  m_Name: Pole-Trigger_1 (1)
+  m_Name: Pole-Trigger_1 Networked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26488,7 +26448,7 @@ GameObject:
   - component: {fileID: 952162533}
   - component: {fileID: 952162534}
   m_Layer: 0
-  m_Name: Pole-Trigger_2 (1)
+  m_Name: Pole-Trigger_2 Networked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33350,7 +33310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 472f1dbc9a9face40a6995bdb3f2ed51, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39714,6 +39674,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8903058273634951509, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
   m_PrefabInstance: {fileID: 1364639320}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1365428645
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 200, g: 200, b: 80, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!20 &1368066006 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1147103591202489980, guid: 132cd9edf1a79e74db1e4afac1c16b87, type: 3}
@@ -41603,7 +41603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5805482637759318947, guid: 132cd9edf1a79e74db1e4afac1c16b87, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5805482637759318947, guid: 132cd9edf1a79e74db1e4afac1c16b87, type: 3}
       propertyPath: m_TagString
@@ -52645,7 +52645,6 @@ GameObject:
   - component: {fileID: 1871278766}
   - component: {fileID: 1871278769}
   - component: {fileID: 1871278768}
-  - component: {fileID: 1871278767}
   - component: {fileID: 1871278770}
   - component: {fileID: 1871278771}
   m_Layer: 0
@@ -52670,27 +52669,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1335527538}
   m_LocalEulerAnglesHint: {x: 0, y: 49.417, z: 0}
---- !u!114 &1871278767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871278765}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48e9be353c98a9e498ae575257b7d2cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tentPrefab: {fileID: 1024253057}
-  tarp1: {fileID: 571722287}
-  tarp2: {fileID: 1107750342}
-  pole1: {fileID: 589273682}
-  pole2: {fileID: 940348287}
-  nail1: {fileID: 2077254176}
-  nail2: {fileID: 1449579109}
-  nail3: {fileID: 827088287}
-  nail4: {fileID: 797485310}
 --- !u!65 &1871278768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52753,7 +52731,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe4e05f4bbb1d44ca33e91e31080d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskStatus:
+  pole_objects:
+  - {fileID: 589273682}
+  - {fileID: 940348287}
+  pole_indicators:
+  - {fileID: 0}
+  - {fileID: 0}
+  taskStatus:
     m_InternalValue: 0
 --- !u!4 &1872755235 stripped
 Transform:
@@ -61506,6 +61490,10 @@ PrefabInstance:
       propertyPath: fireTask
       value: 
       objectReference: {fileID: 320931246}
+    - target: {fileID: 1423293297109647520, guid: 1d7fe84adba7cab4bbbf3e08f16e915b, type: 3}
+      propertyPath: tentTask
+      value: 
+      objectReference: {fileID: 1871278771}
     - target: {fileID: 2448053412953122988, guid: 1d7fe84adba7cab4bbbf3e08f16e915b, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1163245813
@@ -61645,9 +61633,9 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 702612695}
-  - {fileID: 1169912600}
   - {fileID: 2106835064}
+  - {fileID: 1169912600}
+  - {fileID: 702612695}
   - {fileID: 2019851570}
   - {fileID: 1468033155}
   - {fileID: 760159232}

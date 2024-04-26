@@ -11,60 +11,12 @@ using UnityEngine;
 // like actually activating nails/tarps/poles.
 public class NetworkTentTask : NetworkBehaviour
 {
-    // public GameObject[] pole_triggers = new GameObject[2];
+    // 0 == left, 1 == right
+    public GameObject[] pole_objects = new GameObject[2];
+    public GameObject[] pole_indicators = new GameObject[2];
 
-    public enum TentTaskStatus {
-        Start,
-        PolesDone,
-        TarpsDone,
-        Done // after nails are done
-    }
 
-    public enum Side {
-        left,
-        right
-    }
-
-    public enum Count {
-        one,
-        two,
-        three,
-        four
-    }
-
-    public struct TwoBools : INetworkSerializable
-    {
-        public bool left;
-        public bool right;
-
-        public TwoBools(bool l, bool r) {
-            left = l;
-            right = r;
-        }
-
-        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
-        {
-            serializer.SerializeValue(ref left);
-            serializer.SerializeValue(ref right);
-        }
-    }
-
-    public struct FourBools : INetworkSerializable
-    {
-        public bool one;
-        public bool two;
-        public bool three;
-        public bool four;
-        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
-        {
-            serializer.SerializeValue(ref one);
-            serializer.SerializeValue(ref two);
-            serializer.SerializeValue(ref three);
-            serializer.SerializeValue(ref three);
-        }
-    }
-
-    // default is left = false, right = false
+    // default is left pole ([0]) = false, right pole ([1])= false. 
     public NetworkVariable<TwoBools> poles = new NetworkVariable<TwoBools>(
         default,
         NetworkVariableReadPermission.Everyone, 
@@ -83,7 +35,7 @@ public class NetworkTentTask : NetworkBehaviour
     /// <summary>
     /// Global status of this task.
     /// </summary>
-    public NetworkVariable<TentTaskStatus> TaskStatus = new NetworkVariable<TentTaskStatus>(
+    public NetworkVariable<TentTaskStatus> taskStatus = new NetworkVariable<TentTaskStatus>(
         TentTaskStatus.Start, 
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server);
@@ -96,15 +48,28 @@ public class NetworkTentTask : NetworkBehaviour
     }
 
     public void InitTask() {
-        // TODO: enable poles triggers
-        // enable highlights n shit
+        // TODO: enable poles triggers, indicators
+        // enable highlights n shit. all tent task triggers/stuff should be disabled by default.
     }
 
     public void OnPolesUpdate(TwoBools old, TwoBools updated) {
+        // activate the actual poles: client & server
+        if (!pole_objects[0].activeSelf && updated.left) {
+            Debug.Log("TENT: activated left pole");
+            pole_objects[0].SetActive(true);
+        }
 
+        if (!pole_objects[1].activeSelf && updated.right) {
+            Debug.Log("TENT: activated right pole");
+            pole_objects[1].SetActive(true);
+        }
+
+        // Check if complete
         if (updated.left && updated.right) {
-            // TODO: if both are true, then unsubscribe from event
-            // enable tarps triggers, subscribe to their event, update task prog
+            // update task status
+            if (IsServer) {
+                taskStatus.Value = TentTaskStatus.PolesDone;
+            }
         }
 
     }
@@ -121,6 +86,22 @@ public class NetworkTentTask : NetworkBehaviour
         if (updated.one && updated.two && updated.three && updated.four) {
             // TODO: if all 4 are true, then unsubscribe from event,
             // update task prog
+        }
+    }
+
+    public void OnTaskStatusChange(TentTaskStatus old, TentTaskStatus updated) {
+        switch (updated) {
+            case TentTaskStatus.Start:
+                break;
+            case TentTaskStatus.PolesDone:
+                poles.OnValueChanged -= OnPolesUpdate;
+                // TODO: enable tarps triggers, subscribe to their event
+                break;
+            case TentTaskStatus.TarpsDone:
+                // TODO: 
+                break;
+            case TentTaskStatus.Done:
+                break;
         }
     }
 

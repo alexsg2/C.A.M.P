@@ -24,6 +24,7 @@ TagManager:
   - Hammer
   - lb_bird
   - NPC
+  - Player Model
   layers:
   - Default
   - TransparentFX

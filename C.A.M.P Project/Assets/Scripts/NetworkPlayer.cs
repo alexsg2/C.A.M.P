@@ -51,8 +51,8 @@ public class NetworkPlayer : NetworkBehaviour
             // Disable player model for self so can see through cam
 
             foreach (MeshRenderer mesh in models) {
-                if (mesh.gameObject.CompareTag("PLayer Model")) {
-                    mesh.gameObject.SetActive(false);
+                if (mesh.gameObject.CompareTag("Player Model")) {
+                    mesh.enabled = false; // just disable renderer
                 }
             }
         }

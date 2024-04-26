@@ -12,9 +12,6 @@ public class NetworkFireTask : NetworkBehaviour
     public GameObject fire;
     public GameObject fireLight;
 
-    // update task1 state in this as we go
-    public NetworkTaskList taskList; 
-
     // Network variables for task
     private NetworkVariable<int> twigsCount = new NetworkVariable<int>(
         0, 

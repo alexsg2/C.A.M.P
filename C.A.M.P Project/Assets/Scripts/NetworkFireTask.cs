@@ -4,8 +4,7 @@ using NUnit.Framework;
 
 // Network Behavior for fire task. Handles variables for
 // task like twig count and match count, as well as behavior
-// like actually activating logs / fire. Updates TaskList's
-// Task1Status network variable as state changes.
+// like actually activating logs / fire.
 public class NetworkFireTask : NetworkBehaviour
 {
     // Objects to toggle as we go!
@@ -21,8 +20,6 @@ public class NetworkFireTask : NetworkBehaviour
         0, 
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server);
-    // private bool twigCountReached = false;
-    // private bool matchCountReached = false;
     private NetworkVariable<int> matchCount = new NetworkVariable<int>(
         0, 
         NetworkVariableReadPermission.Everyone, 
@@ -35,8 +32,6 @@ public class NetworkFireTask : NetworkBehaviour
         0,  
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server); 
-    // private bool fireMade = false;
-    // private bool logStackThere = false;
 
     [SerializeField]
     private int twigsRequired = 12; // Number of twigs required
@@ -56,12 +51,6 @@ public class NetworkFireTask : NetworkBehaviour
             twigsCount.OnValueChanged += OnTwigCountChange;
             TaskStatus.OnValueChanged += OnTaskStatusChange;
         }
-        // if (IsServer || IsHost) {
-
-        // }
-        // else {
-
-        // }
     }
 
     /// <summary>
@@ -81,10 +70,7 @@ public class NetworkFireTask : NetworkBehaviour
             // if fire is not made, add listener
             matchCount.OnValueChanged += OnMatchCountChange;
         }
-        // TODO: update task board as well to fit server state? or handle that in task board itself. fast forward in there
     }
-
-    // TODO: ensure this logic is not weird for players joining mid game
 
     public override void OnNetworkDespawn()
     {
@@ -104,12 +90,6 @@ public class NetworkFireTask : NetworkBehaviour
                 TaskStatus.Value = 1;
             }
         }
-        // On 1st completion
-        // if (LogStackMade()) {
-        //     Debug.Log("Enough twigs have been gathered, logs activated!");
-        //     // TODO: activate logs, delete twigs
-        //     twigsCount.OnValueChanged -= OnTwigCountChange;
-        // }
     }
 
     // Debug log when match count updates,
@@ -173,20 +153,11 @@ public class NetworkFireTask : NetworkBehaviour
         if (other.CompareTag("Firewood") && !LogStackMade())
         {
             twigsCount.Value++;
-            // Debug.Log("Twigs count: " + twigsCount);
-            // CheckRequirements();
         }
         // Otherwise if we got a match and 
         else if (other.CompareTag("Match") && LogStackMade() )
         {
             matchCount.Value++;
-            // Debug.Log("Match count: " + matchCount);
-            // if (twigCountReached && (matchCount == matchesRequired))
-            // {
-            //     Debug.Log("Match count reached: " + matchCount);
-            //     matchCountReached = true;
-            //     MakeFire();
-            // }
         }
 
     }
@@ -203,41 +174,8 @@ public class NetworkFireTask : NetworkBehaviour
         if (other.CompareTag("Firewood"))
         {
             twigsCount.Value--;
-            // Debug.Log("Twigs count: " + twigsCount);
-            // CheckRequirements();
         }
     }
-
-    // private void CheckRequirements()
-    // {
-    //     if (twigsCount >= twigsRequired && !twigCountReached)
-    //     {
-    //         Debug.Log("Enough firewood. Campfire activated.");
-    //         twigCountReached = true;
-
-    //         // Set the campfire prefab active
-    //         logstack.SetActive(true);
-    //         logStackThere = true;
-
-    //         // Destroy all firewood objects in the trigger zone
-    //         Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
-    //         foreach (Collider collider in colliders)
-    //         {
-    //             if (collider.CompareTag("Firewood"))
-    //             {
-    //                 Destroy(collider.gameObject);
-    //             }
-    //         }
-    //     }
-    //     else if (twigsCount < twigsRequired && twigCountReached)
-    //     {
-    //         Debug.Log("Not enough firewood. Campfire deactivated.");
-    //         twigCountReached = false;
-
-    //         // Set the campfire prefab inactive
-    //         logstack.SetActive(false);
-    //     }
-    // }
 
     // Construct the logs, destroying any twigs inside the collider
     private void MakeLogs() {
@@ -251,27 +189,6 @@ public class NetworkFireTask : NetworkBehaviour
 
         // Clean up twigs
         DespawnItemsInside("Firewood");
-
-        // Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
-        // foreach (Collider collider in colliders)
-        // {
-        //     if (collider.CompareTag("Firewood"))
-        //     {
-        //         GameObject go = collider.gameObject;
-        //         NetworkObject no = go.GetComponent<NetworkObject>();
-        //         if (no != null) {
-        //             if (!no.IsOwnedByServer) {
-        //                 no.RemoveOwnership();
-        //             }
-        //             no.Despawn();
-        //         }
-        //         else {
-        //             Destroy(gameObject);
-        //         }
-        //         // Destroy(collider.gameObject);
-        //         // TODO: request ownership and despawn game object
-        //     }
-        // }
     }
 
     // Construct the fire, destroying any matches inside the collider
@@ -287,26 +204,6 @@ public class NetworkFireTask : NetworkBehaviour
 
         // Clean up matches
         DespawnItemsInside("Match");
-        // Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
-        // foreach (Collider collider in colliders)
-        // {
-        //     if (collider.CompareTag("Match"))
-        //     {
-        //         GameObject go = collider.gameObject;
-        //         NetworkObject no = go.GetComponent<NetworkObject>();
-        //         if (no != null) {
-        //             if (!no.IsOwnedByServer) {
-        //                 no.RemoveOwnership();
-        //             }
-        //             no.Despawn();
-        //         }
-        //         else {
-        //             Destroy(gameObject);
-        //         }
-        //         // Destroy(collider.gameObject);
-        //         // TODO: request ownership and despawn game object
-        //     }
-        // }
     }
 
     // Despawns/destroys items inside collider with given tag.
@@ -337,14 +234,4 @@ public class NetworkFireTask : NetworkBehaviour
             }
         }
     }
-
-    // public bool checkSticks()
-    // {
-    //     return twigCountReached;
-    // }
-
-    // public bool checkFire()
-    // {
-    //     return fireMade;
-    // }
 }

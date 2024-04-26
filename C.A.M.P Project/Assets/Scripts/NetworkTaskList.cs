@@ -58,6 +58,7 @@ public class NetworkTaskList : NetworkBehaviour
 
     // Task scripts
     public NetworkFireTask fireTask;
+    public NetworkTentTask tentTask;
     // track completion of task 1 with an int: 1 = sub1 done, 2 = sub2 done, 3 = sub3 done all done yeah
     // public NetworkVariable<int> Task1Status = new NetworkVariable<int>(
     //     0,  
@@ -171,10 +172,33 @@ public class NetworkTaskList : NetworkBehaviour
                 fireTask.TaskStatus.OnValueChanged -= OnTask1StatusChange;
                 SetBoardText();
                 // task is done
-                // TODO: remove this method from listener
+                // move to tent task
+                tentTask.InitTask();
+                Debug.Log("NetworkTaskList: Task 2 has begun");
+                tentTask.TaskStatus.OnValueChanged += OnTask2StatusChange;
+
                 break;
         }
 
+    }
+
+    public void OnTask2StatusChange(NetworkTentTask.TentTaskStatus prev, 
+        NetworkTentTask.TentTaskStatus updated) {
+
+        Debug.Log("NetworkTaskList: Task 2 completion status updated");
+
+        switch (updated) {
+            case NetworkTentTask.TentTaskStatus.PolesDone:
+                // TODO
+                break;
+            case NetworkTentTask.TentTaskStatus.TarpsDone:
+                // TODO
+                break;
+            case NetworkTentTask.TentTaskStatus.Done:
+                // TODO
+                break;
+        }
+                
     }
 
     // TODO: handle indicators and board text

@@ -84,42 +84,42 @@ public class AnimalDescription : MonoBehaviour
         else if (animalName.Contains("Turtle"))
         {
             taskList.updateT3Sub1();
-            return "Box turtles:\nFascinating reptiles found in North America. They belong to the genus Terrapene and are characterized by their dome-shaped carapace (top shell) and hinged plastron (bottom shell) which allows them to completely close up like a box, hence their name.";
+            return "Box turtles:\n\nFascinating reptiles found in North America. They belong to the genus Terrapene and are characterized by their dome-shaped carapace (top shell) and hinged plastron (bottom shell) which allows them to completely close up like a box, hence their name.";
         }
         else if (animalName.Contains("blueJay"))
         {
             taskList.updateT3Sub2();
-            return "Blue Jay\nBlue jays are primarily blue and relatively small birds, with white undersides and chests. They have a black U-shaped collar around the neck. They are large, intelligent, and colorful songbirds. They can also live in various habitats and have complex social systems that involve tight family bonds.";
+            return "Blue Jay\n\nBlue jays are primarily blue and relatively small birds, with white undersides and chests. They have a black U-shaped collar around the neck. They are large, intelligent, and colorful songbirds. They can also live in various habitats and have complex social systems that involve tight family bonds.";
         }
         else if (animalName.Contains("cardinal"))
         {
             taskList.updateT3Sub2();
-            return "Cardinal\nCardinals are medium-sized thick-billed songbirds, many with crested heads and some bright red coloring. They have strong breaks for crushing seeds, long tails, and prominent crests. Cardinals tend to sit in a hunched over position with their tails pointing towards the ground.";
+            return "Cardinal\n\nCardinals are medium-sized thick-billed songbirds, many with crested heads and some bright red coloring. They have strong breaks for crushing seeds, long tails, and prominent crests. Cardinals tend to sit in a hunched over position with their tails pointing towards the ground.";
         }
         else if (animalName.Contains("chickadee"))
         {
             taskList.updateT3Sub2();
-            return "Chickadee\nChickadees are small, plump birds with round bodies and short tails. They have black heads and backs, with white cheeks and undersides. Chickadees are very agile and they are often seen hopping around on branches in search of food. They eat a variety of insects and seeds.";
+            return "Chickadee\n\nChickadees are small, plump birds with round bodies and short tails. They have black heads and backs, with white cheeks and undersides. Chickadees are very agile and they are often seen hopping around on branches in search of food. They eat a variety of insects and seeds.";
         }
         else if (animalName.Contains("crow"))
         {
             taskList.updateT3Sub2();
-            return "Crow\nThere are a wide variety of crow species. Most crows have black-colored feathers with an iridescent shine to them. They often live together in large families and are known for their loud voices and intelligence. Crows are curious birds.";
+            return "Crow\n\nThere are a wide variety of crow species. Most crows have black-colored feathers with an iridescent shine to them. They often live together in large families and are known for their loud voices and intelligence. Crows are curious birds.";
         }
         else if (animalName.Contains("goldFinch"))
         {
             taskList.updateT3Sub2();
-            return "Gold Finch\nGoldfinches are songbirds with short, notched tails and lots of yellow coloring. They are migratory birds. All have rather delicate sharp-pointed bills for finches. Flocks of goldfinches feed in fields and gardens.";
+            return "Gold Finch\n\nGoldfinches are songbirds with short, notched tails and lots of yellow coloring. They are migratory birds. All have rather delicate sharp-pointed bills for finches. Flocks of goldfinches feed in fields and gardens.";
         }
         else if (animalName.Contains("robin"))
         {
             taskList.updateT3Sub2();
-            return "Robin\nRobins are small to medium-sized birds with an unmistakable orange breast and face. They have gray plumage on either side of the orange breast. Robins have sturdy legs with muscles designed for running or hopping.";
+            return "Robin\n\nRobins are small to medium-sized birds with an unmistakable orange breast and face. They have gray plumage on either side of the orange breast. Robins have sturdy legs with muscles designed for running or hopping.";
         }
         else if (animalName.Contains("sparrow"))
         {
             taskList.updateT3Sub2();
-            return "Sparrow\nSparrows are small birds, usually brown and gray. They have short tails and small, strong beaks. Sparrows are social birds and they live in flocks. It's beak is short and thick to better crack open seeds.";
+            return "Sparrow\n\nSparrows are small birds, usually brown and gray. They have short tails and small, strong beaks. Sparrows are social birds and they live in flocks. It's beak is short and thick to better crack open seeds.";
         }
 
         return animalName;

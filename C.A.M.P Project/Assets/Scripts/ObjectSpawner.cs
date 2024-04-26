@@ -4,26 +4,55 @@ using NUnit.Framework;
 using Unity.Netcode;
 using UnityEngine;
 
-public class ObjectSpawner : MonoBehaviour
+public class ObjectSpawner : NetworkBehaviour
 {
-    public GameObject toSpawn;
+    public GameObject obj;
 
-    public void Start() {
-        NetworkManager.Singleton.OnServerStarted += OnServerStart;
+    [SerializeField]
+    private int amountToSpawn;
+
+    [SerializeField]
+    private Vector2 placementArea = new Vector2(-10.0f, 10.0f);
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+        if (IsServer || IsHost && amountToSpawn > 0) {
+            for (int i = 0; i < amountToSpawn; i++) {
+                Spawn();
+            }
+        }
     }
 
-    public void OnServerStart() {
-        if (toSpawn == null) {
-            return;
-        }
-
-        var instance = Instantiate(toSpawn);
-        var instanceNetworkObject = instance.GetComponent<NetworkObject>();
-
-        if (instanceNetworkObject == null) {
-            return;
-        }
-        
-        instanceNetworkObject.Spawn();
+    private void Spawn() {
+        GameObject go = Instantiate(obj, Vector3.zero, Quaternion.identity);
+        // float y = transform.position.y;
+        go.transform.position = new Vector3(
+            transform.position.x + Random.Range(placementArea.x, placementArea.y), 
+            transform.position.y, 
+            transform.position.z + Random.Range(placementArea.x, placementArea.y));
+        Quaternion new_rotation = Quaternion.Euler(go.transform.rotation.x, Random.Range(0, 360), go.transform.rotation.z);
+        go.transform.rotation = new_rotation;
+        go.GetComponent<NetworkObject>().Spawn();
     }
+
+    // public void Start() {
+    //     NetworkManager.Singleton.OnServerStarted += OnServerStart;
+    // }
+
+    // public void OnServerStart() {
+    //     if (toSpawn == null) {
+    //         return;
+    //     }
+
+    //     var instance = Instantiate(toSpawn);
+    //     var instanceNetworkObject = instance.GetComponent<NetworkObject>();
+
+    //     if (instanceNetworkObject == null) {
+    //         return;
+    //     }
+
+    //     instanceNetworkObject.Spawn();
+    // }
 }

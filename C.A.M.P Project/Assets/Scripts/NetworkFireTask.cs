@@ -244,15 +244,34 @@ public class NetworkFireTask : NetworkBehaviour
         // Set the campfire prefab active
         logstack.SetActive(true);
 
-        // Destroy all firewood objects in the trigger zone
-        Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
-        foreach (Collider collider in colliders)
-        {
-            if (collider.CompareTag("Firewood"))
-            {
-                Destroy(collider.gameObject);
-            }
+        // Server despawns all firewood objects in the trigger zone
+        if (IsClient) {
+            return;
         }
+
+        // Clean up twigs
+        DespawnItemsInside("Firewood");
+
+        // Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
+        // foreach (Collider collider in colliders)
+        // {
+        //     if (collider.CompareTag("Firewood"))
+        //     {
+        //         GameObject go = collider.gameObject;
+        //         NetworkObject no = go.GetComponent<NetworkObject>();
+        //         if (no != null) {
+        //             if (!no.IsOwnedByServer) {
+        //                 no.RemoveOwnership();
+        //             }
+        //             no.Despawn();
+        //         }
+        //         else {
+        //             Destroy(gameObject);
+        //         }
+        //         // Destroy(collider.gameObject);
+        //         // TODO: request ownership and despawn game object
+        //     }
+        // }
     }
 
     // Construct the fire, destroying any matches inside the collider
@@ -262,12 +281,59 @@ public class NetworkFireTask : NetworkBehaviour
         fireLight.SetActive(true);
         // fireMade = true;
 
+        if (IsClient) {
+            return;
+        }
+
+        // Clean up matches
+        DespawnItemsInside("Match");
+        // Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
+        // foreach (Collider collider in colliders)
+        // {
+        //     if (collider.CompareTag("Match"))
+        //     {
+        //         GameObject go = collider.gameObject;
+        //         NetworkObject no = go.GetComponent<NetworkObject>();
+        //         if (no != null) {
+        //             if (!no.IsOwnedByServer) {
+        //                 no.RemoveOwnership();
+        //             }
+        //             no.Despawn();
+        //         }
+        //         else {
+        //             Destroy(gameObject);
+        //         }
+        //         // Destroy(collider.gameObject);
+        //         // TODO: request ownership and despawn game object
+        //     }
+        // }
+    }
+
+    // Despawns/destroys items inside collider with given tag.
+    // Server executed.
+    private void DespawnItemsInside(string tag) {
+        if (IsClient) {
+            return;
+        }
+
         Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Match"))
+            if (collider.CompareTag(tag))
             {
-                Destroy(collider.gameObject);
+                GameObject go = collider.gameObject;
+                NetworkObject no = go.GetComponent<NetworkObject>();
+                if (no != null) {
+                    if (!no.IsOwnedByServer) {
+                        no.RemoveOwnership();
+                    }
+                    no.Despawn();
+                    Debug.Log($"Firepit: Despawned object with tag {tag}");
+                }
+                else {
+                    Destroy(gameObject);
+                    Debug.Log($"Firepit: Destroyed object with tag {tag}");
+                }
             }
         }
     }

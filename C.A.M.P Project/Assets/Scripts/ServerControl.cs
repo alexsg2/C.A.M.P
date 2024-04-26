@@ -28,6 +28,7 @@ public class ServerControl : MonoBehaviour
         NetworkManager.Singleton.OnServerStarted += OnServerStart;
         NetworkManager.Singleton.OnServerStopped += OnServerStop;
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnect;
+        NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnect;
 
         // Get address / port we will host on
         UnityTransport tp = NetworkManager.Singleton.GetComponent<UnityTransport>();
@@ -101,6 +102,10 @@ public class ServerControl : MonoBehaviour
     /// <param name="clientId"></param>
     public void OnClientConnect(ulong clientId) {
         Debug.Log($"New client with id {clientId} connected");
+    }
+
+    public void OnClientDisconnect(ulong clientId) {
+        Debug.Log($"Client with id {clientId} disconnected");
     }
 
     /// <summary>

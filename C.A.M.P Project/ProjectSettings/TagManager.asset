@@ -23,6 +23,7 @@ TagManager:
   - Deer
   - Hammer
   - lb_bird
+  - NPC
   layers:
   - Default
   - TransparentFX

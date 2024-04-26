@@ -7,8 +7,10 @@ public class MatchLighterTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Check if the collider belongs to a match GameObject tagged as "UnlitMatch"
+        // Debug.Log(other.tag.ToString());
         if (other.CompareTag("UnlitMatch"))
         {
+
             // Capture the unlit match GameObject
             GameObject unlitMatch = other.gameObject;
             if (unlitMatch != null)
@@ -20,10 +22,9 @@ public class MatchLighterTrigger : MonoBehaviour
                     // Set the fire GameObject active
                     fire.SetActive(true);
                     MatchLit = true;
+                    // Change the tag of the unlit match GameObject to "Match"
+                    unlitMatch.tag = "Match";
                 }
-
-                // Change the tag of the unlit match GameObject to "Match"
-                unlitMatch.tag = "Match";
             }
         }
     }

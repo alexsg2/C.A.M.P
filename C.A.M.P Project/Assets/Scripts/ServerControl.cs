@@ -23,6 +23,11 @@ public class ServerControl : MonoBehaviour
     private string address;
     private ushort port;
 
+    /// <summary>
+    /// Don't automatically detect ipv4.
+    /// </summary>
+    public bool use_defaults;
+
     public void Start() {
         // Register callbacks
         NetworkManager.Singleton.OnServerStarted += OnServerStart;
@@ -32,16 +37,17 @@ public class ServerControl : MonoBehaviour
 
         // Get address / port we will host on
         UnityTransport tp = NetworkManager.Singleton.GetComponent<UnityTransport>();
-        
-        string lan_address = GetLocalWifiIPV4();
         address = tp.ConnectionData.Address;
         port = tp.ConnectionData.Port; // use port on network manager
+        
+        if (!use_defaults) {
+            string lan_address = GetLocalWifiIPV4();
 
-        if (lan_address != "") {
-            address = lan_address;
+            if (lan_address != "") {
+                address = lan_address;
+            }
+            tp.SetConnectionData(address, port);
         }
-
-        tp.SetConnectionData(address, port);
 
         Debug.Log($"Will host on {address}:{port}");
 

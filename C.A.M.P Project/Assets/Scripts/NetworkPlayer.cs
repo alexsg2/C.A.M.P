@@ -61,10 +61,18 @@ public class NetworkPlayer : NetworkBehaviour
     public void OnSelectGrabbable(SelectEnterEventArgs eventArgs) {
         // Debug.Log("OnSelectGrabbable");
         if (IsClient && IsOwner) {
+            // TODO: check if layer is animal, get animal description thingy, get text, set text on player animal text, pop it up
             // Debug.Log("OnSelectGrabbable inside first if");
             NetworkObject networkObjectSelected = eventArgs.interactableObject.transform.GetComponent<NetworkObject>();
-            if (networkObjectSelected.gameObject.layer != LayerMask.NameToLayer("Grabbable")) {
+
+            if (networkObjectSelected == null) {
                 return;
+            }
+            if (networkObjectSelected.gameObject.layer == LayerMask.NameToLayer("Grabbable")) {
+                return;
+            }
+            else if (networkObjectSelected.gameObject.layer == LayerMask.NameToLayer("Animals")) {
+
             }
             if (networkObjectSelected != null && networkObjectSelected.OwnerClientId != OwnerClientId) {
                 // Debug.Log("OnSelectGrabbable inside second if");
@@ -75,6 +83,10 @@ public class NetworkPlayer : NetworkBehaviour
                 // RPC = remote procedure call, call procedure on network object not in this executable/client
             }
         }
+    }
+
+    public void OnDeselectGrabbable(SelectExitEventArgs args) {
+        // TODO: if deselecting animal, hide animal text pop up after delay
     }
 
     [ServerRpc]

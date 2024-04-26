@@ -22788,6 +22788,168 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
   AutoObjectParentSync: 0
+--- !u!1001 &822615206
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1576518529}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_Name
+      value: NetworkBirdsController
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: taskList
+      value: 
+      objectReference: {fileID: 234011496}
+    - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: AnimalText
+      value: 
+      objectReference: {fileID: 1012628888}
+    - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: canvasText
+      value: 
+      objectReference: {fileID: 658880344}
+    - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: currentCamera
+      value: 
+      objectReference: {fileID: 1368066006}
+    - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: idealNumberOfBirds
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: maximumNumberOfBirds
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 822615210}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 822615209}
+  m_SourcePrefab: {fileID: 100100000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+--- !u!4 &822615207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+  m_PrefabInstance: {fileID: 822615206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &822615208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+  m_PrefabInstance: {fileID: 822615206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &822615209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822615208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 853912331
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &822615210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822615208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b1fcd77a21ba942a613f11b6e905ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idealNumberOfBirds: 8
+  maximumNumberOfBirds: 8
+  currentCamera: {fileID: 2106835065}
+  unspawnDistance: 10
+  highQuality: 1
+  collideWithObjects: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  birdScale: 1
+  robin: 1
+  blueJay: 1
+  cardinal: 1
+  chickadee: 1
+  sparrow: 1
+  goldFinch: 1
+  crow: 1
+  canvasText: {fileID: 0}
+  taskList: {fileID: 0}
+  AnimalText: {fileID: 0}
 --- !u!4 &822721622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8930885862814177750, guid: 13dd10d6717971d4ea9125d158299b1e, type: 3}
@@ -27055,6 +27217,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8903058273634951509, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
   m_PrefabInstance: {fileID: 972726674}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &976249297
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 200, g: 200, b: 80, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1001 &980292351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32285,7 +32487,7 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 180000
   ConnectionData:
-    Address: 127.0.0.1
+    Address: 192.168.1.100
     Port: 7777
     ServerListenAddress: 0.0.0.0
   DebugSimulator:
@@ -44652,6 +44854,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1913869952}
+  - {fileID: 822615207}
   - {fileID: 991564825}
   m_Father: {fileID: 377034106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53600,46 +53803,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 194e9111af0c33840a49d573f2b26952, type: 3}
---- !u!21 &1896195093
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 200, g: 200, b: 80, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1001 &1901505290
 PrefabInstance:
   m_ObjectHideFlags: 0

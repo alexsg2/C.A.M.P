@@ -93,10 +93,8 @@ public class NetworkAnimalTask : NetworkBehaviour
             return;
         }
 
-        if (type == AnimalType.Bird && taskStatus == AnimalTaskStatus.LandAnimalsDone.Value) {
+        if (type == AnimalType.Bird && taskStatus.Value == AnimalTaskStatus.LandAnimalsDone) {
 
         }
     }
-
-    [ServerRpc]
 }

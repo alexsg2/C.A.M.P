@@ -34,7 +34,8 @@ namespace OpenAI
             Debug.Log(dropdown.options[0].text);
             Debug.Log(dropdown.options[1].text);
             
-            dropdown.SetValueWithoutNotify(index);
+            dropdown.SetValueWithoutNotify(0);
+            ChangeMicrophone(1);
             // StartRecording();
         }
 

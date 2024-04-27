@@ -89,11 +89,13 @@ public class NetworkTentTask : NetworkBehaviour
         if (!pole_objects[0].activeSelf && updated.left) {
             Debug.Log("TENT: activated left pole");
             pole_objects[0].SetActive(true);
+            pole_placement_indicators[0].SetActive(false);
         }
 
         if (!pole_objects[1].activeSelf && updated.right) {
             Debug.Log("TENT: activated right pole");
             pole_objects[1].SetActive(true);
+            pole_placement_indicators[1].SetActive(false);
         }
 
         // Check if complete
@@ -109,11 +111,13 @@ public class NetworkTentTask : NetworkBehaviour
             Debug.Log("TENT: activated left tarp");
             tarp_objects[0].SetActive(true);
             // TODO: disable indicators
+            tarp_placement_indicators[0].SetActive(false);
         }
 
         if (!tarp_objects[1].activeSelf && updated.right) {
             Debug.Log("TENT: activated right tarp");
             tarp_objects[1].SetActive(true);
+            tarp_placement_indicators[1].SetActive(false);
             // TODO: disable indicators, handle in tarp thing itself?
         }
 
@@ -157,24 +161,34 @@ public class NetworkTentTask : NetworkBehaviour
     }
 
     private void EnablePoleTriggersAndIndicators() {
-        foreach(GameObject trigger in pole_triggers) {
-            trigger.SetActive(true);
-        }
         foreach (GameObject indicator in pole_placement_indicators) {
             indicator.SetActive(true);
         }
         poles_indicator.SetActive(true);
+
+        if (IsClient) {
+            return;
+        }
+
+        foreach(GameObject trigger in pole_triggers) {
+            trigger.SetActive(true);
+        }
     }
 
     private void EnableTarpTriggersAndIndicators() {
-        foreach (GameObject trigger in tarp_triggers) {
-            trigger.SetActive(true);
-        }
         foreach (GameObject indicator in tarp_placement_indicators) {
             indicator.SetActive(true);
         }
         foreach (GameObject indicator in tarps_indicators) {
             indicator.SetActive(true);
+        }
+
+        if (IsClient) {
+            return;
+        }
+
+        foreach (GameObject trigger in tarp_triggers) {
+            trigger.SetActive(true);
         }
     }
 
@@ -184,6 +198,11 @@ public class NetworkTentTask : NetworkBehaviour
             indicator.SetActive(true);
         }
         nails_indicator.SetActive(true);
+
+        if (IsClient) {
+            return;
+            // CLIENTS DO NOT USE TRIGGERSS!
+        }
         // enable triggers
         foreach (GameObject trigger in nail_triggers) {
             trigger.SetActive(true);    
@@ -191,6 +210,7 @@ public class NetworkTentTask : NetworkBehaviour
     }
 
     public void StartTask() {
+        Debug.Log("Start task called");
         // start first subtask: poles
         tent_indicator.SetActive(true);
         poles.OnValueChanged += OnPolesUpdate;

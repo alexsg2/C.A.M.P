@@ -36,6 +36,9 @@ public class NetworkNailTrigger : NetworkBehaviour
         // listen for nail trigger, networktenttask disables this object by default
         // then enables it when needed
         nail_active.OnValueChanged += OnNailTrigger;
+        Debug.Log($"Nail trigger {count} spawned");
+        gameObject.SetActive(false);
+        // TODO: not being spawned for some reason
         // gameObject.SetActive(false);
     }
 
@@ -110,16 +113,16 @@ public class NetworkNailTrigger : NetworkBehaviour
                 no.Despawn();
                 Debug.Log($"TENT: Despawned nail grabbable for {count} nail trigger");
             }
-            else {
-                Destroy(go);
-                Debug.Log($"TENT: Destroyed nail grabbable for {count} nail trigger");
-            }
+            // else {
+            //     Destroy(go);
+            //     Debug.Log($"TENT: Destroyed nail grabbable for {count} nail trigger");
+            // }
             nail_active.Value = true; // TODO: writing to this before network object 
             return;
         }
 
         // handle hammering in nail
-        if (other.CompareTag("Hammer") && (num_hits.Value < hits_needed))
+        if (other.CompareTag("Hammer") && (nail_active.Value) && (num_hits.Value < hits_needed))
         {
             // Increment hit counter
             num_hits.Value += 1;

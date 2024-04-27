@@ -67,10 +67,10 @@ public class NetworkTentTask : NetworkBehaviour
         base.OnNetworkSpawn();
 
         // fast forward if client joined and is behind
-        if (IsClient && taskStatus.Value != TentTaskStatus.Wait) {
-            FastForward();
-            return;
-        }
+        // if (IsClient && taskStatus.Value != TentTaskStatus.Wait) {
+        //     FastForward();
+        //     return;
+        // }
         // NOTE: all triggers/indicators for this task
         // should be disabled by default in the scene
         taskStatus.OnValueChanged += OnTaskStatusChange;
@@ -78,6 +78,9 @@ public class NetworkTentTask : NetworkBehaviour
         // todo: move this to tasklist/manager. should not start at spawn
         if (IsServer) {
             taskStatus.Value = TentTaskStatus.Start;
+        }
+        else {
+            StartTask(); // todo: should not be here idk
         }
     }
 
@@ -160,7 +163,7 @@ public class NetworkTentTask : NetworkBehaviour
         foreach (GameObject indicator in pole_placement_indicators) {
             indicator.SetActive(true);
         }
-        poles_indicator.SetActive(false);
+        poles_indicator.SetActive(true);
     }
 
     private void EnableTarpTriggersAndIndicators() {
@@ -171,7 +174,7 @@ public class NetworkTentTask : NetworkBehaviour
             indicator.SetActive(true);
         }
         foreach (GameObject indicator in tarps_indicators) {
-            indicator.SetActive(false);
+            indicator.SetActive(true);
         }
     }
 

@@ -36,6 +36,7 @@ public class NetworkNailTrigger : NetworkBehaviour
         // listen for nail trigger, networktenttask disables this object by default
         // then enables it when needed
         nail_active.OnValueChanged += OnNailTrigger;
+        // gameObject.SetActive(false);
     }
 
     public void OnNailTrigger(bool old, bool updated) {
@@ -113,7 +114,7 @@ public class NetworkNailTrigger : NetworkBehaviour
                 Destroy(go);
                 Debug.Log($"TENT: Destroyed nail grabbable for {count} nail trigger");
             }
-            nail_active.Value = true;
+            nail_active.Value = true; // TODO: writing to this before network object 
             return;
         }
 

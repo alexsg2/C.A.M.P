@@ -23,8 +23,8 @@ public class NetworkTaskList : NetworkBehaviour
     private const string T2s1Done = "[x] <s>Place 2 poles into the</s>\n     <s>ground</s>\n\n";
     private const string T2s2 = "[] Put 2 tarps on the poles\n\n";
     private const string T2s2Done = "[x] <s>Put 2 tarps on the poles</s>\n\n";
-    private const string T2s3 = "[] Stake the tarp to the ground by placing and hammering stakes in the corners\n";
-    private const string T2s3Done = "[x] <s>Stakes the tarp to the ground by placing and hammering stakes in the corners</s>\n";
+    private const string T2s3 = "[] Place stakes in the tent corners and hammer them twice\n";
+    private const string T2s3Done = "[x] <s>Place stakes in the tent corners and hammer them twice</s>\n";
 
     // t3 header and subheaders/tasks
     private const string T3H = "Task 3: Identify Animals\n\n";

@@ -64,6 +64,7 @@ public class NetworkTaskList : NetworkBehaviour
         base.OnNetworkSpawn();
         // TODO: fast forward for 1st task ish
         if (IsClient && curr_task.Value != tasks.Wait) {
+            curr_task.OnValueChanged += OnCurrTaskChange;
             OnCurrTaskChange(tasks.Wait, curr_task.Value);
             return;
         }

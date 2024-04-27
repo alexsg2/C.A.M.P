@@ -77,13 +77,13 @@ public class NetworkTentTask : NetworkBehaviour
         // should be disabled by default in the scene
         taskStatus.OnValueChanged += OnTaskStatusChange;
 
-        // todo: move this to tasklist/manager. should not start at spawn
-        if (IsServer) {
-            taskStatus.Value = TentTaskStatus.Start;
-        }
-        else {
-            StartTask(); // todo: should not be here idk
-        }
+        // // todo: move this to tasklist/manager. should not start at spawn
+        // if (IsServer) {
+        //     taskStatus.Value = TentTaskStatus.Start;
+        // }
+        // else {
+        //     StartTask(); // todo: should not be here idk
+        // }
     }
 
     public void OnPolesUpdate(TwoBools old, TwoBools updated) {

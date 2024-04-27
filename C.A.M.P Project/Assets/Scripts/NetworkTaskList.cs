@@ -10,34 +10,41 @@ public class NetworkTaskList : NetworkBehaviour
 
     // Text rows on task board
     //t1 header and subheaders/tasks
-    private string task1;
-    private string T1sub1;
-    private string T1sub2;
-
+    private const string T1H = "Task 1: Build a Fire\n\n";
+    private const string T1HDone = "<s>Task 1: Build a Fire</s>\n";
+    private const string T1s1 = "[] Put 12 twigs into the firepit\n\n";
+    private const string T1s1Done = "[x] <s>Put 12 twigs into the firepit</s>\n\n";
+    private const string T1s2 =  "[] Light 3 Matches using \n   a matchbox\n\n and put them in the firepit\n\n";
+    private const string T1s2Done =  "[x] <s>Light 3 Matches using \n   a matchbox\n\n and put them in the firepit</s>\n\n";
     // t2 header and subheaders/tasks
-    private string task2;
-    private string T2sub1;
-    private string T2sub2;
-    private string T2sub3;
+    private const string T2H = "Task 2: Assemble a Tent\n\n";
+    private const string T2HDone = "<s>Task 2: Assemble a Tent</s>\n";
+    private const string T2s1 = "[] Place 2 poles into the\n   ground\n\n";
+    private const string T2s1Done = "[x] <s>Place 2 poles into the</s>\n     <s>ground</s>\n\n";
+    private const string T2s2 = "[] Put 2 tarps on the poles\n\n";
+    private const string T2s2Done = "[x] <s>Put 2 tarps on the poles</s>\n\n";
+    private const string T2s3 = "[] Stake the tarp to the ground by placing and hammering stakes in the corners\n";
+    private const string T2s3Done = "[x] <s>Stakes the tarp to the ground by placing and hammering stakes in the corners</s>\n";
 
     // t3 header and subheaders/tasks
-    private string task3;
-    private string T3sub1;
-    private string T3sub2;
-
-
-    // private bool task1Done = false;
+    private const string T3H = "Task 3: Identify Animals\n\n";
+    private const string T3HDone = "<s>Task 3: Identify Animals</s>\n";
+    private const string T3s1 = "[] Identify 1 Land Animal\n\n";
+    private const string T3s1Done = "[x] <s>Identify 1 Land Animal\n\n</s>";
+    private const string T3s2 = "[] Identify 1 Bird Type";
+    private const string T3s2Done = "[x] <s>Identify 1 Bird Type</s>";
 
     // Board Text
     public TMP_Text canvasText;
 
-    public GameObject boardIndicator;
+    public GameObject boardIndicator; // enable this when starting new task
 
     // Task scripts
     public NetworkFireTask fireTask;
     public NetworkTentTask tentTask;
 
     enum tasks {
+        Wait,
         Task1,
         Task2,
         Task3,
@@ -46,142 +53,119 @@ public class NetworkTaskList : NetworkBehaviour
 
     // curr task we are displaying / completing
     private NetworkVariable<tasks> curr_task = new NetworkVariable<tasks>(
-        tasks.Task1, 
+        tasks.Wait, 
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server);
 
-    // Update canvas text based on curr task
-    private void SetBoardText() {
-        switch (curr_task.Value) {
-            case tasks.Task1:
-                canvasText.text = task1 + T1sub1 + T1sub2;
-                break;
-            case tasks.Task2:
-                canvasText.text = task2 + T2sub1 + T2sub2 + T2sub3;
-                break;
-            case tasks.Task3:
-                canvasText.text = task3 + T3sub1 + T3sub2;
-                break;
-            case tasks.Done:
-                canvasText.text = "Nice job!";
-                break;
-        }
-
-    }
-
-    // Initialize text for tasks
-    private void InitBoardText() {
-        task1 = "Task 1: Build a Fire\n\n";
-        T1sub1 = "[] Put 12 twigs into the firepit\n\n";
-        T1sub2 = "[] Light 3 Matches using \n   a matchbox\n\n and put them in the firepit";
-        task2 = "Task 2: Assemble a Tent\n\n";
-        T2sub1 = "[] Place 2 poles into the\n   ground\n\n";
-        T2sub2 = "[] Put 2 tarps on the poles\n\n";
-        T2sub3 = "[] Nail the tarp to the ground by placing and hammering nails in the corners\n";
-        task3 = "Task 3: Identify Animals\n\n";
-        T3sub1 = "[] Identify 1 Land Animal\n\n";
-        T3sub2 = "[] Identify 1 Bird Type";
-
-        SetBoardText();
-    }
-
-    // Start is called before the first frame update
+        // Start is called before the first frame update
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-        InitBoardText();
+        // InitBoardText();
         // TODO: fast forward
-        fireTask.TaskStatus.OnValueChanged += OnTask1StatusChange;
+        // fireTask.TaskStatus.OnValueChanged += OnTask1StatusChange;
         curr_task.OnValueChanged += OnCurrTaskChange;
+        boardIndicator.SetActive(true);
         // TODO: handle fast forward for clients that join late
         // PLAN THIS CLASS OUT OK!!! BE CAREFULLL
         // TODO: listen for changes to curr_task
     }
 
+    // update task status after ending prev task and player
+    // enteres collider
+    private void OnTriggerEnter(Collider other) {
+        if (IsClient) {
+            return;
+        }
+        // if we're "in between" tasks, move on to next task
+        if (other.CompareTag("Player") && boardIndicator.activeSelf) {
+            curr_task.Value += 1; // increment curr task
+            Debug.Log($"NetworkTaskList: moved on to task {curr_task.Value}");
+            boardIndicator.SetActive(false);
+        }
+    }
+
+    private void SetFirepitText(){
+        switch (fireTask.TaskStatus.Value) {
+            case (FireTaskStatus.Done):
+                canvasText.text = T1HDone + T1s1Done + T1s2Done;
+                break;
+            case (FireTaskStatus.TwigsDone):
+                canvasText.text = T1H + T1s1Done + T1s2;
+                break;
+            case (FireTaskStatus.Start):
+                canvasText.text = T1H + T1s1 + T1s2;
+                break;
+        }
+    }
+
+    // Update canvas text based on curr task
+    private void SetBoardText() {
+        switch (curr_task.Value) {
+            case tasks.Task1:
+                Debug.Log($"NetworkTaskList: Set firepit text");
+                SetFirepitText();
+                break;
+            // TODO: other tasks
+        }
+    }
+
     // Update board to fit new task we are currently on
     private void OnCurrTaskChange(tasks old, tasks updated) {
-        // switch (updated) {
-        //     case tasks.Task1:
-        //         SetBoardText();
-        //         break;
-        //     case tasks.Task2:
-        //         SetBoardText();
-        //         break;
-        //     case tasks.Task3:
-        //         SetBoardText();
-        //         break;
-        //     case tasks.Done:
-        //         SetBoardText();
-        //         break;
-            
-        // }
-        SetBoardText();
+        switch (updated) {
+            case (tasks.Task1):
+                fireTask.TaskStatus.OnValueChanged += OnTask1StatusChange;
+                // init task 1
+                if (IsServer) {
+                    Debug.Log($"NetworkTaskList: stared task 1");
+                    fireTask.TaskStatus.Value = FireTaskStatus.Start;
+                }
+                break;
+            case (tasks.Task2):
+                // init task2
+                // register new listener
+                break;
+            case (tasks.Task3):
+                // init task3
+                // register new listener
+                break;
+            case (tasks.Done):
+                // clean up
+                break;
+        }
+        SetBoardText(); // update text
     }
 
-    public override void OnNetworkDespawn()
-    {
-        base.OnNetworkDespawn();
-        fireTask.TaskStatus.OnValueChanged -= OnTask1StatusChange;
-    }
-
-    public void FastForward() {
-        // TODO: fast forward state to match server if new client joins
-    }
+    // public void FastForward() {
+    //     // TODO: fast forward state to match server if new client joins
+    // }
 
     // Called when T1 is not complete and its state
     // changes.
-    public void OnTask1StatusChange(int prev, int updated){
-        switch (updated) {
-            case 0:
-                break;
-            case 1:
-                // update board
-                T1sub1 = "[x] <s>Put 12 twigs into the fire</s>\n\n";
-                SetBoardText();
-                break;
-            case 2:
-                // update board, move to next task (register listener for that)
-                T1sub2 = "[x] <s>Light 3 Matches using</s> \n\t<s>a matchbox</s>\n\n";
-                fireTask.TaskStatus.OnValueChanged -= OnTask1StatusChange;
-                SetBoardText();
-                // TODO: uncomment when done testing tent task
-                if (IsServer) {
-                //     tentTask.taskStatus.Value = TentTaskStatus.Start;
-                    // curr_task.Value =  tasks.Task2;
-                    // TODO: add listeners, update task2's status to start
-                    DelayUpdateCurrTask(tasks.Task2); // let text remain for a bit, then advance
-                }
-                // Debug.Log("NetworkTaskList: Task 2 has begun");
-                // tentTask.taskStatus.OnValueChanged += OnTask2StatusChange;
+    public void OnTask1StatusChange(FireTaskStatus prev, FireTaskStatus updated){
+        SetBoardText();
 
-                break;
+        if (updated == FireTaskStatus.Done && IsServer) {
+            Debug.Log($"NetworkTaskList: fire task done, waiting for player to enter indicator");
+            boardIndicator.SetActive(true);
+            fireTask.TaskStatus.OnValueChanged -= OnTask1StatusChange;
         }
-
     }
 
-    private IEnumerator DelayUpdateCurrTask(tasks newTask)
-    {
-        yield return new WaitForSeconds(10);
-        curr_task.Value = newTask;
-        Debug.Log($"NetworkTaskList: advanced to new task {newTask}");
-    }
+    // private IEnumerator DelayUpdateCurrTask(tasks newTask)
+    // {
+    //     yield return new WaitForSeconds(10);
+    //     curr_task.Value = newTask;
+    //     Debug.Log($"NetworkTaskList: advanced to new task {newTask}");
+    // }
 
     public void OnTask2StatusChange(TentTaskStatus prev, 
         TentTaskStatus updated) {
+        SetBoardText();
 
-        Debug.Log("NetworkTaskList: Task 2 completion status updated");
-
-        switch (updated) {
-            case TentTaskStatus.PolesDone:
-                // TODO
-                break;
-            case TentTaskStatus.TarpsDone:
-                // TODO
-                break;
-            case TentTaskStatus.Done:
-                // TODO
-                break;
-        }
-                
+        if (updated == TentTaskStatus.Done && IsServer) {
+            boardIndicator.SetActive(true);
+            tentTask.taskStatus.OnValueChanged -= OnTask2StatusChange;
+        }       
     }
 }

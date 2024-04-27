@@ -2,6 +2,14 @@ using UnityEngine;
 using Unity.Netcode;
 using NUnit.Framework;
 
+public enum FireTaskStatus {
+    Wait,
+    Start,
+    TwigsDone,
+    Done
+
+}
+
 // Network Behavior for fire task. Handles variables for
 // task like twig count and match count, as well as behavior
 // like actually activating logs / fire.
@@ -11,6 +19,9 @@ public class NetworkFireTask : NetworkBehaviour
     public GameObject logstack; // Logs to toggle visibility
     public GameObject fire;
     public GameObject fireLight;
+
+    public GameObject matchesIndicator;
+    public GameObject fireIndicator;
 
     // Network variables for task
     private NetworkVariable<int> twigsCount = new NetworkVariable<int>(
@@ -25,10 +36,14 @@ public class NetworkFireTask : NetworkBehaviour
     /// <summary>
     /// 0 = started, 1 = logs made, 2 = fire made (done)
     /// </summary>
-    public NetworkVariable<int> TaskStatus = new NetworkVariable<int>(
-        0,  
+    // public NetworkVariable<int> TaskStatus = new NetworkVariable<int>(
+    //     0,  
+    //     NetworkVariableReadPermission.Everyone, 
+    //     NetworkVariableWritePermission.Server); 
+    public NetworkVariable<FireTaskStatus> TaskStatus = new NetworkVariable<FireTaskStatus> (
+        FireTaskStatus.Wait,
         NetworkVariableReadPermission.Everyone, 
-        NetworkVariableWritePermission.Server); 
+        NetworkVariableWritePermission.Server);
 
     [SerializeField]
     private int twigsRequired = 12; // Number of twigs required
@@ -40,16 +55,31 @@ public class NetworkFireTask : NetworkBehaviour
     {
         base.OnNetworkSpawn();
 
-        if (IsClient && TaskStatus.Value != 0) {
+        if (IsClient && TaskStatus.Value > 0) {
             // let joining client catch up
             FastForward();
-        }
-        else {
-            twigsCount.OnValueChanged += OnTwigCountChange;
             TaskStatus.OnValueChanged += OnTaskStatusChange;
         }
+        fireIndicator.SetActive(false);
+        matchesIndicator.SetActive(false);
+        TaskStatus.OnValueChanged += OnTaskStatusChange;
+        // else {
+        //     twigsCount.OnValueChanged += OnTwigCountChange;
+        //     
+        // }
     }
 
+    private void StartTask() {
+        twigsCount.OnValueChanged += OnTwigCountChange;
+        fireIndicator.SetActive(true);
+    }
+
+    private void StartMatches() {
+        matchesIndicator.SetActive(true);
+
+        twigsCount.OnValueChanged -= OnTwigCountChange;
+        matchCount.OnValueChanged += OnMatchCountChange;
+    }
     /// <summary>
     /// Fast forward a client's task status if the client just
     /// joined in the middle of completion.
@@ -86,7 +116,7 @@ public class NetworkFireTask : NetworkBehaviour
 
         if (IsServer) {
             if (updated >= twigsRequired) {
-                TaskStatus.Value = 1;
+                TaskStatus.Value = FireTaskStatus.TwigsDone;
             }
         }
     }
@@ -99,28 +129,30 @@ public class NetworkFireTask : NetworkBehaviour
 
         if (IsServer) {
             if (updated >= matchesRequired) {
-                TaskStatus.Value = 2;
+                TaskStatus.Value = FireTaskStatus.Done;
             }
         }
     }
 
     // Handle fire state when our task completion state
     // changes.
-    public void OnTaskStatusChange(int old, int updated) {
+    public void OnTaskStatusChange(FireTaskStatus old, FireTaskStatus updated) {
         // both servers and clients execute this
         switch (updated) {
-            case 0:
+            case FireTaskStatus.Wait:
                 Debug.Log("Start firepit task. GET SOME TWIGS!");
                 break;
-            case 1:
-                MakeLogs();
-                Debug.Log("Enough twigs have been gathered, logs activated!");
-                twigsCount.OnValueChanged -= OnTwigCountChange;
-                matchCount.OnValueChanged += OnMatchCountChange;
+            case FireTaskStatus.Start:
+                StartTask();
                 break;
-            case 2:
+            case FireTaskStatus.TwigsDone:
                 // enable fire
                 // deregister listener for match count
+                MakeLogs();
+                Debug.Log("Enough twigs have been gathered, logs activated!");
+                StartMatches();
+                break;
+            case FireTaskStatus.Done:
                 MakeFire();
                 Debug.Log("Enough lit matches have been gathered, fire activated!\nTask done.");
                 TaskStatus.OnValueChanged -= OnTaskStatusChange;
@@ -130,12 +162,13 @@ public class NetworkFireTask : NetworkBehaviour
 
     // Have we gathered enough twigs and the logs are present?
     private bool LogStackMade() {
-        return TaskStatus.Value >= 1;
+        // return TaskStatus.Value >= 1;
+        return TaskStatus.Value >= FireTaskStatus.TwigsDone;
     }
 
     // Have we lit the fire?
     private bool FireMade() {
-        return TaskStatus.Value >= 2;
+        return TaskStatus.Value >= FireTaskStatus.Done;
     }
 
     // Handle when twigs or matches get dropped in pit
@@ -193,6 +226,7 @@ public class NetworkFireTask : NetworkBehaviour
     // Construct the fire, destroying any matches inside the collider
     private void MakeFire()
     {
+        fireIndicator.SetActive(false);
         fire.SetActive(true);
         fireLight.SetActive(true);
         // fireMade = true;

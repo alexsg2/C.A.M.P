@@ -19,7 +19,7 @@ public class NetworkPoleTrigger : NetworkBehaviour
 
         Debug.Log($"NetworkPole {side} spawned");
 
-        // gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     /// <summary>

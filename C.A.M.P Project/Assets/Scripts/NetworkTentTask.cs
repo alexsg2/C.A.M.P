@@ -11,29 +11,44 @@ using UnityEngine;
 // like actually activating nails/tarps/poles.
 public class NetworkTentTask : NetworkBehaviour
 {
+    public GameObject tent_indicator;
+    public GameObject tent;
+
     // poles, 0 == left, 1 == right
     public GameObject[] pole_triggers = new GameObject[2];
     public GameObject[] pole_objects = new GameObject[2];
-    public GameObject[] pole_indicators = new GameObject[2];
+    public GameObject[] pole_placement_indicators = new GameObject[2];
+    public GameObject poles_indicator;
 
 
     // tarps, 0 == left, 1 == right
     public GameObject[] tarp_triggers = new GameObject[2];
     public GameObject[] tarp_objects = new GameObject[2]; // to enable as task is completed
-    public GameObject[] tarp_indicators = new GameObject[4];
+    public GameObject[] tarp_placement_indicators = new GameObject[2];
+    public GameObject[] tarps_indicators = new GameObject[2];
+
+    // nails, 0, 1, 2, 3
+    public GameObject[] nail_placement_indicators = new GameObject[4];
+    public GameObject[] nail_triggers = new GameObject[4];
+    public GameObject nails_indicator;
 
 
     // default is left pole ([0]) = false, right pole ([1])= false. 
+    // both are true when both poles have been installed.
     public NetworkVariable<TwoBools> poles = new NetworkVariable<TwoBools>(
         default,
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server);
 
+    // both are true when both tarps have been installed.
     public NetworkVariable<TwoBools> tarps = new NetworkVariable<TwoBools>(
         default,
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server);
-    
+
+
+    // default is false, false, false, false
+    // all are true when all nails have been installed fully
     public NetworkVariable<FourBools> nails = new NetworkVariable<FourBools>(
         default,
         NetworkVariableReadPermission.Everyone, 
@@ -43,7 +58,7 @@ public class NetworkTentTask : NetworkBehaviour
     /// Global status of this task.
     /// </summary>
     public NetworkVariable<TentTaskStatus> taskStatus = new NetworkVariable<TentTaskStatus>(
-        TentTaskStatus.Start, 
+        TentTaskStatus.Wait, 
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server);
         
@@ -51,17 +66,19 @@ public class NetworkTentTask : NetworkBehaviour
     public override void OnNetworkSpawn() {
         base.OnNetworkSpawn();
 
-        taskStatus.OnValueChanged += OnTaskStatusChange;
-        poles.OnValueChanged += OnPolesUpdate;
-        // TODO: disable all triggers by default, need triggers to be enabled
-        for (int i = 0; i < tarp_triggers.Length; i++) {
-            tarp_triggers[i].SetActive(false);
+        // fast forward if client joined and is behind
+        if (IsClient && taskStatus.Value != TentTaskStatus.Wait) {
+            FastForward();
+            return;
         }
-    }
+        // NOTE: all triggers/indicators for this task
+        // should be disabled by default in the scene
+        taskStatus.OnValueChanged += OnTaskStatusChange;
 
-    public void InitTask() {
-        // TODO: enable poles triggers, indicators, sub to event
-        // enable highlights n shit. all tent task triggers/stuff should be disabled by default.
+        // todo: move this to tasklist/manager. should not start at spawn
+        if (IsServer) {
+            taskStatus.Value = TentTaskStatus.Start;
+        }
     }
 
     public void OnPolesUpdate(TwoBools old, TwoBools updated) {
@@ -81,7 +98,6 @@ public class NetworkTentTask : NetworkBehaviour
             Debug.Log("TentTaskStatus updated");
             taskStatus.Value = TentTaskStatus.PolesDone;
         }
-
     }
 
     public void OnTarpsUpdate(TwoBools old, TwoBools updated) {
@@ -95,20 +111,25 @@ public class NetworkTentTask : NetworkBehaviour
         if (!tarp_objects[1].activeSelf && updated.right) {
             Debug.Log("TENT: activated right tarp");
             tarp_objects[1].SetActive(true);
-            // TODO: disable indicators
+            // TODO: disable indicators, handle in tarp thing itself?
         }
+
         if (updated.left && updated.right && IsServer) {
             taskStatus.Value = TentTaskStatus.TarpsDone;
         }
     }
 
     public void OnNailsUpdate(FourBools old, FourBools updated) {
-        // TODO: enable nail objs
+        if (IsClient) {
+            return;
+        }
 
-        // if (updated.one && updated.two && updated.three && updated.four && IsServer) {
-        //     // TODO: if all 4 are true, then unsubscribe from event,
-        //     // update task prog
-        // }
+        // check if all 4 nails are in, then move on
+        // nail triggers handle enabling nails
+        if (updated.one && updated.two && updated.three && updated.four) {
+            // update task status
+            taskStatus.Value = TentTaskStatus.Done;
+        }
     }
 
     // Unsubscribe/subscribe to subtask vars,
@@ -118,37 +139,106 @@ public class NetworkTentTask : NetworkBehaviour
         // client & server execution
         switch (updated) {
             case TentTaskStatus.Start:
+                StartTask();
                 break;
             case TentTaskStatus.PolesDone:
-                poles.OnValueChanged -= OnPolesUpdate;
-                tarps.OnValueChanged += OnTarpsUpdate;
-                // enable tarp triggers + indicators
-                for (int i = 0; i < tarp_triggers.Length; i++) {
-                    tarp_triggers[i].SetActive(true);
-                }
-                foreach (GameObject indicator in tarp_indicators) {
-                    indicator.SetActive(true);
-                }
-                Debug.Log("Pole task done, moving on to tarps");
+                StartTarps();
                 break;
             case TentTaskStatus.TarpsDone:
-                tarps.OnValueChanged -= OnTarpsUpdate;
-                nails.OnValueChanged += OnNailsUpdate;
-                // TODO: enable nails triggers
+                StartNails();
                 break;
             case TentTaskStatus.Done:
-                nails.OnValueChanged -= OnNailsUpdate;
+                FinishTask();
                 break;
         }
     }
 
-    // public void OnTaskStatusChange(TentTaskStatus old, TentTaskStatus updated) {
-    //     // TODO: handle enabling things / disabling things, moving between subtasks
-    //     // disable listeners for early subtasks
+    private void EnablePoleTriggersAndIndicators() {
+        foreach(GameObject trigger in pole_triggers) {
+            trigger.SetActive(true);
+        }
+        foreach (GameObject indicator in pole_placement_indicators) {
+            indicator.SetActive(true);
+        }
+        poles_indicator.SetActive(false);
+    }
 
-    //     // We don't need this if we're updating through each subtasks network thingy
-    // }
+    private void EnableTarpTriggersAndIndicators() {
+        foreach (GameObject trigger in tarp_triggers) {
+            trigger.SetActive(true);
+        }
+        foreach (GameObject indicator in tarp_placement_indicators) {
+            indicator.SetActive(true);
+        }
+        foreach (GameObject indicator in tarps_indicators) {
+            indicator.SetActive(false);
+        }
+    }
+
+    private void EnableNailTriggersAndIndicators() {
+        // enable indicators
+        foreach (GameObject indicator in nail_placement_indicators) {
+            indicator.SetActive(true);
+        }
+        nails_indicator.SetActive(true);
+        // enable triggers
+        foreach (GameObject trigger in nail_triggers) {
+            trigger.SetActive(true);    
+        }
+    }
+
+    public void StartTask() {
+        // start first subtask: poles
+        tent_indicator.SetActive(true);
+        poles.OnValueChanged += OnPolesUpdate;
+        EnablePoleTriggersAndIndicators(); 
+    }
+
+    private void StartTarps() {
+        // move to second subtask: tarps
+        poles_indicator.SetActive(false);
+        poles.OnValueChanged -= OnPolesUpdate;
+        tarps.OnValueChanged += OnTarpsUpdate;
+        EnableTarpTriggersAndIndicators();
+        Debug.Log("Pole task done, moving on to tarps");
+    }
+
+    private void StartNails() {
+        // move to final subtask: nails
+        foreach (GameObject indicator in tarps_indicators) {
+            indicator.SetActive(false);
+        }
+        tarps.OnValueChanged -= OnTarpsUpdate;
+        nails.OnValueChanged += OnNailsUpdate;
+        EnableNailTriggersAndIndicators();
+        Debug.Log("Tarp task done, moving on to nails");
+    }
+
+    private void FinishTask() {
+        // wrap up the task
+        nails_indicator.SetActive(false);
+        tent_indicator.SetActive(false);
+        tent.SetActive(true);
+        // triggers disable their indicators and selves
+        nails.OnValueChanged -= OnNailsUpdate;
+        Debug.Log("Tent task complete!");
+    }
+
+    /// <summary>
+    /// Enable certain parts based on task status.
+    /// </summary>
     public void FastForward() {
         // TODO: for players that rejoin/join late
+        // handle enabling triggers as well if necessary
+        Debug.Log("TODO: tent task client fast forward");
+        // erm, do we have to fast forward each subtask then? what if one subtask is partially complete?
+        // then when it completes things will update, not too terrible
+        if (taskStatus.Value == TentTaskStatus.Done) {
+
+        }
+        else {
+            taskStatus.OnValueChanged += OnTaskStatusChange; // listen for task changes brother
+            // move this elsewhere? confusing
+        }
     }
 }

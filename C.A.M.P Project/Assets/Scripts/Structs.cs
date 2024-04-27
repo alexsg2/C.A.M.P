@@ -1,6 +1,7 @@
     using Unity.Netcode;
 
     public enum TentTaskStatus {
+        Wait, // waiting on previous tasks to complete
         Start,
         PolesDone,
         TarpsDone,

@@ -7,33 +7,8 @@ using NUnit.Framework;
 
 public class NetworkTaskList : NetworkBehaviour
 {
-    // public TentTriggerZone tentTriggerZone;
-    // public NetworkFireTriggerZone fireTriggerZone;
-    // public MatchLighterTrigger matchLighterTrigger;
-    // public Trigger_Board_1 board1;
-    // public Trigger_Board_2 board2;
-    // public Trigger_Board_3 board3;
-    // public GameObject FirePitIndicator;
-    // public GameObject MatchIndicator;
-    // public GameObject TentIndicator;
-    // public GameObject PolesIndicator;
-    // public GameObject Tarp1Indicator;
-    // public GameObject Tarp2Indicator;
-    // public GameObject NailIndicator;
-    // public GameObject Pole1PlaceIndicator;
-    // public GameObject Pole2PlaceIndicator;
-    // public GameObject Tarp1PlaceIndicator;
-    // public GameObject Tarp2PlaceIndicator;
-    // public GameObject Nail1PlaceIndicator;
-    // public GameObject Nail2PlaceIndicator;
-    // public GameObject Nail3PlaceIndicator;
-    // public GameObject Nail4PlaceIndicator;
-    // public GameObject BoardIndicator;
-    // public GameObject BoardTrigger2;
-    // public GameObject BoardTrigger3;
 
     // Text rows on task board
-
     //t1 header and subheaders/tasks
     private string task1;
     private string T1sub1;
@@ -56,29 +31,11 @@ public class NetworkTaskList : NetworkBehaviour
     // Board Text
     public TMP_Text canvasText;
 
+    public GameObject boardIndicator;
+
     // Task scripts
     public NetworkFireTask fireTask;
     public NetworkTentTask tentTask;
-    // track completion of task 1 with an int: 1 = sub1 done, 2 = sub2 done, 3 = sub3 done all done yeah
-    // public NetworkVariable<int> Task1Status = new NetworkVariable<int>(
-    //     0,  
-    //     NetworkVariableReadPermission.Everyone, 
-    //     NetworkVariableWritePermission.Server); 
-    // private bool task1Done = false;
-    // private bool T1sub1Completed = false;
-    // private bool T1sub2Completed = false;
-    // private bool T1sub3Completed = false;
-    // private bool task2Done = false;
-    // private bool T2sub1Completed = false;
-    // private bool T2sub2Completed = false;
-    // private bool T2sub3Completed = false;
-    // private bool task3Done = false;
-    // private bool T3sub1Completed = false;
-    // private bool T3sub2Completed = false;
-    // private bool allTasksDone = false;
-    // private bool checkBoard1 = true;
-    // private bool checkBoard2 = true;
-    // private bool checkBoard3 = true;
 
     enum tasks {
         Task1,
@@ -133,16 +90,32 @@ public class NetworkTaskList : NetworkBehaviour
     {
         base.OnNetworkSpawn();
         InitBoardText();
+        // TODO: fast forward
         fireTask.TaskStatus.OnValueChanged += OnTask1StatusChange;
+        curr_task.OnValueChanged += OnCurrTaskChange;
         // TODO: handle fast forward for clients that join late
         // PLAN THIS CLASS OUT OK!!! BE CAREFULLL
         // TODO: listen for changes to curr_task
-        // if (IsServer || IsHost) {
+    }
 
+    // Update board to fit new task we are currently on
+    private void OnCurrTaskChange(tasks old, tasks updated) {
+        // switch (updated) {
+        //     case tasks.Task1:
+        //         SetBoardText();
+        //         break;
+        //     case tasks.Task2:
+        //         SetBoardText();
+        //         break;
+        //     case tasks.Task3:
+        //         SetBoardText();
+        //         break;
+        //     case tasks.Done:
+        //         SetBoardText();
+        //         break;
+            
         // }
-        // else {
-
-        // }
+        SetBoardText();
     }
 
     public override void OnNetworkDespawn()
@@ -171,15 +144,26 @@ public class NetworkTaskList : NetworkBehaviour
                 T1sub2 = "[x] <s>Light 3 Matches using</s> \n\t<s>a matchbox</s>\n\n";
                 fireTask.TaskStatus.OnValueChanged -= OnTask1StatusChange;
                 SetBoardText();
-                // task is done
-                // move to tent task
-                tentTask.InitTask();
-                Debug.Log("NetworkTaskList: Task 2 has begun");
-                tentTask.taskStatus.OnValueChanged += OnTask2StatusChange;
+                // TODO: uncomment when done testing tent task
+                if (IsServer) {
+                //     tentTask.taskStatus.Value = TentTaskStatus.Start;
+                    // curr_task.Value =  tasks.Task2;
+                    // TODO: add listeners, update task2's status to start
+                    DelayUpdateCurrTask(tasks.Task2); // let text remain for a bit, then advance
+                }
+                // Debug.Log("NetworkTaskList: Task 2 has begun");
+                // tentTask.taskStatus.OnValueChanged += OnTask2StatusChange;
 
                 break;
         }
 
+    }
+
+    private IEnumerator DelayUpdateCurrTask(tasks newTask)
+    {
+        yield return new WaitForSeconds(10);
+        curr_task.Value = newTask;
+        Debug.Log($"NetworkTaskList: advanced to new task {newTask}");
     }
 
     public void OnTask2StatusChange(TentTaskStatus prev, 
@@ -200,163 +184,4 @@ public class NetworkTaskList : NetworkBehaviour
         }
                 
     }
-
-    // TODO: handle indicators and board text
-
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     if (!allTasksDone)
-    //     {
-    //         if (board1.checkBoard() && checkBoard1)
-    //         {
-    //             BoardIndicator.SetActive(false);
-    //             FirePitIndicator.SetActive(true);
-    //             checkBoard1 = false;
-    //         }
-    //         if (fireTriggerZone.checkSticks() && !T1sub1Completed)
-    //         {
-    //             T1sub1 = "[x] <s>Put 12 twigs into the fire</s>\n\n";
-    //             T1sub1Completed = true;
-    //             FirePitIndicator.SetActive(false);
-    //             MatchIndicator.SetActive(true);
-
-    //             canvasText.text = task1 + T1sub1 + T1sub2 + T1sub3;
-    //         }
-    //         if (matchLighterTrigger.checkMatch() && !T1sub2Completed)
-    //         {
-    //             T1sub2 = "[x] <s>Light 3 Matches using</s> \n\t<s>a matchbox</s>\n\n";
-    //             T1sub2Completed = true;
-    //             FirePitIndicator.SetActive(true);
-    //             MatchIndicator.SetActive(false);
-
-    //             canvasText.text = task1 + T1sub1 + T1sub2 + T1sub3;
-    //         }
-    //         if (fireTriggerZone.checkFire() && !T1sub3Completed)
-    //         {
-    //             T1sub3 = "[x] <s>Light 3 Matches using</s> \n     <s>a matchbox\n\n</s>";
-    //             T1sub3Completed = true;
-    //             FirePitIndicator.SetActive(false);
-    //             BoardTrigger2.SetActive(true);
-    //             BoardIndicator.SetActive(true);
-
-    //             canvasText.text = task1 + T1sub1 + T1sub2 + T1sub3;
-    //         }
-    //         if (T1sub1Completed && T1sub2Completed && T1sub3Completed && !task1Done)
-    //         {
-    //             task1 = "<s>Task 1: Build a Fire</s>\n";
-    //             task1Done = true;
-    //             canvasText.text = task2 + T2sub1 + T2sub2 + T2sub3;
-    //         }
-    //         if (board2.checkBoard() && task1Done && checkBoard2)
-    //         {
-    //             BoardIndicator.SetActive(false);
-    //             TentIndicator.SetActive(true);
-    //             PolesIndicator.SetActive(true);
-    //             Pole1PlaceIndicator.SetActive(true);
-    //             Pole2PlaceIndicator.SetActive(true);
-    //             checkBoard2 = false;
-    //         }
-    //         if (tentTriggerZone.checkPole() && !T2sub1Completed)
-    //         {
-    //             Debug.Log("Got in");
-    //             T2sub1 = "[x] <s>Place 2 poles into the</s>\n     <s>ground</s>\n\n";
-    //             T2sub1Completed = true;
-    //             PolesIndicator.SetActive(false);
-    //             Debug.Log("Poles Active: " + PolesIndicator.activeSelf);
-    //             Pole1PlaceIndicator.SetActive(false);
-    //             Debug.Log("Pole1 Active: " + Pole1PlaceIndicator.activeSelf);
-    //             Pole2PlaceIndicator.SetActive(false);
-    //             Debug.Log("Pole2 Active: " + Pole2PlaceIndicator.activeSelf);
-    //             Tarp1Indicator.SetActive(true);
-    //             Tarp2Indicator.SetActive(true);
-    //             Tarp1PlaceIndicator.SetActive(true);
-    //             Tarp2PlaceIndicator.SetActive(true);
-
-    //             canvasText.text = task2 + T2sub1 + T2sub2 + T2sub3;
-    //         }
-    //         if (tentTriggerZone.checkTarp() && !T2sub2Completed)
-    //         {
-    //             T2sub2 = "[x] <s>Put 2 tarps on the poles</s>\n\n";
-    //             T2sub2Completed = true;
-    //             Tarp1Indicator.SetActive(false);
-    //             Tarp2Indicator.SetActive(false);
-    //             Tarp1PlaceIndicator.SetActive(false);
-    //             Tarp2PlaceIndicator.SetActive(false);
-    //             NailIndicator.SetActive(true);
-    //             Nail1PlaceIndicator.SetActive(true);
-    //             Nail2PlaceIndicator.SetActive(true);
-    //             Nail3PlaceIndicator.SetActive(true);
-    //             Nail4PlaceIndicator.SetActive(true);
-
-    //             canvasText.text = task2 + T2sub1 + T2sub2 + T2sub3;
-    //         }
-    //         if (tentTriggerZone.checkNail() && !T2sub3Completed)
-    //         {
-    //             T2sub3 = "[x] <s>Nail the tarp to the ground by placing and hammering nails in the corners</s>\n";
-    //             T2sub3Completed = true;
-    //             NailIndicator.SetActive(false);
-
-    //             canvasText.text = task2 + T2sub1 + T2sub2 + T2sub3;
-    //         }
-    //         if (T2sub1Completed && T2sub2Completed && T2sub3Completed && !task2Done)
-    //         {
-    //             task2 = "<s>Task 2: Assemble a Tent</s>\n";
-    //             task2Done = true;
-    //             Nail1PlaceIndicator.SetActive(false);
-    //             Nail2PlaceIndicator.SetActive(false);
-    //             Nail3PlaceIndicator.SetActive(false);
-    //             Nail4PlaceIndicator.SetActive(false);
-    //             TentIndicator.SetActive(false);
-    //             BoardTrigger3.SetActive(true);
-    //             BoardIndicator.SetActive(true);
-
-    //             canvasText.text = task3 + T3sub1 + T3sub2;
-    //         }
-    //         if (board3.checkBoard() && task2Done && checkBoard3)
-    //         {
-    //             BoardIndicator.SetActive(false);
-    //             checkBoard2 = false;
-    //         }
-    //         if (T3sub1Completed && !task3Done && task2Done)
-    //         {
-    //             T3sub1 = "[x] <s>Identify 1 Land Animal\n\n</s>";
-    //             canvasText.text = task3 + T3sub1 + T3sub2;
-    //         }
-    //         if (T3sub2Completed && !task3Done && task2Done)
-    //         {
-    //             T3sub2 = "[x] <s>Identify 1 Bird Type</s>";
-    //             canvasText.text = task3 + T3sub1 + T3sub2;
-    //         }
-    //         if (T3sub1Completed && T3sub2Completed && !task3Done && task2Done)
-    //         {
-    //             task3 = "<s>Task 3: Identify Animals</s>\n";
-    //             task3Done = true;
-    //         }
-    //         if (task1Done && task2Done && task3Done)
-    //         {
-    //             allTasksDone = true;
-    //             canvasText.text = "\n\n\n\tAll tasks done.\n\n\n  Go explore and have fun!";
-    //         }
-    //     }
-    // }
-
-    // public bool checkTask1()
-    // {
-    //     return task1Done;
-    // }
-
-    // public bool checkTask2()
-    // {
-    //     return task2Done;
-    // }
-
-    // public void updateT3Sub1()
-    // {
-    //     T3sub1Completed = true;
-    // }
-    // public void updateT3Sub2()
-    // {
-    //     T3sub2Completed = true;
-    // }
 }

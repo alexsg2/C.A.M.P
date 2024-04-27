@@ -7,6 +7,7 @@ public class NetworkPoleTrigger : NetworkBehaviour
 {
     public Side side;
     public GameObject pole;
+    public GameObject indicator;
     public NetworkTentTask tentTask;
 
     /// <summary>
@@ -52,6 +53,7 @@ public class NetworkPoleTrigger : NetworkBehaviour
 
             tentTask.poles.Value = curr;
 
+            indicator.SetActive(false);
             // Disable this trigger, it's been used
             gameObject.SetActive(false);
         }

@@ -7,6 +7,7 @@ public class NetworkTarpTrigger : NetworkBehaviour
 {
     public Side side;
     public GameObject tarp;
+    public GameObject indicator;
     public NetworkTentTask tentTask;
 
     /// <summary>
@@ -50,6 +51,8 @@ public class NetworkTarpTrigger : NetworkBehaviour
             }
 
             tentTask.tarps.Value = curr;
+
+            indicator.SetActive(false);
 
             // Disable this trigger, it's been used
             gameObject.SetActive(false);

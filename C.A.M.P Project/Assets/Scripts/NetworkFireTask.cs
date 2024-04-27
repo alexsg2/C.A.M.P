@@ -60,12 +60,14 @@ public class NetworkFireTask : NetworkBehaviour
         if (LogStackMade()) {
             MakeLogs();
         }
+        
         if (FireMade()) {
             MakeFire();
         }
         else {
-            // if fire is not made, add listener
+            // if fire is not made, add listeners
             matchCount.OnValueChanged += OnMatchCountChange;
+            TaskStatus.OnValueChanged += OnTaskStatusChange;
         }
     }
 

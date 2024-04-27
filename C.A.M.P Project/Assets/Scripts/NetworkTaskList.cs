@@ -42,6 +42,7 @@ public class NetworkTaskList : NetworkBehaviour
     // Task scripts
     public NetworkFireTask fireTask;
     public NetworkTentTask tentTask;
+    public NetworkAnimalTask animalTask;
 
     enum tasks {
         Wait,
@@ -61,18 +62,17 @@ public class NetworkTaskList : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-        // InitBoardText();
-        // TODO: fast forward
-        // fireTask.TaskStatus.OnValueChanged += OnTask1StatusChange;
+        // TODO: fast forward for 1st task ish
+        if (IsClient && curr_task.Value != tasks.Wait) {
+            OnCurrTaskChange(tasks.Wait, curr_task.Value);
+            return;
+        }
         curr_task.OnValueChanged += OnCurrTaskChange;
         boardIndicator.SetActive(true);
-        // TODO: handle fast forward for clients that join late
-        // PLAN THIS CLASS OUT OK!!! BE CAREFULLL
-        // TODO: listen for changes to curr_task
     }
 
     // update task status after ending prev task and player
-    // enteres collider
+    // enters collider
     private void OnTriggerEnter(Collider other) {
         if (IsClient) {
             return;
@@ -81,7 +81,7 @@ public class NetworkTaskList : NetworkBehaviour
         if (other.CompareTag("Player") && boardIndicator.activeSelf) {
             curr_task.Value += 1; // increment curr task
             Debug.Log($"NetworkTaskList: moved on to task {curr_task.Value}");
-            boardIndicator.SetActive(false);
+            // boardIndicator.SetActive(false);
         }
     }
 
@@ -99,6 +99,37 @@ public class NetworkTaskList : NetworkBehaviour
         }
     }
 
+    private void SetTentText() {
+        switch (tentTask.taskStatus.Value) {
+            case (TentTaskStatus.Done):
+                canvasText.text = T2HDone + T2s1Done + T2s2Done + T2s3Done;
+                break;
+            case (TentTaskStatus.TarpsDone):
+                canvasText.text = T2H + T2s1Done + T2s2Done + T2s3;
+                break;
+            case (TentTaskStatus.PolesDone):
+                canvasText.text = T2H + T2s1Done + T2s2 + T2s3;
+                break;
+            case (TentTaskStatus.Start):
+                canvasText.text = T2H + T2s1 + T2s2 + T2s3;
+                break;
+        }
+    }
+
+    private void SetAnimalText() {
+        switch (animalTask.taskStatus.Value) {
+            case AnimalTaskStatus.Start:
+                canvasText.text = T3H + T3s1 + T3s2;
+                break;
+            case AnimalTaskStatus.AnimalsDone:
+            canvasText.text = T3H + T3s1Done + T3s2;
+                break;
+            case AnimalTaskStatus.Done:
+                canvasText.text = T3HDone + T3s1Done + T3s2Done;
+                break;
+        }
+    }
+
     // Update canvas text based on curr task
     private void SetBoardText() {
         switch (curr_task.Value) {
@@ -106,7 +137,18 @@ public class NetworkTaskList : NetworkBehaviour
                 Debug.Log($"NetworkTaskList: Set firepit text");
                 SetFirepitText();
                 break;
-            // TODO: other tasks
+            case tasks.Task2:
+                Debug.Log($"NetworkTaskList: Set tent text");
+                SetTentText();
+                break;
+            case tasks.Task3:
+                Debug.Log($"NetworkTaskList: Set animal text");
+                SetAnimalText();
+                break;
+            case tasks.Done:
+                Debug.Log($"NetworkTaskList: set done text");
+                canvasText.text = "All tasks done!";
+                break;
         }
     }
 
@@ -122,17 +164,29 @@ public class NetworkTaskList : NetworkBehaviour
                 }
                 break;
             case (tasks.Task2):
+                tentTask.taskStatus.OnValueChanged += OnTask2StatusChange;
+                fireTask.TaskStatus.OnValueChanged -= OnTask1StatusChange;
+                if (IsServer) {
+                    Debug.Log("NetworkTaskList: started task 2");
+                    tentTask.taskStatus.Value = TentTaskStatus.Start;
+                }
                 // init task2
                 // register new listener
                 break;
             case (tasks.Task3):
-                // init task3
-                // register new listener
+                tentTask.taskStatus.OnValueChanged -= OnTask2StatusChange;
+                animalTask.taskStatus.OnValueChanged += OnTask3StatusChange;
+                if (IsServer) {
+                    Debug.Log("NetworkTaskList: started task 3");
+                    animalTask.taskStatus.Value = AnimalTaskStatus.Start;
+                }
                 break;
             case (tasks.Done):
                 // clean up
+                animalTask.taskStatus.OnValueChanged -= OnTask3StatusChange;
                 break;
         }
+        boardIndicator.SetActive(false);
         SetBoardText(); // update text
     }
 
@@ -145,10 +199,20 @@ public class NetworkTaskList : NetworkBehaviour
     public void OnTask1StatusChange(FireTaskStatus prev, FireTaskStatus updated){
         SetBoardText();
 
-        if (updated == FireTaskStatus.Done && IsServer) {
+        if (updated == FireTaskStatus.Done) {
             Debug.Log($"NetworkTaskList: fire task done, waiting for player to enter indicator");
             boardIndicator.SetActive(true);
-            fireTask.TaskStatus.OnValueChanged -= OnTask1StatusChange;
+            // fireTask.TaskStatus.OnValueChanged -= OnTask1StatusChange;
+        }
+    }
+
+    public void OnTask3StatusChange(AnimalTaskStatus prev, AnimalTaskStatus updated){
+        SetBoardText();
+
+        if (updated == AnimalTaskStatus.Done) {
+            Debug.Log($"NetworkTaskList: animal task done, waiting for player to enter indicator");
+            boardIndicator.SetActive(true);
+            // animalTask.TaskStatus.OnValueChanged -= OnTask1StatusChange;
         }
     }
 
@@ -163,9 +227,10 @@ public class NetworkTaskList : NetworkBehaviour
         TentTaskStatus updated) {
         SetBoardText();
 
-        if (updated == TentTaskStatus.Done && IsServer) {
+        if (updated == TentTaskStatus.Done) {
+            Debug.Log("NetworkTaskList: tent task done, waiting for player to enter indicator");
             boardIndicator.SetActive(true);
-            tentTask.taskStatus.OnValueChanged -= OnTask2StatusChange;
+            // tentTask.taskStatus.OnValueChanged -= OnTask2StatusChange;
         }       
     }
 }

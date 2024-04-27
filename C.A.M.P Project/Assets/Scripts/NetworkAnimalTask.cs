@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum AnimalType {
     Bird,
@@ -10,6 +11,7 @@ public enum AnimalType {
 
 public enum AnimalTaskStatus {
     Wait,
+    Start,
     AnimalsDone,
     Done
 }
@@ -36,12 +38,21 @@ public class NetworkAnimalTask : NetworkBehaviour
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server);
 
-    // Update is called once per frame
-    void Update()
+    public override void OnNetworkSpawn()
     {
-        
+        base.OnNetworkSpawn();
+        taskStatus.OnValueChanged += OnTaskStatusChange;
     }
-    
+
+    private void OnTaskStatusChange(AnimalTaskStatus old, AnimalTaskStatus updated) {
+        switch (updated) {
+            case AnimalTaskStatus.Start:
+                Debug.Log("NetworkAnimalTask: Animal task start!");
+                break;
+            // TODO:not really but maybe
+        }
+    }
+
 
     // function called by server to update animal count when
     public void ServerIncrementAnimalCount(AnimalType type) {

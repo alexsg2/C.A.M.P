@@ -4115,9 +4115,9 @@ GameObject:
   m_Component:
   - component: {fileID: 171261421}
   - component: {fileID: 171261424}
-  - component: {fileID: 171261423}
   - component: {fileID: 171261425}
   - component: {fileID: 171261426}
+  - component: {fileID: 171261427}
   m_Layer: 0
   m_Name: Nail-Trigger_3 Networked
   m_TagString: Untagged
@@ -4134,33 +4134,12 @@ Transform:
   m_GameObject: {fileID: 171261420}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.569, y: 3.065, z: 15.33}
+  m_LocalPosition: {x: 10.548, y: 2.81, z: 15.312}
   m_LocalScale: {x: 0.13123253, y: 0.24341172, z: 0.152927}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1168268859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &171261423
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171261420}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &171261424
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4206,6 +4185,27 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!135 &171261427
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171261420}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &172572500 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2222111361405018444, guid: 88f2fd29f58b9734683512546acec310, type: 3}
@@ -4296,9 +4296,9 @@ GameObject:
   m_Component:
   - component: {fileID: 173888681}
   - component: {fileID: 173888684}
-  - component: {fileID: 173888683}
   - component: {fileID: 173888685}
   - component: {fileID: 173888686}
+  - component: {fileID: 173888687}
   m_Layer: 0
   m_Name: Nail-Trigger_1 Networked
   m_TagString: Untagged
@@ -4315,33 +4315,12 @@ Transform:
   m_GameObject: {fileID: 173888680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.96, y: 3.065, z: 11.607}
+  m_LocalPosition: {x: 9.91, y: 2.81, z: 11.592}
   m_LocalScale: {x: 0.13123253, y: 0.24341172, z: 0.152927}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1168268859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &173888683
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173888680}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &173888684
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4387,6 +4366,27 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!135 &173888687
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173888680}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &175446168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21704,6 +21704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tent_indicator: {fileID: 823540947}
   tent: {fileID: 1024253057}
+  ratchet_tent: {fileID: 301329104}
   pole_triggers:
   - {fileID: 1014382325}
   - {fileID: 1092685270}
@@ -23391,9 +23392,9 @@ GameObject:
   m_Component:
   - component: {fileID: 849933064}
   - component: {fileID: 849933067}
-  - component: {fileID: 849933066}
   - component: {fileID: 849933068}
   - component: {fileID: 849933069}
+  - component: {fileID: 849933070}
   m_Layer: 0
   m_Name: Nail-Trigger_4 Networked
   m_TagString: Untagged
@@ -23410,33 +23411,12 @@ Transform:
   m_GameObject: {fileID: 849933063}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.390979, y: 3.0481668, z: 13.53076}
+  m_LocalPosition: {x: 8.327, y: 2.7931666, z: 13.471}
   m_LocalScale: {x: 0.13123253, y: 0.24341172, z: 0.152927}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1168268859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &849933066
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849933063}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &849933067
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -23482,6 +23462,27 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!135 &849933070
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849933063}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &850935115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37391,46 +37392,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b36b248dac73de241981c4b3ed591677, type: 3}
   m_PrefabInstance: {fileID: 1295976427}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1298501220
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 250, g: 250, b: 80, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &1298555464
 GameObject:
   m_ObjectHideFlags: 0
@@ -41397,6 +41358,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3356751432537613521, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
   m_PrefabInstance: {fileID: 1451917554}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1452550674
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 250, g: 250, b: 80, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &1459049709
 GameObject:
   m_ObjectHideFlags: 0
@@ -46105,9 +46106,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1603349390}
   - component: {fileID: 1603349393}
-  - component: {fileID: 1603349392}
   - component: {fileID: 1603349394}
   - component: {fileID: 1603349395}
+  - component: {fileID: 1603349396}
   m_Layer: 0
   m_Name: Nail-Trigger_2 Networked
   m_TagString: Untagged
@@ -46124,33 +46125,12 @@ Transform:
   m_GameObject: {fileID: 1603349389}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.133, y: 3.065, z: 13.501}
+  m_LocalPosition: {x: 12.139, y: 2.81, z: 13.399}
   m_LocalScale: {x: 0.13123253, y: 0.24341172, z: 0.152927}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1168268859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1603349392
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603349389}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1603349393
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -46196,6 +46176,27 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!135 &1603349396
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603349389}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1604445991
 PrefabInstance:
   m_ObjectHideFlags: 0

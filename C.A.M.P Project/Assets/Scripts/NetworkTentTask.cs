@@ -13,6 +13,8 @@ public class NetworkTentTask : NetworkBehaviour
 {
     public GameObject tent_indicator;
     public GameObject tent;
+    public GameObject ratchet_tent; // tent that players set up, parent
+    // of all the objects we enable partway through the task
 
     // poles, 0 == left, 1 == right
     public GameObject[] pole_triggers = new GameObject[2];
@@ -241,6 +243,7 @@ public class NetworkTentTask : NetworkBehaviour
         // wrap up the task
         nails_indicator.SetActive(false);
         tent_indicator.SetActive(false);
+        ratchet_tent.SetActive(false);
         tent.SetActive(true);
         // triggers disable their indicators and selves
         nails.OnValueChanged -= OnNailsUpdate;

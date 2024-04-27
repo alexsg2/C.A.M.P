@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class AnimalWiki : MonoBehaviour
 {
+    public AnimalType type;
+    public NetworkAnimalTask task;
     //Checks animal type and gets a description 
     public string GetAnimalDesc()
     {
         string animalName = gameObject.name;
+
 
         if (animalName.Contains("Rabbit"))
         {

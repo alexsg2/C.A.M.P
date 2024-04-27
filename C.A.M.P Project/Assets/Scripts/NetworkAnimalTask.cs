@@ -12,7 +12,7 @@ public enum AnimalType {
 public enum AnimalTaskStatus {
     Wait,
     Start,
-    AnimalsDone,
+    LandAnimalsDone,
     Done
 }
 
@@ -48,9 +48,28 @@ public class NetworkAnimalTask : NetworkBehaviour
         switch (updated) {
             case AnimalTaskStatus.Start:
                 Debug.Log("NetworkAnimalTask: Animal task start!");
+                land_animal_count.OnValueChanged += OnLandAnimalCountChange;
+                // listen for land animal checks, get 
                 break;
-            // TODO:not really but maybe
+            case AnimalTaskStatus.LandAnimalsDone:
+                Debug.Log("NetworkAnimalTask: Land animal subtask done");
+                
+                // listen for bird checks
+                break;
+            case AnimalTaskStatus.Done:
+                Debug.Log("NetworkAnimalTask: Done");
+                break;
+
         }
+    }
+
+    private void OnLandAnimalCountChange(int old, int updated) {
+        // TODO:
+
+    }
+
+    private void OnBirdCountChange(int old, int updated) {
+        // TODO:
     }
 
 
@@ -68,4 +87,16 @@ public class NetworkAnimalTask : NetworkBehaviour
                 break;
         }
     }
+
+    public void ClientIncrementAnimalCount(AnimalType type) {
+        if (IsServer) {
+            return;
+        }
+
+        if (type == AnimalType.Bird && taskStatus == AnimalTaskStatus.LandAnimalsDone.Value) {
+
+        }
+    }
+
+    [ServerRpc]
 }

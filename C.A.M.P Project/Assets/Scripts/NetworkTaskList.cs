@@ -9,26 +9,26 @@ public class NetworkTaskList : NetworkBehaviour
 {
 
     // Text rows on task board
-    //t1 header and subheaders/tasks
+    //t1 header and subheaders/tasksprivate const string T1H = "Task 1: Build a Fire\n\n";
     private const string T1H = "Task 1: Build a Fire\n\n";
-    private const string T1HDone = "<s>Task 1: Build a Fire</s>\n";
-    private const string T1s1 = "[] Put 12 twigs into the firepit\n\n";
-    private const string T1s1Done = "[x] <s>Put 12 twigs into the firepit</s>\n\n";
-    private const string T1s2 =  "[] Light 3 Matches using \n   a matchbox\n\n and put them in the firepit\n\n";
-    private const string T1s2Done =  "[x] <s>Light 3 Matches using \n   a matchbox\n\n and put them in the firepit</s>\n\n";
+    private const string T1HDone = "<s>Task 1: Build a Fire</s>\n\n";
+    private const string T1s1 = "[] Put 12 twigs into the \n   firepit\n\n";
+    private const string T1s1Done = "[x] <s>Put 12 twigs into the</s>\n     <s>firepit</s>\n\n";
+    private const string T1s2 = "[] Light 3 Matches using \n   a matchbox and put\n   them in the firepit\n\n";
+    private const string T1s2Done = "[x] <s>Light 3 Matches using</s> \n     <s>a matchbox and put</s>\n     <s>them in the firepit</s>\n\n";
     // t2 header and subheaders/tasks
     private const string T2H = "Task 2: Assemble a Tent\n\n";
-    private const string T2HDone = "<s>Task 2: Assemble a Tent</s>\n";
+    private const string T2HDone = "<s>Task 2: Assemble a Tent</s>\n\n";
     private const string T2s1 = "[] Place 2 poles into the\n   ground\n\n";
     private const string T2s1Done = "[x] <s>Place 2 poles into the</s>\n     <s>ground</s>\n\n";
     private const string T2s2 = "[] Put 2 tarps on the poles\n\n";
     private const string T2s2Done = "[x] <s>Put 2 tarps on the poles</s>\n\n";
-    private const string T2s3 = "[] Place stakes in the tent corners and hammer them twice\n";
-    private const string T2s3Done = "[x] <s>Place stakes in the tent corners and hammer them twice</s>\n";
+    private const string T2s3 = "[] Place stakes in the tent \n   corners and hammer\n   them twice";
+    private const string T2s3Done = "[x] <s>Place stakes in the tent</s>\n     <s>corners and hammer</s>\n     <s>them twice</s>\n";
 
     // t3 header and subheaders/tasks
     private const string T3H = "Task 3: Identify Animals\n\n";
-    private const string T3HDone = "<s>Task 3: Identify Animals</s>\n";
+    private const string T3HDone = "<s>Task 3: Identify Animals</s>\n\n";
     private const string T3s1 = "[] Identify 1 Land Animal\n\n";
     private const string T3s1Done = "[x] <s>Identify 1 Land Animal\n\n</s>";
     private const string T3s2 = "[] Identify 1 Bird Type";
@@ -122,7 +122,7 @@ public class NetworkTaskList : NetworkBehaviour
             case AnimalTaskStatus.Start:
                 canvasText.text = T3H + T3s1 + T3s2;
                 break;
-            case AnimalTaskStatus.AnimalsDone:
+            case AnimalTaskStatus.LandAnimalsDone:
             canvasText.text = T3H + T3s1Done + T3s2;
                 break;
             case AnimalTaskStatus.Done:

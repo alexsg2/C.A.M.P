@@ -25,6 +25,7 @@ TagManager:
   - lb_bird
   - NPC
   - Player Model
+  - Grabbable
   layers:
   - Default
   - TransparentFX

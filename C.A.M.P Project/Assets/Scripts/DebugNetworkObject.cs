@@ -7,6 +7,6 @@ public class DebugNetworkObject : NetworkBehaviour
 {
     public override void OnNetworkSpawn() {
         base.OnNetworkSpawn();
-        Debug.Log($"Network Object with tag {gameObject.tag} spawned");
+        // Debug.Log($"Network Object with tag {gameObject.tag} spawned");
     }
 }

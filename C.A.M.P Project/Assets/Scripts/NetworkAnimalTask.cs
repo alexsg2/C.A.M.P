@@ -55,7 +55,7 @@ public class NetworkAnimalTask : NetworkBehaviour
         if (IsServer) {
             return;
         }
-        Debug.Log("NetworkAnimalTask: started!");
+        // Debug.Log("NetworkAnimalTask: started!");
 
         // register callbacks only for clients
         foreach (AnimalWiki land_animal in land_animals) {
@@ -78,7 +78,7 @@ public class NetworkAnimalTask : NetworkBehaviour
         // if we didnt already deregister listeners for
         // land animal task, do so now
         if (!old.left && updated.left) {
-            Debug.Log("NetworkAnimalTask: land animal subtask completed!");
+            // Debug.Log("NetworkAnimalTask: land animal subtask completed!");
             foreach (AnimalWiki wiki in land_animals) {
                 wiki.OnAnimalClick -= OnClientClickAnimal;
             }
@@ -86,14 +86,14 @@ public class NetworkAnimalTask : NetworkBehaviour
 
         // same here for bird task
         if (!old.right && updated.right) {
-            Debug.Log("NetworkAnimalTask: bird subtask completed!");
+            // Debug.Log("NetworkAnimalTask: bird subtask completed!");
             foreach (AnimalWiki wiki in birds) {
                 wiki.OnAnimalClick -= OnClientClickAnimal;
             }
         }
 
         if (updated.left && updated.right) {
-            Debug.Log("NetworkAnimalTask: both subtasks completed!");
+            // Debug.Log("NetworkAnimalTask: both subtasks completed!");
             taskStatus.OnValueChanged -= OnTaskStatusChange;
         }
     }
@@ -108,7 +108,7 @@ public class NetworkAnimalTask : NetworkBehaviour
         if (IsServer) {
             return;
         }
-        Debug.Log($"NetworkAnimalTask: client {OwnerClientId} clicked a {type} animal. Sending RPC.");
+        // Debug.Log($"NetworkAnimalTask: client {OwnerClientId} clicked a {type} animal. Sending RPC.");
 
         IncrementAnimalCountServerRpc(type);
 
@@ -119,13 +119,13 @@ public class NetworkAnimalTask : NetworkBehaviour
         
     [ServerRpc(RequireOwnership = false)]
     public void IncrementAnimalCountServerRpc(AnimalType type) {
-        Debug.Log("NetworkAnimalTask: Server received animal rpc");
+        // Debug.Log("NetworkAnimalTask: Server received animal rpc");
         TwoBools task_stat = taskStatus.Value;
 
         if (!task_stat.left && type == AnimalType.Land) {
            
             land_animal_count++;
-            Debug.Log($"NetworkAnimalTask: Server updated land animal count to {land_animal_count}");
+            // Debug.Log($"NetworkAnimalTask: Server updated land animal count to {land_animal_count}");
             // update task status if needed
             if (land_animal_count >= num_land_animals_needed) {
                 task_stat.left = true;
@@ -136,7 +136,7 @@ public class NetworkAnimalTask : NetworkBehaviour
 
         if (!task_stat.right && type == AnimalType.Bird) {
             bird_count++;
-            Debug.Log($"NetworkAnimalTask: Server updated bird count to {bird_count}");
+            // Debug.Log($"NetworkAnimalTask: Server updated bird count to {bird_count}");
             // update task status if needed
             if(bird_count >= num_birds_needed) {
                 task_stat.right = true;

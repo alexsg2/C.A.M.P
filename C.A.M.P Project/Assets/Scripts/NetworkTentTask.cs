@@ -73,35 +73,35 @@ public class NetworkTentTask : NetworkBehaviour
     public void OnPolesUpdate(TwoBools old, TwoBools updated) {
         // activate the actual poles: client & server
         if (!pole_objects[0].activeSelf && updated.left) {
-            Debug.Log("TENT: activated left pole");
+            // Debug.Log("TENT: activated left pole");
             pole_objects[0].SetActive(true);
             pole_placement_indicators[0].SetActive(false);
         }
 
         if (!pole_objects[1].activeSelf && updated.right) {
-            Debug.Log("TENT: activated right pole");
+            // Debug.Log("TENT: activated right pole");
             pole_objects[1].SetActive(true);
             pole_placement_indicators[1].SetActive(false);
         }
 
         // Check if complete
         if (updated.left && updated.right && IsServer) {
-            Debug.Log("TentTaskStatus updated");
+            // Debug.Log("TentTaskStatus updated");
             taskStatus.Value = TentTaskStatus.PolesDone;
         }
     }
 
     public void OnTarpsUpdate(TwoBools old, TwoBools updated) {
-        Debug.Log("Tarps have been updated");
+        // Debug.Log("Tarps have been updated");
         if (!tarp_objects[0].activeSelf && updated.left) {
-            Debug.Log("TENT: activated left tarp");
+            // Debug.Log("TENT: activated left tarp");
             tarp_objects[0].SetActive(true);
             // TODO: disable indicators
             tarp_placement_indicators[0].SetActive(false);
         }
 
         if (!tarp_objects[1].activeSelf && updated.right) {
-            Debug.Log("TENT: activated right tarp");
+            // Debug.Log("TENT: activated right tarp");
             tarp_objects[1].SetActive(true);
             tarp_placement_indicators[1].SetActive(false);
             // TODO: disable indicators, handle in tarp thing itself?
@@ -196,7 +196,7 @@ public class NetworkTentTask : NetworkBehaviour
     }
 
     public void StartTask() {
-        Debug.Log("Start task called");
+        // Debug.Log("Start task called");
         // start first subtask: poles
         tent_indicator.SetActive(true);
         poles.OnValueChanged += OnPolesUpdate;
@@ -209,7 +209,7 @@ public class NetworkTentTask : NetworkBehaviour
         poles.OnValueChanged -= OnPolesUpdate;
         tarps.OnValueChanged += OnTarpsUpdate;
         EnableTarpTriggersAndIndicators();
-        Debug.Log("Pole task done, moving on to tarps");
+        // Debug.Log("Pole task done, moving on to tarps");
     }
 
     private void StartNails() {
@@ -220,7 +220,7 @@ public class NetworkTentTask : NetworkBehaviour
         tarps.OnValueChanged -= OnTarpsUpdate;
         nails.OnValueChanged += OnNailsUpdate;
         EnableNailTriggersAndIndicators();
-        Debug.Log("Tarp task done, moving on to nails");
+        // Debug.Log("Tarp task done, moving on to nails");
     }
 
     private void FinishTask() {
@@ -232,7 +232,7 @@ public class NetworkTentTask : NetworkBehaviour
         // triggers disable their indicators and selves
         nails.OnValueChanged -= OnNailsUpdate;
         taskStatus.OnValueChanged -= OnTaskStatusChange;
-        Debug.Log("Tent task complete!");
+        // Debug.Log("Tent task complete!");
     }
 
     /// <summary>
@@ -241,7 +241,7 @@ public class NetworkTentTask : NetworkBehaviour
     public void FastForward() {
         // TODO: for players that rejoin/join late
         // handle enabling triggers as well if necessary
-        Debug.Log("TODO: tent task client fast forward");
+        // Debug.Log("TODO: tent task client fast forward");
         // erm, do we have to fast forward each subtask then? what if one subtask is partially complete?
         // then when it completes things will update, not too terrible
         if (taskStatus.Value == TentTaskStatus.Done) {

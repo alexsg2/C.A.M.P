@@ -38,7 +38,7 @@ public class NetworkNailTrigger : NetworkBehaviour
         // listen for nail trigger, networktenttask disables this object by default
         // then enables it when needed
         nail_active.OnValueChanged += OnNailTrigger;
-        Debug.Log($"Nail trigger {count} spawned");
+        // Debug.Log($"Nail trigger {count} spawned");
         gameObject.SetActive(false);
         // TODO: not being spawned for some reason
         // gameObject.SetActive(false);
@@ -53,14 +53,14 @@ public class NetworkNailTrigger : NetworkBehaviour
         // listen 4 number of hits now
         num_hits.OnValueChanged += OnNailHitsChange;
         nail_active.OnValueChanged -= OnNailTrigger;
-        Debug.Log($"Nail {count} has been installed, listening for hammer hits");
+        // Debug.Log($"Nail {count} has been installed, listening for hammer hits");
     }
 
 
     public void OnNailHitsChange(int old, int updated) {
         // Move the nail down slightly
         nail.transform.position -= Vector3.up * 0.08f;
-        Debug.Log($"Hit nail {count}! Total hits: {updated}");
+        // Debug.Log($"Hit nail {count}! Total hits: {updated}");
 
         if (updated >= hits_needed) {
             // stop listening to this event
@@ -84,7 +84,7 @@ public class NetworkNailTrigger : NetworkBehaviour
                         break;
                 }
                 tentTask.nails.Value = curr;
-                Debug.Log($"Nail {count} is fully hammered in!");
+                // Debug.Log($"Nail {count} is fully hammered in!");
             }
             
             // disable indicator
@@ -113,7 +113,7 @@ public class NetworkNailTrigger : NetworkBehaviour
                     no.RemoveOwnership();
                 }
                 no.Despawn();
-                Debug.Log($"TENT: Despawned nail grabbable for {count} nail trigger");
+                // Debug.Log($"TENT: Despawned nail grabbable for {count} nail trigger");
             }
             nail_active.Value = true; // TODO: writing to this before network object 
             return;

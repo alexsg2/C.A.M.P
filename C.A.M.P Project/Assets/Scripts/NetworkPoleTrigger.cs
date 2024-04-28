@@ -17,7 +17,7 @@ public class NetworkPoleTrigger : NetworkBehaviour
             Destroy(this.gameObject);
         }
 
-        Debug.Log($"NetworkPole {side} spawned");
+        // Debug.Log($"NetworkPole {side} spawned");
 
         gameObject.SetActive(false);
     }
@@ -45,7 +45,7 @@ public class NetworkPoleTrigger : NetworkBehaviour
                     no.RemoveOwnership();
                 }
                 no.Despawn();
-                Debug.Log($"TENT: Despawned pole grabbable for {side} pole trigger");
+                // Debug.Log($"TENT: Despawned pole grabbable for {side} pole trigger");
             }
             // else { // everyone destroy it
             //     Destroy(go);

@@ -15,7 +15,7 @@ public class GrabbableSpawner : NetworkBehaviour
     void Start()
     {
         if (IsServer || IsHost) {
-            Debug.Log("Entered if yay");
+            // Debug.Log("Entered if yay");
             for (int i = 0; i < maxToSpawn; i++) {
                 GameObject obj = Instantiate(prefabs[0], Vector3.zero, Quaternion.identity);
                 // optional TODO: change transform position
@@ -24,10 +24,10 @@ public class GrabbableSpawner : NetworkBehaviour
                     no.Spawn();
                 }
                 else {
-                    Debug.Log($"Prefab {i} has no NetworkObject component. Try adding one so we can spawn it.");
+                    // Debug.Log($"Prefab {i} has no NetworkObject component. Try adding one so we can spawn it.");
                 }
             }
         }
-        Debug.Log("Did not enter if statement");
+        // Debug.Log("Did not enter if statement");
     }
 }

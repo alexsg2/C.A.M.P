@@ -9900,7 +9900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       propertyPath: m_TagString
-      value: Nail
+      value: Grabbable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11956,7 +11956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       propertyPath: m_TagString
-      value: Pole
+      value: Grabbable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12934,7 +12934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
+      value: 0.00018310547
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -22864,6 +22864,18 @@ PrefabInstance:
       propertyPath: maxMoveTime
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 6593228291826030256, guid: f22de17d262c3ae468ee9aed95ac4950, type: 3}
+      propertyPath: visualRandomization.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593228291826030256, guid: f22de17d262c3ae468ee9aed95ac4950, type: 3}
+      propertyPath: visualRandomization.Array.data[1].materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593228291826030256, guid: f22de17d262c3ae468ee9aed95ac4950, type: 3}
+      propertyPath: 'visualRandomization.Array.data[1].materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d945c681c4504df439962c1a6f33d8af, type: 2}
     - target: {fileID: 7578033035582892364, guid: f22de17d262c3ae468ee9aed95ac4950, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -24249,7 +24261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       propertyPath: m_TagString
-      value: Nail
+      value: Grabbable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29879,6 +29891,46 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107750342}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!21 &1109453716
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 250, g: 250, b: 80, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1001 &1109582088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30547,7 +30599,7 @@ GameObject:
   - component: {fileID: 1150223867}
   m_Layer: 7
   m_Name: Tarp
-  m_TagString: Tarp
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32517,7 +32569,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -41205,7 +41257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 919567615dc45604a9469073a0b423ba, type: 3}
       propertyPath: m_TagString
-      value: Hammer
+      value: Grabbable
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 919567615dc45604a9469073a0b423ba, type: 3}
       propertyPath: m_LocalScale.x
@@ -42842,7 +42894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       propertyPath: m_TagString
-      value: Nail
+      value: Grabbable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43276,7 +43328,7 @@ GameObject:
   - component: {fileID: 1547765341}
   m_Layer: 7
   m_Name: Tarp (1)
-  m_TagString: Tarp
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45714,46 +45766,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 406672, guid: fb8ae0828a555f74996970b8d0495f15, type: 3}
   m_PrefabInstance: {fileID: 1604445991}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1607505893
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 250, g: 250, b: 80, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1001 &1610468677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55091,7 +55103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       propertyPath: m_TagString
-      value: Nail
+      value: Grabbable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58339,7 +58351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a84915754dee4a841a75da191a01cd84, type: 3}
       propertyPath: m_TagString
-      value: Pole
+      value: Grabbable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58925,6 +58937,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3761980607334964924, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761980607334964924, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
@@ -58948,7 +58964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.022206545
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -58956,23 +58972,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 11.104149
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.6280118
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.77820385
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -58980,7 +58996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 102.193
       objectReference: {fileID: 0}
     - target: {fileID: 4985290875612057347, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

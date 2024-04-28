@@ -36,23 +36,4 @@ public class ObjectSpawner : NetworkBehaviour
         go.transform.rotation = new_rotation;
         go.GetComponent<NetworkObject>().Spawn();
     }
-
-    // public void Start() {
-    //     NetworkManager.Singleton.OnServerStarted += OnServerStart;
-    // }
-
-    // public void OnServerStart() {
-    //     if (toSpawn == null) {
-    //         return;
-    //     }
-
-    //     var instance = Instantiate(toSpawn);
-    //     var instanceNetworkObject = instance.GetComponent<NetworkObject>();
-
-    //     if (instanceNetworkObject == null) {
-    //         return;
-    //     }
-
-    //     instanceNetworkObject.Spawn();
-    // }
 }

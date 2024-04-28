@@ -18,7 +18,7 @@ public class ClientNetworkManager : MonoBehaviour
         NetworkManager mine = GetComponent<NetworkManager>();
 
         if (mine != NetworkManager.Singleton) {
-            Debug.Log("Destroying NetworkManager clone");
+            // Debug.Log("Destroying NetworkManager clone");
             Destroy(gameObject);
         }
         else {
@@ -31,7 +31,7 @@ public class ClientNetworkManager : MonoBehaviour
         if (clientId != NetworkManager.Singleton.LocalClientId) {
             return;
         }
-        Debug.Log("Handling server disconnect");
+        // Debug.Log("Handling server disconnect");
         // shutdown client
         NetworkManager.Singleton.Shutdown();
         // load join scene

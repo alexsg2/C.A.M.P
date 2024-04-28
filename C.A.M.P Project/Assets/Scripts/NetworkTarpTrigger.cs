@@ -17,7 +17,7 @@ public class NetworkTarpTrigger : NetworkBehaviour
             Destroy(this.gameObject);
         }
 
-        Debug.Log($"Network Tarp trigger {side} spawned");
+        // Debug.Log($"Network Tarp trigger {side} spawned");
                 if (IsClient) { // client no run anything
             gameObject.SetActive(false);
             this.enabled = false;
@@ -50,7 +50,7 @@ public class NetworkTarpTrigger : NetworkBehaviour
                     no.RemoveOwnership();
                 }
                 no.Despawn();
-                Debug.Log($"TENT: Despawned tarp grabbable for {side} tarp trigger");
+                // Debug.Log($"TENT: Despawned tarp grabbable for {side} tarp trigger");
             }
             // else { // everyone destroy it
             //     Destroy(go);

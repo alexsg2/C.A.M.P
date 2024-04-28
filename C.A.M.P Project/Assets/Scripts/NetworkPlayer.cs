@@ -65,7 +65,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
         animalText.text = wiki.GetAnimalDesc();
         animalTextDisplay.SetActive(true);
-        Debug.Log($"Grabbed Animal: {wiki.GetAnimalDesc()}");
+        // Debug.Log($"Grabbed Animal: {wiki.GetAnimalDesc()}");
         // TODO
         // get animal text
         // set animal text
@@ -107,10 +107,10 @@ public class NetworkPlayer : NetworkBehaviour
             // handle grabbables, request ownership
             if (networkObjectSelected.gameObject.layer == LayerMask.NameToLayer("Grabbable") && networkObjectSelected.OwnerClientId != OwnerClientId) {
                 // TODO: handle race conditions
-                Debug.Log("Requesting ownership of grabbable");
+                // Debug.Log("Requesting ownership of grabbable");
                 RequestGrabbableOwnershipServerRpc(OwnerClientId, networkObjectSelected);
             }
-        }
+         }
     }
 
     public void OnDeselectGrabbable(SelectExitEventArgs eventArgs) {
@@ -129,10 +129,10 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (networkObjectReference.TryGet(out NetworkObject networkObject)) {
             networkObject.ChangeOwnership(newOwnerClientId);
-            Debug.Log($"Updated ownership to clientId {newOwnerClientId}");
+            // Debug.Log($"Updated ownership to clientId {newOwnerClientId}");
         }
         else {
-            Debug.Log($"Unable to change ownership for clientId {newOwnerClientId}");
+            // Debug.Log($"Unable to change ownership for clientId {newOwnerClientId}");
         }
     }
 }

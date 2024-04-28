@@ -18,7 +18,7 @@ public class Skip_Tutorial : MonoBehaviour
     // Method called when the button is clicked
     void OnButtonClicked()
     {
-        Debug.Log("Clicked");
+        // Debug.Log("Clicked");
         skipped = true;
     }
 

@@ -20,7 +20,7 @@ public class ObjectAcceptor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "QuestItem") {
-            Debug.Log("QuestItem Accepted");
+            // Debug.Log("QuestItem Accepted");
             other.gameObject.SetActive(false);
         }
 

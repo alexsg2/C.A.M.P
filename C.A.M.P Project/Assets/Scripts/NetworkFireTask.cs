@@ -113,7 +113,7 @@ public class NetworkFireTask : NetworkBehaviour
     // server checks if we met necessary twig amount
     // and updated Task1Status accordingly.
     public void OnTwigCountChange(int old, int updated) {
-        Debug.Log("Twigs count: " + updated);
+        // Debug.Log("Twigs count: " + updated);
 
         if (IsServer) {
             if (updated >= twigsRequired) {
@@ -126,7 +126,7 @@ public class NetworkFireTask : NetworkBehaviour
     // server checks if we met necessary match amount
     // and updated Task1Status accordingly.
     public void OnMatchCountChange(int old, int updated) {
-        Debug.Log("Matches count: " + updated);
+        // Debug.Log("Matches count: " + updated);
 
         if (IsServer) {
             if (updated >= matchesRequired) {
@@ -141,7 +141,7 @@ public class NetworkFireTask : NetworkBehaviour
         // both servers and clients execute this
         switch (updated) {
             case FireTaskStatus.Wait:
-                Debug.Log("Start firepit task. GET SOME TWIGS!");
+                // Debug.Log("Start firepit task. GET SOME TWIGS!");
                 break;
             case FireTaskStatus.Start:
                 StartTask();
@@ -150,12 +150,12 @@ public class NetworkFireTask : NetworkBehaviour
                 // enable fire
                 // deregister listener for match count
                 MakeLogs();
-                Debug.Log("Enough twigs have been gathered, logs activated!");
+                // Debug.Log("Enough twigs have been gathered, logs activated!");
                 StartMatches();
                 break;
             case FireTaskStatus.Done:
                 MakeFire();
-                Debug.Log("Enough lit matches have been gathered, fire activated!\nTask done.");
+                // Debug.Log("Enough lit matches have been gathered, fire activated!\nTask done.");
                 matchesIndicator.SetActive(false);
                 TaskStatus.OnValueChanged -= OnTaskStatusChange;
                 break;
@@ -273,11 +273,11 @@ public class NetworkFireTask : NetworkBehaviour
                         no.RemoveOwnership();
                     }
                     no.Despawn();
-                    Debug.Log($"Firepit: Despawned object with tag {tag}");
+                    // Debug.Log($"Firepit: Despawned object with tag {tag}");
                 }
                 else {
                     Destroy(gameObject);
-                    Debug.Log($"Firepit: Destroyed object with tag {tag}");
+                    // Debug.Log($"Firepit: Destroyed object with tag {tag}");
                 }
             }
         }

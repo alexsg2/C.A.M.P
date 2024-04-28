@@ -29,6 +29,8 @@ public class NetworkPoleTrigger : NetworkBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
+
+        // Debug.Log("SERVER: something entered pole trigger");
         // only server manages state change
         // trigger enter doesnt matter if pole is already activated
         if (pole.activeSelf) {

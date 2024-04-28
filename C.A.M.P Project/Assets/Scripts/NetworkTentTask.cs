@@ -200,6 +200,7 @@ public class NetworkTentTask : NetworkBehaviour
         // start first subtask: poles
         tent_indicator.SetActive(true);
         poles.OnValueChanged += OnPolesUpdate;
+        // Debug.Log("Enablign Pole triggers and indicators");
         EnablePoleTriggersAndIndicators(); 
     }
 

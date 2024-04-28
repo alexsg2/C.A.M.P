@@ -36,7 +36,6 @@ namespace OpenAI
             
             dropdown.SetValueWithoutNotify(0);
             ChangeMicrophone(1);
-            // StartRecording();
         }
 
         private void ChangeMicrophone(int index)

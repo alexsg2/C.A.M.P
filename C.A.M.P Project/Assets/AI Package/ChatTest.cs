@@ -57,7 +57,6 @@ namespace OpenAI
 
             messages.Add(message);
             button.onClick.AddListener(SendReply);
-            SendReply("Hi what is your name?");
         }
 
         private void AppendMessage(ChatMessage message)

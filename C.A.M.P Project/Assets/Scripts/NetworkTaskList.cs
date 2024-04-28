@@ -80,8 +80,10 @@ public class NetworkTaskList : NetworkBehaviour
         if (IsClient) {
             return;
         }
+        // Debug.Log("Server Task List: something entered task board trigger");
         // if we're "in between" tasks, move on to next task
         if (other.CompareTag("Player") && boardIndicator.activeSelf) {
+            Debug.Log("Server Task List: player entered trigger and board indic active, moving on to next task");
             curr_task.Value += 1;  // increment curr task
             //curr_task.Value = tasks.Task3; // uncomment this and set to desired task for debugging purposes
             // Debug.Log($"NetworkTaskList: moved on to task {curr_task.Value}");

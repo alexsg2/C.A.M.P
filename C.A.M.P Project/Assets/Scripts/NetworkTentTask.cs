@@ -67,23 +67,7 @@ public class NetworkTentTask : NetworkBehaviour
 
     public override void OnNetworkSpawn() {
         base.OnNetworkSpawn();
-
-        // fast forward if client joined and is behind
-        // if (IsClient && taskStatus.Value != TentTaskStatus.Wait) {
-        //     FastForward();
-        //     return;
-        // }
-        // NOTE: all triggers/indicators for this task
-        // should be disabled by default in the scene
         taskStatus.OnValueChanged += OnTaskStatusChange;
-
-        // // todo: move this to tasklist/manager. should not start at spawn
-        // if (IsServer) {
-        //     taskStatus.Value = TentTaskStatus.Start;
-        // }
-        // else {
-        //     StartTask(); // todo: should not be here idk
-        // }
     }
 
     public void OnPolesUpdate(TwoBools old, TwoBools updated) {
@@ -247,6 +231,7 @@ public class NetworkTentTask : NetworkBehaviour
         tent.SetActive(true);
         // triggers disable their indicators and selves
         nails.OnValueChanged -= OnNailsUpdate;
+        taskStatus.OnValueChanged -= OnTaskStatusChange;
         Debug.Log("Tent task complete!");
     }
 

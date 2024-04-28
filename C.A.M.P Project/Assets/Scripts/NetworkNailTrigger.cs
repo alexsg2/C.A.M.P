@@ -12,6 +12,8 @@ public class NetworkNailTrigger : NetworkBehaviour
 
     public NetworkTentTask tentTask; // tent task script with useful netvar we need to update
 
+    private HashSet<int> objects_seen = new HashSet<int>();
+
     // number of current nail hits
     private NetworkVariable<int> num_hits = new NetworkVariable<int>(
         0, 
@@ -113,19 +115,30 @@ public class NetworkNailTrigger : NetworkBehaviour
                 no.Despawn();
                 Debug.Log($"TENT: Despawned nail grabbable for {count} nail trigger");
             }
-            // else {
-            //     Destroy(go);
-            //     Debug.Log($"TENT: Destroyed nail grabbable for {count} nail trigger");
-            // }
             nail_active.Value = true; // TODO: writing to this before network object 
             return;
         }
 
+        int instance_id = other.gameObject.GetInstanceID();
+
         // handle hammering in nail
-        if (other.CompareTag("Hammer") && (nail_active.Value) && (num_hits.Value < hits_needed))
+        if (other.CompareTag("Hammer") 
+            && !objects_seen.Contains(instance_id) 
+                && (nail_active.Value) 
+                    && (num_hits.Value < hits_needed))
         {
             // Increment hit counter
             num_hits.Value += 1;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (IsClient) {
+            return;
+        }
+
+        if (other.CompareTag("Hammer")) {
+            objects_seen.Remove(other.gameObject.GetInstanceID());
         }
     }
 }

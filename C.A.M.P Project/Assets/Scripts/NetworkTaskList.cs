@@ -34,6 +34,8 @@ public class NetworkTaskList : NetworkBehaviour
     private const string T3s2 = "[] Identify 1 Bird Type";
     private const string T3s2Done = "[x] <s>Identify 1 Bird Type</s>";
 
+    private const string Done = "     All Tasks Complete\n\n     Nice job campers!";
+
     // Board Text
     public TMP_Text canvasText;
 
@@ -156,7 +158,7 @@ public class NetworkTaskList : NetworkBehaviour
                 break;
             case tasks.Done:
                 Debug.Log($"NetworkTaskList: set done text");
-                canvasText.text = "All tasks done!";
+                canvasText.text = Done;
                 break;
         }
     }

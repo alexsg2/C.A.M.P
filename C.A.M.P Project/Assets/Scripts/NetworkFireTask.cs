@@ -126,7 +126,7 @@ public class NetworkFireTask : NetworkBehaviour
     // server checks if we met necessary match amount
     // and updated Task1Status accordingly.
     public void OnMatchCountChange(int old, int updated) {
-        Debug.Log("Matches count: " + matchCount.Value);
+        Debug.Log("Matches count: " + updated);
 
         if (IsServer) {
             if (updated >= matchesRequired) {
@@ -156,6 +156,7 @@ public class NetworkFireTask : NetworkBehaviour
             case FireTaskStatus.Done:
                 MakeFire();
                 Debug.Log("Enough lit matches have been gathered, fire activated!\nTask done.");
+                matchesIndicator.SetActive(false);
                 TaskStatus.OnValueChanged -= OnTaskStatusChange;
                 break;
         }
@@ -179,6 +180,8 @@ public class NetworkFireTask : NetworkBehaviour
         // Don't execute if we're a client,
         // only server manages state. Also
         // if fire is already made we dont care.
+        // Oh, also if we've already seen this object
+        // and it''s triggering a duplicate collision.
         if (IsClient || FireMade() || objects_inside.Contains(instance_id)) {
             return;
         }

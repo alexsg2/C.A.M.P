@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 public enum FireTaskStatus {
     Wait,
@@ -22,6 +23,10 @@ public class NetworkFireTask : NetworkBehaviour
 
     public GameObject matchesIndicator;
     public GameObject fireIndicator;
+
+    // cache instance ids of objects that are "in" collider
+    // so we don't handle them again
+    private HashSet<int> objects_inside = new HashSet<int>();
 
     // Network variables for task
     private NetworkVariable<int> twigsCount = new NetworkVariable<int>(
@@ -63,10 +68,6 @@ public class NetworkFireTask : NetworkBehaviour
         fireIndicator.SetActive(false);
         matchesIndicator.SetActive(false);
         TaskStatus.OnValueChanged += OnTaskStatusChange;
-        // else {
-        //     twigsCount.OnValueChanged += OnTwigCountChange;
-        //     
-        // }
     }
 
     private void StartTask() {
@@ -174,10 +175,11 @@ public class NetworkFireTask : NetworkBehaviour
     // Handle when twigs or matches get dropped in pit
     private void OnTriggerEnter(Collider other)
     {
+        int instance_id = other.gameObject.GetInstanceID();
         // Don't execute if we're a client,
         // only server manages state. Also
         // if fire is already made we dont care.
-        if (IsClient || FireMade()) {
+        if (IsClient || FireMade() || objects_inside.Contains(instance_id)) {
             return;
         }
 
@@ -185,11 +187,13 @@ public class NetworkFireTask : NetworkBehaviour
         if (other.CompareTag("Firewood") && !LogStackMade())
         {
             twigsCount.Value++;
+            objects_inside.Add(instance_id);
         }
         // Otherwise if we got a match and 
         else if (other.CompareTag("Match") && LogStackMade() )
         {
             matchCount.Value++;
+            objects_inside.Add(instance_id);
         }
 
     }
@@ -203,9 +207,17 @@ public class NetworkFireTask : NetworkBehaviour
             return;
         }
 
+        int instance_id = other.gameObject.GetInstanceID();
+
         if (other.CompareTag("Firewood"))
         {
             twigsCount.Value--;
+            objects_inside.Remove(instance_id);
+        }
+        else if (other.CompareTag("Match") && LogStackMade() )
+        {
+            matchCount.Value--;
+            objects_inside.Remove(instance_id);
         }
     }
 

@@ -3,10 +3,15 @@ using UnityEngine;
 public class AnimalWiki : MonoBehaviour
 {
     public AnimalType type;
-    public NetworkAnimalTask task;
+
+    public delegate void OnAnimalClickDelegate(AnimalWiki wiki, AnimalType type);
+    
+    // delegate to register callbacks with for animal task
+    public OnAnimalClickDelegate OnAnimalClick;
     //Checks animal type and gets a description 
     public string GetAnimalDesc()
     {
+        OnAnimalClick?.Invoke(this, type);
         string animalName = gameObject.name;
 
 

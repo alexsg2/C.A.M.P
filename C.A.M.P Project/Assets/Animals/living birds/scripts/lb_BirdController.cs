@@ -22,6 +22,8 @@ public class lb_BirdController : MonoBehaviour {
 	public bool goldFinch = true;
 	public bool crow = true;
 
+	public NetworkAnimalTask animalTask;
+
 	// public Text canvasText;
     // public TaskList taskList;
     // public GameObject AnimalText;
@@ -125,6 +127,12 @@ public class lb_BirdController : MonoBehaviour {
 			myBirds[i].transform.localScale = myBirds[i].transform.localScale*birdScale;
 			myBirds[i].transform.parent = transform;
 			myBirds[i].SendMessage ("SetController",this);
+
+			// TODO: make sure this is right!
+			AnimalWiki wiki = myBirds[i].GetComponent<AnimalWiki>();
+			animalTask.birds.Add(wiki);
+			///////////////////
+			
 			myBirds[i].SetActive (false);
 		}
 

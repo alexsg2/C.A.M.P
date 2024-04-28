@@ -5,17 +5,21 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public enum AnimalType {
-    Bird,
-    Land
+    Land,
+    Bird
 }
 
 public enum AnimalTaskStatus {
     Wait,
     Start,
-    LandAnimalsDone,
-    Done
+    Done // when clicked enough land animals and birds
 }
 
+/// <summary>
+/// Client-driven class for animal task. On StartTask() call,
+/// clients register listeners for all animals OnAnimalClick delegates.
+/// Client callback sends RPC to server to increment count of animal type.
+/// </summary>
 public class NetworkAnimalTask : NetworkBehaviour
 {
     [SerializeField]
@@ -24,77 +28,121 @@ public class NetworkAnimalTask : NetworkBehaviour
     [SerializeField]
     private const int num_land_animals_needed = 1;
 
-    public NetworkVariable<int> land_animal_count = new NetworkVariable<int>(
-        0, 
-        NetworkVariableReadPermission.Everyone, 
-        NetworkVariableWritePermission.Server);
-    public NetworkVariable<int> bird_count = new NetworkVariable<int>(
-        0, 
+    public List<AnimalWiki> land_animals;
+    public List<AnimalWiki> birds;
+
+    // private NetworkVariable<int> land_animal_count = new NetworkVariable<int>(
+    //     0, 
+    //     NetworkVariableReadPermission.Everyone, 
+    //     NetworkVariableWritePermission.Server);
+    // private NetworkVariable<int> bird_count = new NetworkVariable<int>(
+    //     0, 
+    //     NetworkVariableReadPermission.Everyone, 
+    //     NetworkVariableWritePermission.Server);
+
+    // *should* only be written to by server
+    private int land_animal_count = 0;
+    private int bird_count = 0;
+
+    // left = land animals task, right = birds task
+    public  NetworkVariable<TwoBools> taskStatus = new NetworkVariable<TwoBools>(
+        default, 
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server);
 
-    public NetworkVariable<AnimalTaskStatus> taskStatus = new NetworkVariable<AnimalTaskStatus>(
-        AnimalTaskStatus.Wait, 
-        NetworkVariableReadPermission.Everyone, 
-        NetworkVariableWritePermission.Server);
+    // Make clients start listening for clicks on animals.
+    public void StartTask() {
+        if (IsServer) {
+            return;
+        }
+        Debug.Log("NetworkAnimalTask: started!");
 
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
+        // register callbacks only for clients
+        foreach (AnimalWiki land_animal in land_animals) {
+            land_animal.OnAnimalClick += OnClientClickAnimal;
+        }
+
+        foreach (AnimalWiki bird in birds) {
+            bird.OnAnimalClick += OnClientClickAnimal;
+        }
+
         taskStatus.OnValueChanged += OnTaskStatusChange;
     }
 
-    private void OnTaskStatusChange(AnimalTaskStatus old, AnimalTaskStatus updated) {
-        switch (updated) {
-            case AnimalTaskStatus.Start:
-                Debug.Log("NetworkAnimalTask: Animal task start!");
-                land_animal_count.OnValueChanged += OnLandAnimalCountChange;
-                // listen for land animal checks, get 
-                break;
-            case AnimalTaskStatus.LandAnimalsDone:
-                Debug.Log("NetworkAnimalTask: Land animal subtask done");
-                
-                // listen for bird checks
-                break;
-            case AnimalTaskStatus.Done:
-                Debug.Log("NetworkAnimalTask: Done");
-                break;
-
-        }
-    }
-
-    private void OnLandAnimalCountChange(int old, int updated) {
-        // TODO:
-
-    }
-
-    private void OnBirdCountChange(int old, int updated) {
-        // TODO:
-    }
-
-
-    // function called by server to update animal count when
-    public void ServerIncrementAnimalCount(AnimalType type) {
-        if (IsClient) {
-            return;
-        }
-
-        switch (type) {
-            case AnimalType.Bird:
-                
-                break;
-            case AnimalType.Land:
-                break;
-        }
-    }
-
-    public void ClientIncrementAnimalCount(AnimalType type) {
+    // Deregister listeners. Should only be executed by clients.
+    private void OnTaskStatusChange(TwoBools old, TwoBools updated) {
         if (IsServer) {
             return;
         }
 
-        if (type == AnimalType.Bird && taskStatus.Value == AnimalTaskStatus.LandAnimalsDone) {
+        // if we didnt already deregister listeners for
+        // land animal task, do so now
+        if (!old.left && updated.left) {
+            Debug.Log("NetworkAnimalTask: land animal subtask completed!");
+            foreach (AnimalWiki wiki in land_animals) {
+                wiki.OnAnimalClick -= OnClientClickAnimal;
+            }
+        }
 
+        // same here for bird task
+        if (!old.right && updated.right) {
+            Debug.Log("NetworkAnimalTask: bird subtask completed!");
+            foreach (AnimalWiki wiki in birds) {
+                wiki.OnAnimalClick -= OnClientClickAnimal;
+            }
+        }
+
+        if (updated.left && updated.right) {
+            Debug.Log("NetworkAnimalTask: both subtasks completed!");
+            taskStatus.OnValueChanged -= OnTaskStatusChange;
+        }
+    }
+
+    /// <summary>
+    /// Executed by clients as a callback from AnimalWiki when
+    /// they click an animal.
+    /// </summary>
+    /// <param name="wiki"></param>
+    /// <param name="type"></param>
+    public void OnClientClickAnimal(AnimalWiki wiki, AnimalType type) {
+        if (IsServer) {
+            return;
+        }
+        Debug.Log($"NetworkAnimalTask: client {OwnerClientId} clicked a {type} animal. Sending RPC.");
+
+        IncrementAnimalCountServerRpc(type);
+
+        // deregister this animal listener, can only click once
+        wiki.OnAnimalClick -= this.OnClientClickAnimal;
+    }
+
+        
+    [ServerRpc(RequireOwnership = false)]
+    public void IncrementAnimalCountServerRpc(AnimalType type) {
+        Debug.Log("NetworkAnimalTask: Server received animal rpc");
+        TwoBools task_stat = taskStatus.Value;
+
+        if (!task_stat.left && type == AnimalType.Land) {
+           
+            land_animal_count++;
+            Debug.Log($"NetworkAnimalTask: Server updated land animal count to {land_animal_count}");
+            // update task status if needed
+            if (land_animal_count >= num_land_animals_needed) {
+                task_stat.left = true;
+                taskStatus.Value = task_stat;
+            }
+            return;
+        }
+
+        if (!task_stat.right && type == AnimalType.Bird) {
+            bird_count++;
+            Debug.Log($"NetworkAnimalTask: Server updated bird count to {bird_count}");
+            // update task status if needed
+            if(bird_count >= num_birds_needed) {
+                task_stat.right = true;
+                taskStatus.Value = task_stat;
+            }
+            return;
         }
     }
 }

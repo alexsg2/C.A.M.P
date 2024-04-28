@@ -9053,6 +9053,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9069115365609054727, guid: 60f79905accf3b24fa0114b941f1aac0, type: 3}
   m_PrefabInstance: {fileID: 870767618}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &310833615
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 250, g: 250, b: 80, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!4 &316009297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2470915096720291200, guid: 194e9111af0c33840a49d573f2b26952, type: 3}
@@ -10622,46 +10662,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2470915096720291200, guid: 194e9111af0c33840a49d573f2b26952, type: 3}
   m_PrefabInstance: {fileID: 367061998}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &367196565
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 250, g: 250, b: 80, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!4 &369454089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953, type: 3}
@@ -31215,6 +31215,7 @@ Transform:
   m_Children:
   - {fileID: 2140712496}
   - {fileID: 819287953}
+  - {fileID: 1593928468}
   - {fileID: 1014382330}
   - {fileID: 1092685275}
   - {fileID: 1430909315}
@@ -31223,7 +31224,6 @@ Transform:
   - {fileID: 1603349390}
   - {fileID: 171261421}
   - {fileID: 849933064}
-  - {fileID: 1593928468}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1168555754
@@ -44663,12 +44663,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c9201981c29904b83f165ea26a0d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  land_animal_count:
-    m_InternalValue: 0
-  bird_count:
-    m_InternalValue: 0
-  taskStatus:
-    m_InternalValue: 0
+  land_animals:
+  - {fileID: 1716088024}
+  - {fileID: 1710343283}
+  - {fileID: 1603098679}
+  - {fileID: 1677725659}
+  birds: []
 --- !u!1001 &1603098668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45575,7 +45575,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  task: {fileID: 0}
 --- !u!114 &1603098680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47533,7 +47532,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  task: {fileID: 0}
 --- !u!114 &1677725660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48416,7 +48414,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  task: {fileID: 0}
 --- !u!114 &1710343284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48656,7 +48653,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  task: {fileID: 0}
 --- !u!114 &1716088025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53362,6 +53358,10 @@ PrefabInstance:
       propertyPath: AnimalText
       value: 
       objectReference: {fileID: 1012628888}
+    - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
+      propertyPath: animalTask
+      value: 
+      objectReference: {fileID: 1593928470}
     - target: {fileID: 11400000, guid: 1ca5316dd08051f42b31052d31beefed, type: 3}
       propertyPath: canvasText
       value: 
@@ -58241,7 +58241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 6285078211185128757, guid: 7eef0ff597653d941ae9438e1e69d524, type: 3}
-  amountToSpawn: 20
+  amountToSpawn: 12
   placementArea: {x: -8, y: 8}
 --- !u!114 &2084757948
 MonoBehaviour:
@@ -58923,6 +58923,10 @@ PrefabInstance:
     - target: {fileID: 3467981148917153857, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761980607334964924, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 4134708534345050159, guid: 1113a213b6467ff4b9c7237affbe92a6, type: 3}
       propertyPath: m_TargetEye

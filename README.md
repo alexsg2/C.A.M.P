@@ -69,8 +69,6 @@ At the end of the tutorial we have a menu to connect you to the server where the
 
 ### Task Board
 
-TASK BOARD PHOTO
-
 Additionally, we made a dynamic task board that updates as users complete tasks so they always know what they are meant to be doing and don't get confused. 
 
 ## Running the Application: Step-by-Step Guide

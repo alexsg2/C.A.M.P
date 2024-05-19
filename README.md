@@ -85,42 +85,16 @@ Additionally, we made a dynamic task board that updates as users complete tasks 
    - Specify the local path (the folder you created in step 2) where you want to clone the repository.
    - Click on "Clone".
 
-### 4. Open in Unity
-   - Once the repository is cloned, navigate to the folder where it's located on your machine.
-   - Open Unity, then open the project by selecting the folder you just cloned.
+### 4. Upload the C.A.M.P_Client.apk to your VR headset using SideQuest from the Build folder
+   - Install SideQuest: Ensure SideQuest is installed on your computer. You can download it from the official SideQuest website.
+   - Connect VR Headset: Use a USB cable to connect your VR headset to your computer.
+   - Open SideQuest: Launch the SideQuest application on your computer.
+   - Locate the APK: Navigate to the Build folder on your computer and find the C.A.M.P_Client.apk file.
+   - Upload the APK: Drag and drop the C.A.M.P_Client.apk file into the SideQuest window. This will initiate the installation process on your VR headset.
+
+### 5. On your computer, navigate to the Build folder and launch C.A.M.P.exe to start the server.
+   - Locate the Build Folder: Find the Build folder on your computer where the C.A.M.P.exe file is stored.
+   - Launch the Server: Double-click the C.A.M.P.exe file to launch it.
+   - Verify Server Running: Ensure that the server is running properly before you attempt to use the VR application. This is necessary for the VR application to communicate with your computer and function correctly.
 
 *Note: If you prefer using the terminal, you can perform these steps there, but proceed with caution if you're less familiar with it.*
-
-## Contributing to the Application: Step-by-Step Guide
-
-### 1. Open GitHub Desktop
-   - Launch GitHub Desktop on your computer.
-
-### 2. Fetch and Pull from Origin
-   - In GitHub Desktop, select the repository you want to contribute to.
-   - Click on the "Repository" menu and choose "Fetch origin" to ensure you have the latest updates.
-   - After fetching, click on "Repository" again and select "Pull" to merge any changes from the remote repository to your local one.
-
-### 3. Create a new branch for your new changes
-   - In GitHub Desktop, click on the "Current Branch" dropdown menu and select "New Branch".
-   - Name your branch appropriately, indicating the changes you intend to make.
-   - Click on "Create Branch".
-
-### 4. Make changes and push them
-   - Open the project in Unity and make the desired changes.
-   - Once you're satisfied with your changes, go back to GitHub Desktop.
-   - You should see your modified files listed under "Changes". Add a summary and description of your changes.
-   - Click on "Commit to <branch name>" to commit your changes to the new branch.
-
-### 5. Merge to main
-   - After committing your changes to your branch, return to GitHub Desktop.
-   - Select the branch you want to merge your changes into (usually "main" or "master").
-   - Click on "Repository" and choose "Merge into current branch".
-   - Select your branch from the list to merge your changes into the main branch.
-   - Resolve any conflicts if necessary, then confirm the merge.
-
-   *Note: Before merging talk to someone in the group to avoid problems or miscommunications later on.*
-
-
-
-

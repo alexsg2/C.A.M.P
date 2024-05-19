@@ -63,7 +63,7 @@ We used OpenAI's ChatGPT-4 API and the Whisper API to develop a responsive Non-P
 
 We made sure to add a tutorial to guide users through navigating our virtual game. Once they learn how to pick up an item, throw an item, click on things, etc. they will be able to use these same skills in the game.
 
-![C.A.M.P Scenery](./ReadMe-Folder/join.png)
+![C.A.M.P Scenery](./ReadMe-Folder/join.jpg)
 
 At the end of the tutorial we have a menu to connect you to the server where the users can plugin the servers IP and join into one campsite.
 
